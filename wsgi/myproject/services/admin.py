@@ -9,7 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
 
 class LocationAdmin(admin.ModelAdmin):
-    list_display = ("id", "city")
+    list_display = ("id", "location")
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
