@@ -37,7 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'social.apps.django_app.default',
     'services',
+    'frontend',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +51,29 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.open_id.OpenIdAuth',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '668971933246507'
+SOCIAL_AUTH_FACEBOOK_SECRET = '5d2c19c29bc298437808e67f02348c76'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '276847844271-gr5qk48ucbg3qq4hc8l93vesonjf2dn7.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'HyK-hH2xI8_6g6dedKlabOoc'
+SOCIAL_AUTH_TWITTER_KEY = 'vvgLUmfD5kTRj1XdcXLSyobdF'
+SOCIAL_AUTH_TWITTER_SECRET = 'bKK5L4bnmu7GU2KUbEMYmU0X6tOCyXyUeS10HLovFlxqvLzKkk'
 
 # GETTING-STARTED: change 'myproject' to your project name:
 ROOT_URLCONF = 'myproject.urls'
