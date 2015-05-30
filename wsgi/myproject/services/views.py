@@ -6,7 +6,7 @@ from services.serializers import ItemSerializer
 import geopy
 from geopy.distance import vincenty as VincentyDistance
 
-SEARCH_RADIUS = 10
+SEARCH_RADIUS = 10 # in KMs
 COMPASS_BEARING = {
     'NORTH': 0,
     'EAST': 90,
@@ -80,8 +80,8 @@ class ItemViewSet(viewsets.ModelViewSet):
                 {"latitude": lat, "longitude": lon},
                 SEARCH_RADIUS
             )
-
-            # If not 20 fall back to all items
-            if queryset.count() <= 0:
+            print queryset.count()
+            # If not 1 fall back to all items
+            if queryset.count() <= 1:
                  queryset = Item.objects.all()
         return queryset

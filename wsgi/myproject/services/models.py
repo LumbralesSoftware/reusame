@@ -2,20 +2,9 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils import timezone
-import urllib
-import urllib2
-import json
-import logging
+from django.contrib.auth.models import User
 
-#Coordinates api
-GEOCODE_BASE_URL = 'http://api.geonames.org/searchJSON?maxRows=1&username=javiawesomebi&q='
-def get_coords(address):
-    url = GEOCODE_BASE_URL + urllib.quote(address)
-    response = urllib2.urlopen(url)
-    result = json.loads(response.read())
-    print result
-    logging.error(result)
-    return [result['geonames'][0]['lat'], result['geonames'][0]['lng']]
+from .utils import get_coords
 
 # Create your models here.
 class Item(models.Model):
@@ -28,6 +17,7 @@ class Item(models.Model):
     active = models.BooleanField(verbose_name="Is this item available/active?", default=True)
     category = models.ForeignKey('Category', verbose_name="Category")
     location = models.ForeignKey('Location', verbose_name="Location")
+    owner = models.ForeignKey(User, verbose_name='Owner')
 
     def __str__(self):
         return unicode(self).encode('utf-8')
@@ -52,16 +42,14 @@ class Category(models.Model):
 
 class Location(models.Model):
     id = models.AutoField(primary_key=True)
-    location = models.CharField(max_length=200, verbose_name="Location (Post Code/Street, City, Country)", default='London')
+    location = models.CharField(max_length=200, verbose_name="Location/Address (Post Code/Street, City, Country)", default='London')
     long_position = models.DecimalField (max_digits=16, decimal_places=8, blank=True)
     lat_position = models.DecimalField (max_digits=16, decimal_places=8, blank=True)
 
     def save(self, **kwargs):
         #if self.id == None and self.coordinates == None:
         if not self.long_position or not self.lat_position:
-            coordinates = get_coords(self.location)
-            self.long_position = coordinates[0]
-            self.lat_position = coordinates[1]
+            self.long_position, self.lat_position = get_coords(self.location)
         super(Location, self).save()
 
     def __str__(self):
