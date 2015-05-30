@@ -14,7 +14,7 @@ admin.autodiscover()
 
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'items', ItemViewSet)
+router.register(r'items', ItemViewSet, 'Item')
 
 
 urlpatterns = patterns('',

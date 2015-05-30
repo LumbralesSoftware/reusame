@@ -53,8 +53,8 @@ class Category(models.Model):
 class Location(models.Model):
     id = models.AutoField(primary_key=True)
     location = models.CharField(max_length=200, verbose_name="Location (Post Code/Street, City, Country)", default='London')
-    long_position = models.DecimalField (max_digits=8, decimal_places=3, blank=True)
-    lat_position = models.DecimalField (max_digits=8, decimal_places=3, blank=True)
+    long_position = models.DecimalField (max_digits=16, decimal_places=8, blank=True)
+    lat_position = models.DecimalField (max_digits=16, decimal_places=8, blank=True)
 
     def save(self, **kwargs):
         #if self.id == None and self.coordinates == None:

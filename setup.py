@@ -16,5 +16,5 @@ setup(
     # GETTING-STARTED: set author url (your url):
     url='http://www.python.org/sigs/distutils-sig/',
     # GETTING-STARTED: define required django version:
-    install_requires=['Django<=1.8', 'static3', 'python-social-auth<0.2.9', 'djangorestframework', ],
+    install_requires=['Django<=1.8', 'static3', 'python-social-auth<0.2.9', 'djangorestframework', 'geopy'],
 )

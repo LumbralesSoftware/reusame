@@ -6,3 +6,5 @@
 .project
 .pydevproject
 wsgi/myproject/media/
+wsgi/myproject/myproject/settings_live.py
+wsgi/myproject/dev.db

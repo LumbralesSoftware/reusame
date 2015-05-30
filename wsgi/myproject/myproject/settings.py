@@ -16,12 +16,6 @@ BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!iudke*hi8vo#qyntq5yxm+p2itkuqg-m@bo8o%+cbnq(h%@@-'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -66,14 +60,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
 )
-
-SOCIAL_AUTH_FACEBOOK_KEY = '668971933246507'
-SOCIAL_AUTH_FACEBOOK_SECRET = '5d2c19c29bc298437808e67f02348c76'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '276847844271-gr5qk48ucbg3qq4hc8l93vesonjf2dn7.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'HyK-hH2xI8_6g6dedKlabOoc'
-SOCIAL_AUTH_TWITTER_KEY = 'vvgLUmfD5kTRj1XdcXLSyobdF'
-SOCIAL_AUTH_TWITTER_SECRET = 'bKK5L4bnmu7GU2KUbEMYmU0X6tOCyXyUeS10HLovFlxqvLzKkk'
 
 # GETTING-STARTED: change 'myproject' to your project name:
 ROOT_URLCONF = 'myproject.urls'
@@ -151,3 +137,5 @@ if 'OPENSHIFT_DATA_DIR' in os.environ:
     MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'media')
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, *MEDIA_URL.strip("/").split("/"))
+
+from settings_live import *
