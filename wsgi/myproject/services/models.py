@@ -49,7 +49,7 @@ class Location(models.Model):
     def save(self, **kwargs):
         #if self.id == None and self.coordinates == None:
         if not self.long_position or not self.lat_position:
-            self.long_position, self.lat_position = get_coords(self.location)
+            self.lat_position, self.long_position = get_coords(self.location)
         super(Location, self).save()
 
     def __str__(self):
