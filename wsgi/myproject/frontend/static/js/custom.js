@@ -73,9 +73,10 @@ function loadNearbyItems(position) {
                );
 
            var marker = new google.maps.Marker({
-               position: itemPos,
+                  position: itemPos,
                   map: map,
-                  title: item.name
+                  title: item.name,
+                  icon: '/static/img/marker.png'
            });
            google.maps.event.addListener(marker, 'click', (function(marker, i) {
                return function() {
