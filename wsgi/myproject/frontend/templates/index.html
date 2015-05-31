@@ -1,21 +1,10 @@
 {% extends 'base.html' %}
 {% block main %}
 <div>
-    <h1>Third-party authentication demo</h1>
+    <h1>allfree</h1>
 
     <p>
     <ul>
-        <li> Get location
-        <input type="button" value=" Show Location " onclick="javascript:showlocation()">
-
-        <br>
-        Latitude:
-        <span id="latitude"></span>
-        <br>
-
-        Longitude:
-        <span id="longitude"></span>
-        </li>
         {% if user and not user.is_anonymous %}
         <li>
         <a>Hello {{ user.get_full_name|default:user.username }}!</a>
@@ -37,4 +26,27 @@
     </ul>
     </p>
 </div>
+{% verbatim %}
+<script id="iWantThisTmpl" type="text/x-jsrender">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{:name}}</h4>
+      </div>
+      <div class="modal-body">
+        <p>Added on: {{:created}}</p>
+        <p>Owner: {{:owner}}</p>
+        <p>Description: {{:text}}</p>
+        <img src="{{:image}}" height="200" width="200"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Contact Owner</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</script>
+{% endverbatim %}
+<div class="modal fade" id="iWantThisModal"></div><!-- /.modal -->
 {% endblock %}
