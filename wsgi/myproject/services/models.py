@@ -19,6 +19,8 @@ class Item(models.Model):
     location = models.ForeignKey('Location', verbose_name="Location")
     owner = models.ForeignKey(User, verbose_name='Owner')
 
+    def requestedBy(user):
+        return True
     def __str__(self):
         return unicode(self).encode('utf-8')
 

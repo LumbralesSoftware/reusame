@@ -4,26 +4,36 @@
     <h1>allfree</h1>
 
     <p>
-    <ul>
+    <div class="container">
         {% if user and not user.is_anonymous %}
-        <li>
-        <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-        </li>
-        <li>
-        <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-        </li>
+        <div class="span6 pull-right">
+            <a href="{% url 'auth:logout' %}?next=/">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                </button>
+            </a>
+        </div>
+        <div class="span6 pull-right col-md-2">
+            <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+        </div>
         {% else %}
-        <li>
-        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
-        </li>
-        <li>
-        <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
-        </li>
-        <li>
-        <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
-        </li>
+        <div class="span6 pull-right">
+        <a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
+            <i class="fa fa-google"></i> Sign in with Google
+        </a>
+        </div>
+        <div class="span6 pull-right">
+        <a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+            <i class="fa fa-facebook"></i> Sign in with Facebok
+        </a>
+        </div>
+        <div class="span6 pull-right">
+        <a class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+            <i class="fa fa-twitter"></i> Sign in with Twitter
+        </a>
+        </div>
         {% endif %}
-    </ul>
+    </div>
     </p>
 </div>
 {% verbatim %}
@@ -34,6 +44,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">{{:name}}</h4>
       </div>
+      <form>
       <div class="modal-body">
         <p>Added on: {{:created}}</p>
         <p>Owner: {{:owner}}</p>
@@ -42,8 +53,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Contact Owner</button>
+        <button type="button" class="btn btn-primary" id="iWantThisContact">Contact Owner</button>
       </div>
+        <input type="hidden" name="iWantThisId" id="iWantThisId" value="{{:id}}"/>
+      </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </script>

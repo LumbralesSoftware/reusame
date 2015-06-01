@@ -31,7 +31,6 @@ var centerMap = function(location) {
     loadNearbyItems(location);
 }
 
-window.navigator.geolocation.getCurrentPosition(userLocationFound, userLocationNotFound, geoOptions);
 
 setTimeout(function () {
     if (!latLng) {
@@ -45,8 +44,8 @@ function initialize() {
     var mapOptions = {
         zoom: 12
     };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    window.navigator.geolocation.getCurrentPosition(userLocationFound, userLocationNotFound, geoOptions);
 }
 
 function handleNoGeolocation() {
@@ -106,4 +105,9 @@ function iWantThis(item) {
     console.log(item);
     var template = $.templates('#iWantThisTmpl');
     $('#iWantThisModal').html(template.render(item)).modal('show');
+    $('#iWantThisContact').click(function() {
+        var id = $('#iWantThisId').val();
+        console.log('clicked!', id);
+        return true;
+    });
 }
