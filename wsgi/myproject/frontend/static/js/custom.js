@@ -108,6 +108,24 @@ function iWantThis(item) {
     $('#iWantThisContact').click(function() {
         var id = $('#iWantThisId').val();
         console.log('clicked!', id);
-        return true;
+        $.ajax({
+            type: "POST",
+            url: '/request/' + id + '/',
+            dataType: 'json',
+            async: false,
+            data: '{"message": "test"}',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function(data) {
+                alert("error!");
+            }
+        })
+    return true;
     });
 }
+$(function () {
+    $.ajaxSetup({
+        headers: { "X-CSRFToken": $.cookie("csrftoken") }
+    });
+});

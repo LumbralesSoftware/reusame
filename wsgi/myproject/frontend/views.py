@@ -3,10 +3,12 @@ from django.template.context import RequestContext
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 from django import forms
-from services.models import Item
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 
+from services.models import Item
+
+import json
 
 class UserForm(forms.ModelForm):
 
@@ -30,7 +32,9 @@ def home(request):
    return render_to_response('index.html',
                              context_instance=context)
 
-def contact_owner(request, id):
+def request_item(request, id):
+   data = json.loads(request.body)
+   print data
    item = get_object_or_404(Item, pk=id)
-   item.requestedBy(request.user)
-   return HttpResponse({"success":True})
+   item.requestedBy(request.user, data['message'])
+   return HttpResponse(json.dumps({"success": True}), content_type="application/json")
