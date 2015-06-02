@@ -29,7 +29,8 @@ class LocationSerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     location = LocationSerializer()
     category = CategoryField(queryset=Category.objects.all())
-    owner = serializers.StringRelatedField()
+    owner = serializers.ReadOnlyField(source='owner.username')
+    created = serializers.ReadOnlyField()
     class Meta:
         model = Item
         fields = ('id', 'name', 'text', 'image', 'category', 'location', 'owner', 'created')

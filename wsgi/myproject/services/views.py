@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework import permissions
+from .permissions import IsOwnerOrReadOnly
 from services.models import Item
 from services.serializers import ItemSerializer
 
@@ -66,6 +68,8 @@ def find_nearby_locations(point):
 class ItemViewSet(viewsets.ModelViewSet):
     serializer_class = ItemSerializer
     model = Item
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)
 
     def get_queryset(self):
         """

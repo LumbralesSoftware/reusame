@@ -3,7 +3,7 @@ from services.models import Item, Category, Location
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "active", "created", "last_updated")
+    list_display = ("id", "name", "owner", "active", "created", "last_updated", "location")
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
