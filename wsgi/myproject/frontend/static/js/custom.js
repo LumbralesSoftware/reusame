@@ -26,11 +26,12 @@ var userLocationNotFound = function(){
 }
 
 var centerMap = function(location) {
-    var position = new google.maps.LatLng(location.lat, location.lng);
-    map.setCenter(position);
-    loadNearbyItems(location);
+    if (map) {
+        var position = new google.maps.LatLng(location.lat, location.lng);
+        map.setCenter(position);
+        loadNearbyItems(location);
+    }
 }
-
 
 setTimeout(function () {
     if (!latLng) {
@@ -57,8 +58,6 @@ function handleNoGeolocation() {
     var infowindow = new google.maps.InfoWindow('Unable to detect your location');
     map.setCenter(options.position);
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
 
 function loadNearbyItems(position) {
    var infowindow = new google.maps.InfoWindow();
@@ -124,8 +123,52 @@ function iWantThis(item) {
     return true;
     });
 }
+function createItem() {
+    $('#createItemModal').modal('show');
+}
+
 $(function () {
     $.ajaxSetup({
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
 });
+
+$(document).ready(function() {
+    if ($('#map-canvas').length == 1) {
+        initialize();
+    }
+    $('#createItem').click(createItem);
+    $("#giveAwayItemForm").submit(function(evt){
+        evt.preventDefault();
+        if (!$('#location').val()) {
+            $('#lat_position').val(latLng.lat);
+            $('#long_position').val(latLng.lng);
+        } else {
+            $('#lat_position').val('');
+            $('#long_position').val('');
+        }
+
+        var formData = new FormData($(this)[0]);
+
+        $.ajax({
+            url: '/api/items',
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            processData: false,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log(response);
+            }
+        });
+
+        return false;
+    });
+});
+
+

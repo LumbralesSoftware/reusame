@@ -42,6 +42,7 @@ def make_bounding_box(point, radius):
     ).longitude
     # Fetch locations within the bounding box
     items = Item.objects.filter(
+        active=True,
         location__lat_position__gt=min_lat,
         location__lat_position__lt=max_lat,
         location__long_position__gt=min_long,
@@ -76,7 +77,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         Optionally restricts the returned nodes to a given location
         by filtering against a `lat`, `lon` query parameter in the URL.
         """
-        queryset = Item.objects.all()
+        queryset = Item.objects.filter(active=True)
         lat = self.request.QUERY_PARAMS.get('lat', None)
         lon = self.request.QUERY_PARAMS.get('lon', None)
         if lat is not None and lon is not None:
@@ -87,5 +88,5 @@ class ItemViewSet(viewsets.ModelViewSet):
             print queryset.count()
             # If not 1 fall back to all items
             if queryset.count() <= 1:
-                 queryset = Item.objects.all()
+                 queryset = Item.objects.filter(active=True)
         return queryset

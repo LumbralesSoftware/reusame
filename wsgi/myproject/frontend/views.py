@@ -6,7 +6,8 @@ from django import forms
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 
-from services.models import Item
+from django.forms.models import modelformset_factory
+from services.models import Item, Category
 
 import json
 
@@ -26,11 +27,19 @@ class UserUpdate(UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+class ItemForm(forms.ModelForm):
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), to_field_name="name")
+
+    class Meta:
+        model = Item
+        exclude=('created', 'owner', 'active', 'location')
+
 def home(request):
-   context = RequestContext(request,
-                           {'user': request.user})
-   return render_to_response('index.html',
-                             context_instance=context)
+   context = RequestContext(
+        request,
+        {'item': ItemForm(), 'user': request.user}
+   )
+   return render_to_response('index.html', context_instance=context)
 
 def request_item(request, id):
    data = json.loads(request.body)
@@ -38,3 +47,4 @@ def request_item(request, id):
    item = get_object_or_404(Item, pk=id)
    item.requestedBy(request.user, data['message'])
    return HttpResponse(json.dumps({"success": True}), content_type="application/json")
+

@@ -22,7 +22,7 @@ class LocationSerializer(serializers.ModelSerializer):
         fields = ('location', 'long_position', 'lat_position')
 
     def validate(self, location):
-        if not location['location'] and not location['long_position'] and not location['lat_position']:
+        if not 'location' in location or (not location['location'] and not location['long_position'] and not location['lat_position']):
             raise serializers.ValidationError('You must provide either location address or lat/long coordinates.')
         return super(LocationSerializer, self).validate(location)
 

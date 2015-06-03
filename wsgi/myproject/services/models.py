@@ -15,7 +15,7 @@ class Item(models.Model):
     image = models.FileField(upload_to='items/%Y/%m/%d')
     created = models.DateTimeField(verbose_name="Created date", null=True, blank=True, auto_now_add=True)
     last_updated = models.DateTimeField(editable=False, verbose_name="Last Updated Date", null=True, blank=True)
-    active = models.BooleanField(verbose_name="Is this item available/active?", default=True)
+    active = models.BooleanField(verbose_name="Is this item available/active?", default=False)
     category = models.ForeignKey('Category', verbose_name="Category")
     location = models.ForeignKey('Location', verbose_name="Location")
     owner = models.ForeignKey(User, verbose_name='Owner')
@@ -43,7 +43,7 @@ def update_edit_date(sender, instance, *args, **kwargs):
 
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200, verbose_name="Category name")
+    name = models.CharField(max_length=200, verbose_name="Category name", unique=True)
     description = models.TextField(max_length=300, verbose_name="Category description")
 
     def __str__(self):
