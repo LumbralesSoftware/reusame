@@ -4,9 +4,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.models import User
 from django import forms
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
+from django.contrib.auth.decorators import login_required
 
-from django.forms.models import modelformset_factory
 from services.models import Item, Category
 
 import json
@@ -42,6 +42,8 @@ def home(request):
    return render_to_response('index.html', context_instance=context)
 
 def request_item(request, id):
+   if not request.user.is_authenticated():
+      return HttpResponseForbidden('Please, log in first and try again.')
    data = json.loads(request.body)
    print data
    item = get_object_or_404(Item, pk=id)

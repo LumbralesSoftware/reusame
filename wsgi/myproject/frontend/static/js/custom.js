@@ -81,7 +81,7 @@ function loadNearbyItems(position) {
                    infowindow.setContent(
                        '<h3>' + data[i].name + '</h3> \
                        <a onclick="iWantThis(\'' + escape(JSON.stringify(data[i])) + '\')"> \
-                       <div class="iWantThis"><button>I want this!</button></div> \
+                       <div class="iWantThis"><button class=\"btn btn-primary\">I want this!</button></div> \
                        </a>\
                        <div id="' + data[i].id + '" style="width:100%;text-align:center"> \
                        <!--<img id="loading-' + data[i].id + '" src="img/loading.gif" align="middle" alt="Loading..." style="margin-top:5px"/>--> \
@@ -99,6 +99,8 @@ function loadNearbyItems(position) {
 }
 
 function iWantThis(item) {
+    $('#iWantThisSuccessMsg').hide();
+    $('#iWantThisErrorMsg').hide();
     console.log('iwanthis clicked');
     var item = jQuery.parseJSON(unescape(item));
     console.log(item);
@@ -107,17 +109,23 @@ function iWantThis(item) {
     $('#iWantThisContact').click(function() {
         var id = $('#iWantThisId').val();
         console.log('clicked!', id);
+        console.log(JSON.stringify({"message": $('#iWantThisComment').val()}));
         $.ajax({
             type: "POST",
             url: '/request/' + id + '/',
             dataType: 'json',
             async: false,
-            data: '{"message": "test"}',
+            data: JSON.stringify({"message": $('#iWantThisComment').val()}),
             success: function (data) {
                 console.log(data);
+                $('#iWantThisSuccessMsg').show();
+                $('#iWantThisSuccessMsg .msg').html('The owner has been successfully contacted');
             },
-            error: function(data) {
-                alert("error!");
+            error: function(data, errorMsg) {
+                console.log(data);
+                console.log(errorMsg);
+                $('#iWantThisErrorMsg').show();
+                $('#iWantThisErrorMsg .msg').html(data.responseText);
             }
         })
     return true;
