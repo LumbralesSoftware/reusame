@@ -138,4 +138,8 @@ if 'OPENSHIFT_DATA_DIR' in os.environ:
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, *MEDIA_URL.strip("/").split("/"))
 
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/accounts/profile/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/'
+
 from settings_live import *

@@ -11,8 +11,8 @@ from .utils import get_coords
 class Item(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, verbose_name="Item name")
-    text = models.TextField(max_length=1000, verbose_name="Item Description")
-    image = models.FileField(upload_to='items/%Y/%m/%d')
+    description = models.TextField(max_length=1000, verbose_name="Item Description")
+    image = models.ImageField(upload_to='items/%Y/%m/%d')
     created = models.DateTimeField(verbose_name="Created date", null=True, blank=True, auto_now_add=True)
     last_updated = models.DateTimeField(editable=False, verbose_name="Last Updated Date", null=True, blank=True)
     active = models.BooleanField(verbose_name="Is this item available/active?", default=False)

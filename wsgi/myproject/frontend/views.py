@@ -28,11 +28,17 @@ class UserUpdate(UpdateView):
         return self.request.user
 
 class ItemForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all(), to_field_name="name")
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), to_field_name="name",widget=forms.Select(attrs={'data-validation':'[NOTEMPTY]'}))
 
     class Meta:
         model = Item
         exclude=('created', 'owner', 'active', 'location')
+        widgets = {
+                'name': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
+                'description': forms.Textarea(attrs={'data-validation':'[NOTEMPTY]'}),
+                'category': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
+                'image': forms.FileInput(attrs={'data-validation':'[NOTEMPTY]'}),
+        }
 
 def home(request):
    context = RequestContext(

@@ -59,7 +59,7 @@
                       </div>
                       <div class="col-md-3">
                           <label for="comment">Add a comment (optionally):</label>
-                          <textarea class="form-control" rows="5" id="iWantThisComment"></textarea>
+                          <textarea class="form-control" rows="5" id="iWantThisComment" placeholder="Optionally add a custom message to the owner"></textarea>
                           <br/>
                           <br/>
                           <div id="iWantThisSuccessMsg" class="alert alert-success" role="alert" style="display:none">
@@ -99,10 +99,21 @@
                     <div class="create-item">
                         {{ item }}
                         <label for="location">Location:</label>
-                        <input name="location.location" maxlength="200" id="location" type="text">
+                        <input name="location.location" size="40" id="location" type="text" placeholder="Leave in blank to use current location">
                         <input name="location.lat_position" id="lat_position" type="hidden">
                         <input name="location.long_position" id="long_position" type="hidden">
-                        <span>Leave in blank to use your current location</span>
+                        <br />
+                        <br />
+                          <div id="giveAwayItemSuccessMsg" class="alert alert-success" role="alert" style="display:none">
+                              <span class="glyphicon glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                              <span class="sr-only">Error:</span>
+                              <span class="msg">All good</span>
+                          </div>
+                          <div id="giveAwayItemErrorMsg" class="alert alert-danger" role="alert" style="display:none">
+                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                              <span class="sr-only">Error:</span>
+                              <span class="msg">All bad</span>
+                          </div>
                     </div>
                 </div>
                 <div class="modal-footer">

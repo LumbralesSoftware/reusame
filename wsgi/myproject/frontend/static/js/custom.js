@@ -135,48 +135,63 @@ function createItem() {
     $('#createItemModal').modal('show');
 }
 
-$(function () {
+var giveAwayItemSubmit = function (node) {
+    $('#giveAwayItemSuccessMsg').hide();
+    $('#giveAwayItemErrorMsg').hide();
+
+    if (!$('#location').val()) {
+        $('#lat_position').val(latLng.lat);
+        $('#long_position').val(latLng.lng);
+    } else {
+        $('#lat_position').val('');
+        $('#long_position').val('');
+    }
+
+    var formData = new FormData($(node)[0]);
+
+    $.ajax({
+        url: '/api/items',
+        type: 'POST',
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        enctype: 'multipart/form-data',
+        processData: false,
+        success: function (response) {
+            $('#giveAwayItemSuccessMsg .msg').html('Thank you. Your item will be reviewed and pushed to live within the next 24 hours.');
+            $('#giveAwayItemSuccessMsg').show();
+            $(node)[0].reset();
+        },
+        error: function (response) {
+            console.log(response);
+            $('#giveAwayItemErrorMsg .msg').html('An error ocurred, please try again');
+            $('#giveAwayItemErrorMsg').show();
+        }
+    });
+}
+
+var options = {
+    submit: {
+        settings: {
+            allErrors: true,
+            errorListClass: "alert alert-danger",
+        },
+        callback: {
+            onSubmit: giveAwayItemSubmit
+        }
+    }
+};
+
+$(document).ready(function() {
     $.ajaxSetup({
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
-});
-
-$(document).ready(function() {
     if ($('#map-canvas').length == 1) {
         initialize();
     }
+    $('#giveAwayItemForm').validate(options);
     $('#createItem').click(createItem);
-    $("#giveAwayItemForm").submit(function(evt){
-        evt.preventDefault();
-        if (!$('#location').val()) {
-            $('#lat_position').val(latLng.lat);
-            $('#long_position').val(latLng.lng);
-        } else {
-            $('#lat_position').val('');
-            $('#long_position').val('');
-        }
-
-        var formData = new FormData($(this)[0]);
-
-        $.ajax({
-            url: '/api/items',
-            type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            enctype: 'multipart/form-data',
-            processData: false,
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (response) {
-                console.log(response);
-            }
-        });
-
-        return false;
-    });
 });
 
 

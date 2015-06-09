@@ -33,7 +33,7 @@ class ItemSerializer(serializers.ModelSerializer):
     created = serializers.ReadOnlyField()
     class Meta:
         model = Item
-        fields = ('id', 'name', 'text', 'image', 'category', 'location', 'owner', 'created')
+        fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created')
 
     def create(self, validated_data):
         request = self.context.get('request', None)
@@ -60,13 +60,11 @@ class ItemSerializer(serializers.ModelSerializer):
         # Create the item instance
         item = Item.objects.create(
             name=validated_data['name'],
-            text=validated_data['text'],
+            description=validated_data['description'],
             image=validated_data['image'],
             category=validated_data['category'],
             location=location,
             owner=user
         )
-
-
 
         return item
