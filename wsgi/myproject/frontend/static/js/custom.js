@@ -119,7 +119,7 @@ function iWantThis(item) {
             success: function (data) {
                 console.log(data);
                 $('#iWantThisSuccessMsg').show();
-                $('#iWantThisSuccessMsg .msg').html('The owner has been successfully contacted');
+                $('#iWantThisSuccessMsg .msg').html('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.');
             },
             error: function(data, errorMsg) {
                 console.log(data);
