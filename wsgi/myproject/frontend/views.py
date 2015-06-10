@@ -38,6 +38,7 @@ class ItemForm(forms.ModelForm):
                 'description': forms.Textarea(attrs={'data-validation':'[NOTEMPTY]'}),
                 'category': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'image': forms.FileInput(attrs={'data-validation':'[NOTEMPTY]'}),
+                'expires_on': forms.TextInput(attrs={'class':'datetimepicker', "placeholder": "yyyy-mm-dd --:--"}),
         }
 
 def home(request):

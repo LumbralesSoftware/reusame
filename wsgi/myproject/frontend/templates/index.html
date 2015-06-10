@@ -21,19 +21,25 @@
         </div>
         {% else %}
         <div class="span6 pull-right">
-        <a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
-            <i class="fa fa-google"></i> Sign in with Google
-        </a>
+            <div class="social-button">
+                <a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
+                    <i class="fa fa-google"></i> Sign in with Google
+                </a>
+            </div>
         </div>
         <div class="span6 pull-right">
-        <a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-            <i class="fa fa-facebook"></i> Sign in with Facebok
-        </a>
+            <div class="social-button">
+                <a class="btn btn-block btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+                    <i class="fa fa-facebook"></i> Sign in with Facebok
+                </a>
+            </div>
         </div>
         <div class="span6 pull-right">
-        <a class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
-            <i class="fa fa-twitter"></i> Sign in with Twitter
-        </a>
+            <div class="social-button">
+                <a class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">
+                    <i class="fa fa-twitter"></i> Sign in with Twitter
+                </a>
+            </div>
         </div>
         {% endif %}
     </div>
@@ -54,7 +60,7 @@
                       <div class="col-md-3">
                           <p>Added on: {{:created}}</p>
                           <p>Owner: {{:owner}}</p>
-                          <p>Description: {{:text}}</p>
+                          <p>Description: {{:description}}</p>
                           <img src="{{:image}}" height="200" width="200"/>
                       </div>
                       <div class="col-md-3">

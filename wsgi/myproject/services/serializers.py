@@ -30,10 +30,11 @@ class ItemSerializer(serializers.ModelSerializer):
     location = LocationSerializer()
     category = CategoryField(queryset=Category.objects.all())
     owner = serializers.ReadOnlyField(source='owner.username')
-    created = serializers.ReadOnlyField()
+    created = serializers.DateTimeField(format="%d %b %Y %H:%M:%S", read_only=True)
+    expires_on = serializers.DateTimeField(format="%d %b %Y %H:%M:%S")
     class Meta:
         model = Item
-        fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created')
+        fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created', 'expires_on')
 
     def create(self, validated_data):
         request = self.context.get('request', None)

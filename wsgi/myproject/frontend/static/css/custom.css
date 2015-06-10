@@ -9,3 +9,13 @@ html, body {
 .create-item label {
     display: block;
 }
+.iWantThis {
+    text-align: center;
+}
+.popupImage {
+    width:100%;
+    text-align:center;
+}
+.social-button {
+    padding: 2px;
+}

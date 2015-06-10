@@ -15,6 +15,7 @@ class Item(models.Model):
     image = models.ImageField(upload_to='items/%Y/%m/%d')
     created = models.DateTimeField(verbose_name="Created date", null=True, blank=True, auto_now_add=True)
     last_updated = models.DateTimeField(editable=False, verbose_name="Last Updated Date", null=True, blank=True)
+    expires_on = models.DateTimeField(verbose_name="When does the item expires?", null=True, blank=True)
     active = models.BooleanField(verbose_name="Is this item available/active?", default=False)
     category = models.ForeignKey('Category', verbose_name="Category")
     location = models.ForeignKey('Location', verbose_name="Location")

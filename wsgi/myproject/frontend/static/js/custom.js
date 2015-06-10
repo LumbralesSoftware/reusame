@@ -83,12 +83,11 @@ function loadNearbyItems(position) {
                        <a onclick="iWantThis(\'' + escape(JSON.stringify(data[i])) + '\')"> \
                        <div class="iWantThis"><button class=\"btn btn-primary\">I want this!</button></div> \
                        </a>\
-                       <div id="' + data[i].id + '" style="width:100%;text-align:center"> \
-                       <!--<img id="loading-' + data[i].id + '" src="img/loading.gif" align="middle" alt="Loading..." style="margin-top:5px"/>--> \
+                       <div id="' + data[i].id + '" class="popupImage"> \
                        <img src="' + data[i].image + '" alt="' + data[i].name + '" style="margin-top:5px" width="200" height="200" class="img-circle"/> \
                        <div> \
                        <h5>Description</h5> \
-                       <p> ' + data[i].text + '</p>'
+                       <p> ' + data[i].description + '</p>'
                        );
                    infowindow.open(map, marker);
                    //api.getInfoPoint(points.stations[i].station_code, points.stations[i].lines);
@@ -122,10 +121,14 @@ function iWantThis(item) {
                 $('#iWantThisSuccessMsg .msg').html('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.');
             },
             error: function(data, errorMsg) {
-                console.log(data);
-                console.log(errorMsg);
+                var msg = data.responseText;
+
+                // CSRF Verification fail, not loged in
+                if (data.status == 403) {
+                    msg = 'Please, log in first and try again.';
+                }
                 $('#iWantThisErrorMsg').show();
-                $('#iWantThisErrorMsg .msg').html(data.responseText);
+                $('#iWantThisErrorMsg .msg').html(msg);
             }
         })
     return true;
@@ -192,6 +195,8 @@ $(document).ready(function() {
     }
     $('#giveAwayItemForm').validate(options);
     $('#createItem').click(createItem);
+    $('.datetimepicker').datetimepicker({format:'Y-m-d H:i'});
+
 });
 
 
