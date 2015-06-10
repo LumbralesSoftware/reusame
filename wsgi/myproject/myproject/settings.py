@@ -147,7 +147,7 @@ IMAGE_ON_DEMAND_URL = 'items/thumbs/'
 IMAGE_ON_DEMAND_DIR = os.path.join(MEDIA_ROOT, IMAGE_ON_DEMAND_URL)
 
 #image widths allowed
-ALLOWED_WIDTHS=('50')
+ALLOWED_WIDTHS=('25', '50')
 
 #usm settings for thumbnails, optional if you use my unsharp mask snippet
 RADIUS=1

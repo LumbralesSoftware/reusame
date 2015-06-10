@@ -56,7 +56,6 @@ def request_item(request, id):
    if not request.user.is_authenticated():
       return HttpResponseForbidden('Please, log in first and try again.')
    data = json.loads(request.body)
-   print data
    item = get_object_or_404(Item, pk=id)
    item.requestedBy(request.user, data['message'])
    return HttpResponse(json.dumps({"success": True}), content_type="application/json")
