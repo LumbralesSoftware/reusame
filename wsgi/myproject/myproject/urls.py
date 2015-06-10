@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^accounts/profile/', UserUpdate.as_view(success_url="/"), name='profile'),
     url(r'^request/(?P<id>[\d+]{1,40})/$', 'frontend.views.request_item', name='request_item'),
+    url(r'^thumb/(?P<id>\d+)/(?P<width>\d+).png$', 'frontend.views.image_on_demand'),
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

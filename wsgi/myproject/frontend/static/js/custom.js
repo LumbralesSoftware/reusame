@@ -74,7 +74,7 @@ function loadNearbyItems(position) {
                   position: itemPos,
                   map: map,
                   title: item.name,
-                  icon: '/static/img/marker.png'
+                  icon: '/thumb/' + item.id + '/50.png'
            });
            google.maps.event.addListener(marker, 'click', (function(marker, i) {
                return function() {
