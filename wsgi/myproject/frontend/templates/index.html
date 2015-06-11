@@ -64,8 +64,13 @@
                           <img src="{{:image}}" height="200" width="200"/>
                       </div>
                       <div class="col-md-3">
-                          <label for="comment">Add a comment (optionally):</label>
-                          <textarea class="form-control" rows="5" id="iWantThisComment" placeholder="Optionally add a custom message to the owner"></textarea>
+                          <div class="panel panel-default hidden" id="iWantThisExpiresBlock" title="Hurry up, this offer/item expires soon">
+                              <div class="panel-body">
+                                    Expires in <div class="lead" id="iWantThisExpiresOn"></div>
+                              </div>
+                          </div>
+                          <label for="comment">Add a comment if you want:</label>
+                          <textarea class="form-control" rows="5" id="iWantThisComment" placeholder="Hi, I saw your item and I'm very interested on it. When would be a good time to pick it up? Cheers"></textarea>
                           <br/>
                           <br/>
                           <div id="iWantThisSuccessMsg" class="alert alert-success" role="alert" style="display:none">

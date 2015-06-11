@@ -102,9 +102,19 @@ function iWantThis(item) {
     $('#iWantThisErrorMsg').hide();
     console.log('iwanthis clicked');
     var item = jQuery.parseJSON(unescape(item));
+    item.created = $.format.date(item.created, 'dd/MM/yyyy HH:mm:ss');
     console.log(item);
     var template = $.templates('#iWantThisTmpl');
     $('#iWantThisModal').html(template.render(item)).modal('show');
+    if (item.expires_on) {
+        $('#iWantThisExpiresBlock').removeClass('hidden');
+        $('#iWantThisExpiresOn').countdown($.format.date(item.expires_on, 'yyyy/MM/dd HH:mm:ss'), function(event) {
+            $(this).text(
+                event.strftime('%D days %H:%M:%S')
+                );
+        });
+    }
+
     $('#iWantThisContact').click(function() {
         var id = $('#iWantThisId').val();
         console.log('clicked!', id);
