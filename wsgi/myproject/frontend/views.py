@@ -7,8 +7,9 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.db.models import Avg
 
-from services.models import Item, Category
+from services.models import Item, Category, UserRatings
 
 from PIL import Image, ImageOps, ImageDraw
 
@@ -51,6 +52,17 @@ def home(request):
         {'item': ItemForm(), 'user': request.user}
    )
    return render_to_response('index.html', context_instance=context)
+
+def vote_user(request, id):
+   if not request.user.is_authenticated():
+      return HttpResponseForbidden('Please, log in first and try again.')
+   item = get_object_or_404(Item, pk=id)
+   vote, created = UserRatings.objects.get_or_create(voted_user=item.owner, voting_user =request.user)
+   vote.punctuation = request.GET['punctuation']
+   vote.save()
+   #compute new average
+   rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
+   return HttpResponse(json.dumps({"rating": rating['punctuation__avg']}), content_type="application/json")
 
 def request_item(request, id):
    if not request.user.is_authenticated():

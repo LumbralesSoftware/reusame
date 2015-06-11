@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 from .utils import get_coords
 
@@ -70,3 +71,11 @@ class Location(models.Model):
 
     def __unicode__(self):
         return self.location
+
+class UserRatings(models.Model):
+    id = models.AutoField(primary_key=True)
+    voted_user = models.ForeignKey(User, verbose_name='User voted', related_name="voted_user")
+    voting_user = models.ForeignKey(User, verbose_name='User voting', related_name="voting_user")
+    punctuation = models.DecimalField(max_digits=4, decimal_places=1, validators = [MinValueValidator(0.0), MaxValueValidator(5.0)])
+
+

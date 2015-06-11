@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from services.models import Item, Category, Location
 from django.shortcuts import get_object_or_404
+from django.db.models import Avg
 
+from services.models import Item, Category, Location, UserRatings
 from .utils import get_coords, get_address
 
 class CategoryField(serializers.RelatedField):
@@ -32,9 +33,15 @@ class ItemSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     created = serializers.DateTimeField(read_only=True)
     expires_on = serializers.DateTimeField() #format="%d %b %Y %H:%M:%S"
+    user_rating = serializers.SerializerMethodField('getRatings')
+
     class Meta:
         model = Item
-        fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created', 'expires_on')
+        fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created', 'expires_on', 'user_rating')
+
+    def getRatings(self, item):
+        rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
+        return rating['punctuation__avg']
 
     def create(self, validated_data):
         request = self.context.get('request', None)

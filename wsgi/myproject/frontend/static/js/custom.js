@@ -114,6 +114,16 @@ function iWantThis(item) {
                 );
         });
     }
+    $('#iWantThisRate').rating({'size':'xs', 'showCaption': false});
+    $('#iWantThisRate').rating('update', item.user_rating);
+    $('#iWantThisRate').on('rating.change', function(event, value) {
+        $.getJSON("/vote/" + item.id + '/?punctuation=' + value, function(data) {
+            $('#iWantThisRate').rating('update', data.rating);
+        });
+    });
+    $('#iWantThisRate').on('rating.clear', function(event) {
+        console.log("rating.clear");
+    });
 
     $('#iWantThisContact').click(function() {
         var id = $('#iWantThisId').val();

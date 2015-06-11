@@ -1,5 +1,5 @@
 from django.contrib import admin
-from services.models import Item, Category, Location
+from services.models import Item, Category, Location, UserRatings
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -11,6 +11,10 @@ class CategoryAdmin(admin.ModelAdmin):
 class LocationAdmin(admin.ModelAdmin):
     list_display = ("id", "location")
 
+class UserRatingsAdmin(admin.ModelAdmin):
+    list_display = ("id", "voted_user", "voting_user", "punctuation")
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Location, LocationAdmin)
+admin.site.register(UserRatings, UserRatingsAdmin)
