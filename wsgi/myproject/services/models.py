@@ -7,8 +7,8 @@ from django.core.mail import EmailMessage
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core import serializers
 
+import base64
 import json
-from django.utils.encoding import filepath_to_uri
 
 from .utils import get_coords
 
@@ -29,7 +29,7 @@ class Item(models.Model):
     def to_json(self):
         from .serializers import ItemSerializer
         item = ItemSerializer(self)
-        return filepath_to_uri(json.dumps(item.data))
+        return base64.urlsafe_b64encode(json.dumps(item.data))
 
     def requestedBy(self, user, body):
         headers = {'Reply-To': user.email}

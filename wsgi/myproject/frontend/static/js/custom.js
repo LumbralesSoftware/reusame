@@ -80,7 +80,7 @@ function loadNearbyItems(position) {
                return function() {
                    infowindow.setContent(
                        '<h3>' + data[i].name + '</h3> \
-                       <a onclick="iWantThis(\'' + encodeURIComponent(JSON.stringify(data[i])) + '\')"> \
+                       <a onclick="iWantThis(\'' + Base64.encode(JSON.stringify(data[i])) + '\')"> \
                        <div class="iWantThis"><button class=\"btn btn-primary\">I want this!</button></div> \
                        </a>\
                        <div id="' + data[i].id + '" class="popupImage"> \
@@ -111,7 +111,7 @@ function iWantThis(item) {
     $('#iWantThisSuccessMsg').hide();
     $('#iWantThisErrorMsg').hide();
     console.log('iwanthis clicked');
-    var item = jQuery.parseJSON(decodeURIComponent(item));
+    var item = jQuery.parseJSON(Base64.decode(item));
     item.created = $.format.date(item.created, 'dd/MM/yyyy HH:mm:ss');
     console.log(item);
     var template = $.templates('#iWantThisTmpl');
