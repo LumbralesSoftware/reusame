@@ -97,6 +97,16 @@ function loadNearbyItems(position) {
    });
 }
 
+function showTooltip(element, msg)
+{
+    $(element)
+        .tooltip({"trigger":"manual", "title": msg})
+        .tooltip('show');
+    setTimeout(function(){
+        $(element).tooltip('hide')
+    }, 1000);
+}
+
 function iWantThis(item) {
     $('#iWantThisSuccessMsg').hide();
     $('#iWantThisErrorMsg').hide();
@@ -108,17 +118,33 @@ function iWantThis(item) {
     $('#iWantThisModal').html(template.render(item)).modal('show');
     if (item.expires_on) {
         $('#iWantThisExpiresBlock').removeClass('hidden');
-        $('#iWantThisExpiresOn').countdown($.format.date(item.expires_on, 'yyyy/MM/dd HH:mm:ss'), function(event) {
-            $(this).text(
-                event.strftime('%D days %H:%M:%S')
-                );
-        });
+        $('#iWantThisExpiresOn')
+            .countdown(
+                    $.format.date(item.expires_on, 'yyyy/MM/dd HH:mm:ss'),
+                    function(event) {
+                        $(this).text(
+                            event.strftime('%D days %H:%M:%S')
+                        );
+                    }
+            );
     }
-    $('#iWantThisRate').rating({'size':'xs', 'showCaption': false});
+    $('#iWantThisRate').rating({'size':'xs', 'showCaption': false, 'clearButton': ''});
+    $('.rating-container').attr('data-toggle', 'tooltip');
+    $('.rating-container').attr('data-placement', 'bottom');
+    //$('.rating-container').attr('title', 'test!!!');
     $('#iWantThisRate').rating('update', item.user_rating);
     $('#iWantThisRate').on('rating.change', function(event, value) {
-        $.getJSON("/vote/" + item.id + '/?punctuation=' + value, function(data) {
-            $('#iWantThisRate').rating('update', data.rating);
+        $.ajax({
+            dataType: "json",
+            url: "/vote/" + item.id + '/?punctuation=' + value,
+            success: function(data) {
+                $('#iWantThisRate').rating('update', data.rating);
+                showTooltip('.rating-container', "Thanks for your vote!");
+            },
+            error: function (e, msg) {
+                $('#iWantThisRate').rating('update', item.user_rating);
+                showTooltip('.rating-container', e.responseText);
+            }
         });
     });
     $('#iWantThisRate').on('rating.clear', function(event) {
