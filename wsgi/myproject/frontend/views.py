@@ -61,7 +61,11 @@ def vote_user(request, id):
            voted_user=item.owner,
            voting_user =request.user,
            defaults={'punctuation': request.GET['punctuation']}
-           )
+    )
+   # if not created, update rating
+   if not created:
+        vote.punctuation = request.GET['punctuation']
+        vote.save()
    #compute new average
    rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
    return HttpResponse(json.dumps({"rating": rating['punctuation__avg']}), content_type="application/json")
