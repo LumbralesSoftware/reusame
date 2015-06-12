@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 from django.contrib.auth.models import User
 from django import forms
 from django.shortcuts import get_object_or_404
@@ -10,6 +11,8 @@ from django.conf import settings
 from django.db.models import Avg
 
 from services.models import Item, Category, UserRatings
+from .search import *
+
 
 from PIL import Image, ImageOps, ImageDraw
 
@@ -45,6 +48,21 @@ class ItemForm(forms.ModelForm):
                 'image': forms.FileInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'expires_on': forms.TextInput(attrs={'class':'datetimepicker', "placeholder": "yyyy-mm-dd --:--"}),
         }
+class SearchItemsListView(ListView):
+    model = Item
+    template_name = "searchresults.html"
+
+    def get_queryset(self):
+        queryset = super(SearchItemsListView, self).get_queryset()
+        # Get the q GET parameter
+        if ('q' in self.request.GET) and self.request.GET['q'].strip():
+            query_string = self.request.GET['q']
+            search_fields=('name','description',)
+            print query_string
+            entry_query = get_query(query_string, search_fields)
+            queryset = Item.objects.filter(entry_query).order_by('-id')
+        # Return a filtered queryset
+        return queryset.filter(active=True)
 
 def home(request):
    context = RequestContext(
@@ -76,6 +94,9 @@ def request_item(request, id):
    data = json.loads(request.body)
    item = get_object_or_404(Item, pk=id)
    item.requestedBy(request.user, data['message'])
+   return HttpResponse(json.dumps({"success": True}), content_type="application/json")
+
+def search(request):
    return HttpResponse(json.dumps({"success": True}), content_type="application/json")
 
 def image_on_demand(request, id, width):

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block main %}
+<div id="results">
+    <h2>Search results</h2>
+    <ul class="media-list bs-example">
+        {% for item in object_list %}
+        <li class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" src="{% url "thumb" item.id 25 %}" alt="{{ item.name }}">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"><a onclick="iWantThis('{{ item.to_json | safe }}')">{{ item.name }}</a></h4>
+            {{ item.created|date }}
+            <p>{{ item.description }}</p>
+        </div>
+        </li>
+        {% empty %}
+        <li>No results.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

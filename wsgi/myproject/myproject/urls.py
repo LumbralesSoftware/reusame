@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 
 from services.views import ItemViewSet
-from frontend.views import UserUpdate
+from frontend.views import UserUpdate, SearchItemsListView
 
 # django admin
 admin.autodiscover()
@@ -29,7 +29,8 @@ urlpatterns = patterns('',
     url(r'^accounts/profile/', UserUpdate.as_view(success_url="/"), name='profile'),
     url(r'^request/(?P<id>[\d+]{1,40})/$', 'frontend.views.request_item', name='request_item'),
     url(r'^vote/(?P<id>[\d+]{1,40})/$', 'frontend.views.vote_user', name='vote_user'),
-    url(r'^thumb/(?P<id>\d+)/(?P<width>\d+).png$', 'frontend.views.image_on_demand'),
+    url(r'^search/$', SearchItemsListView.as_view(), name='search'),
+    url(r'^thumb/(?P<id>\d+)/(?P<width>\d+).png$', 'frontend.views.image_on_demand', name="thumb"),
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

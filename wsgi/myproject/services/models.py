@@ -5,6 +5,10 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core import serializers
+
+import json
+from django.utils.encoding import filepath_to_uri
 
 from .utils import get_coords
 
@@ -21,6 +25,11 @@ class Item(models.Model):
     category = models.ForeignKey('Category', verbose_name="Category")
     location = models.ForeignKey('Location', verbose_name="Location")
     owner = models.ForeignKey(User, verbose_name='Owner')
+
+    def to_json(self):
+        from .serializers import ItemSerializer
+        item = ItemSerializer(self)
+        return filepath_to_uri(json.dumps(item.data))
 
     def requestedBy(self, user, body):
         headers = {'Reply-To': user.email}
