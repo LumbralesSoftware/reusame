@@ -57,9 +57,11 @@ def vote_user(request, id):
    if not request.user.is_authenticated():
       return HttpResponseForbidden('Please, log in first and try again.')
    item = get_object_or_404(Item, pk=id)
-   vote, created = UserRatings.objects.get_or_create(voted_user=item.owner, voting_user =request.user)
-   vote.punctuation = request.GET['punctuation']
-   vote.save()
+   vote, created = UserRatings.objects.get_or_create(
+           voted_user=item.owner,
+           voting_user =request.user,
+           defaults={'punctuation': request.GET['punctuation']}
+           )
    #compute new average
    rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
    return HttpResponse(json.dumps({"rating": rating['punctuation__avg']}), content_type="application/json")
