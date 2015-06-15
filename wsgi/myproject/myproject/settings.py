@@ -152,6 +152,7 @@ else:
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/accounts/profile/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 
 #image on demand settings, writable path by webserver
 IMAGE_ON_DEMAND_URL = 'items/thumbs/'
