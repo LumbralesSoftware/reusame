@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-15 12:46+0100\n"
+"POT-Creation-Date: 2015-06-15 16:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,29 +18,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: frontend/templates/base.html:49
+#: frontend/templates/base.html:41
+msgid "Log out"
+msgstr "Cerrar sesion"
+
+#: frontend/templates/base.html:46
 msgid "I want to give away something"
 msgstr "Quiero deshacerme de algo"
 
-#: frontend/templates/base.html:149
-msgid "Get rid of something"
-msgstr "Deshacte de algo"
+#: frontend/templates/base.html:77
+msgid "Search"
+msgstr "Buscar"
 
-#: frontend/templates/base.html:155 services/models.py:27
-msgid "Location"
-msgstr "Ubicacion"
+#: frontend/templates/base.html:99
+msgid "Added on"
+msgstr "Anadido en"
 
-#: frontend/templates/base.html:156
-msgid "Leave in blank to use current location"
-msgstr "Deja el campo en blanco para usar tu ubicacion actual"
+#: frontend/templates/base.html:100 services/models.py:28
+msgid "Owner"
+msgstr "Dueno"
 
-#: frontend/templates/base.html:174
+#: frontend/templates/base.html:102
+#, fuzzy
+#| msgid "Item Description"
+msgid "Description"
+msgstr "Descripcion"
+
+#: frontend/templates/base.html:106
+msgid "Hurry up, this offer/item expires soon"
+msgstr "Date prisa! Esta oferta expira pronto"
+
+#: frontend/templates/base.html:108
+msgid "Expires in"
+msgstr "Caduca en"
+
+#: frontend/templates/base.html:111
+msgid "Add a comment if you want"
+msgstr "Anade un comentario si quieres"
+
+#: frontend/templates/base.html:112
+msgid ""
+"Hi, I saw your item and I'm very interested on it. When would be a good time "
+"to pick it up? Cheers"
+msgstr ""
+"Hola, He visto tu producto y estoy muy interesado en el. Cuando seria un "
+"buen momento para irlo a buscar? Gracias"
+
+#: frontend/templates/base.html:130 frontend/templates/base.html.py:169
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: frontend/templates/base.html:175
+#: frontend/templates/base.html:131
+msgid "I want this"
+msgstr "Lo quiero"
+
+#: frontend/templates/base.html:144
+msgid "Get rid of something"
+msgstr "Deshacte de algo"
+
+#: frontend/templates/base.html:150 services/models.py:27
+msgid "Location"
+msgstr "Ubicacion"
+
+#: frontend/templates/base.html:151
+msgid "Leave in blank to use current location"
+msgstr "Deja el campo en blanco para usar tu ubicacion actual"
+
+#: frontend/templates/base.html:170
 msgid "Give away!"
-msgstr ""
+msgstr "Publicar"
 
 #: frontend/views.py:40 services/models.py:26 services/serializers.py:33
 msgid "Category"
@@ -81,10 +127,6 @@ msgstr "Cuando expira esta oferta?"
 #: services/models.py:25
 msgid "Is this item available/active?"
 msgstr "Esta activa esta oferta?"
-
-#: services/models.py:28
-msgid "Owner"
-msgstr "Dueno"
 
 #: services/models.py:58
 msgid "Category name"

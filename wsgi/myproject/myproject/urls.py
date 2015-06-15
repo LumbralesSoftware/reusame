@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.views.i18n import javascript_catalog
+
 
 from rest_framework import routers
 
@@ -12,10 +14,13 @@ from frontend.views import UserUpdate, SearchItemsListView
 # django admin
 admin.autodiscover()
 
-
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'items', ItemViewSet, 'Item')
 
+js_info_dict = {
+    'domain': 'djangojs',
+    'packages': ('myproject'),
+}
 
 urlpatterns = patterns('',
     # Examples:
@@ -32,6 +37,7 @@ urlpatterns = patterns('',
     url(r'^search/$', SearchItemsListView.as_view(), name='search'),
     url(r'^thumb/(?P<id>\d+)/(?P<width>\d+).png$', 'frontend.views.image_on_demand', name="thumb"),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^jsi18n/$', javascript_catalog, js_info_dict),
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

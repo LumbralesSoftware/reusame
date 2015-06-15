@@ -81,12 +81,12 @@ function loadNearbyItems(position) {
                    infowindow.setContent(
                        '<h3>' + data[i].name + '</h3> \
                        <a onclick="iWantThis(\'' + Base64.encode(JSON.stringify(data[i])) + '\')"> \
-                       <div class="iWantThis"><button class=\"btn btn-primary\">I want this!</button></div> \
+                       <div class="iWantThis"><button class=\"btn btn-primary\">' + gettext('I want this!') + '</button></div> \
                        </a>\
                        <div id="' + data[i].id + '" class="popupImage"> \
                        <img src="' + data[i].image + '" alt="' + data[i].name + '" style="margin-top:5px" width="200" height="200" class="img-circle"/> \
                        <div> \
-                       <h5>Description</h5> \
+                       <h5>' + gettext('Description') + '</h5> \
                        <p> ' + data[i].description + '</p>'
                        );
                    infowindow.open(map, marker);
@@ -139,7 +139,7 @@ function iWantThis(item) {
             url: "/vote/" + item.id + '/?punctuation=' + value,
             success: function(data) {
                 $('#iWantThisRate').rating('update', data.rating);
-                showTooltip('.rating-container', "Thanks for your vote!");
+                showTooltip('.rating-container', gettext("Thanks for your vote!"));
             },
             error: function (e, msg) {
                 $('#iWantThisRate').rating('update', item.user_rating);
@@ -164,14 +164,14 @@ function iWantThis(item) {
             success: function (data) {
                 console.log(data);
                 $('#iWantThisSuccessMsg').show();
-                $('#iWantThisSuccessMsg .msg').html('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.');
+                $('#iWantThisSuccessMsg .msg').html(gettext('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.'));
             },
             error: function(data, errorMsg) {
                 var msg = data.responseText;
 
-                // CSRF Verification fail, not loged in
+                // CSRF Verification fail, not logged in
                 if (data.status == 403) {
-                    msg = 'Please, log in first and try again.';
+                    msg = gettext('Please, log in first and try again.');
                 }
                 $('#iWantThisErrorMsg').show();
                 $('#iWantThisErrorMsg .msg').html(msg);
@@ -208,13 +208,13 @@ var giveAwayItemSubmit = function (node) {
         enctype: 'multipart/form-data',
         processData: false,
         success: function (response) {
-            $('#giveAwayItemSuccessMsg .msg').html('Thank you. Your item will be reviewed and pushed to live within the next 24 hours.');
+            $('#giveAwayItemSuccessMsg .msg').html(gettext('Thank you. Your item will be reviewed and pushed to live within the next 24 hours.'));
             $('#giveAwayItemSuccessMsg').show();
             $(node)[0].reset();
         },
         error: function (response) {
             console.log(response);
-            $('#giveAwayItemErrorMsg .msg').html('An error ocurred, please try again');
+            $('#giveAwayItemErrorMsg .msg').html(gettext('An error ocurred, please try again'));
             $('#giveAwayItemErrorMsg').show();
         }
     });
@@ -244,5 +244,4 @@ $(document).ready(function() {
     $('.datetimepicker').datetimepicker({format:'Y-m-d H:i'});
 
 });
-
 
