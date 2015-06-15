@@ -44,6 +44,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -59,6 +60,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'social.apps.django_app.context_processors.backends',
     'social.apps.django_app.context_processors.login_redirect',
+    'django.core.context_processors.i18n',
 )
 
 # GETTING-STARTED: change 'myproject' to your project name:
@@ -120,6 +122,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+ugettext = lambda s: s
+
+LANGUAGES = (
+        ('es', ugettext('Spanish')),
+        ('en', ugettext('English')),
+)
+LOCALE_PATHS = (
+        os.path.join(BASE_DIR, 'locale/'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

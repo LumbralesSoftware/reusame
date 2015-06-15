@@ -31,6 +31,7 @@ urlpatterns = patterns('',
     url(r'^vote/(?P<id>[\d+]{1,40})/$', 'frontend.views.vote_user', name='vote_user'),
     url(r'^search/$', SearchItemsListView.as_view(), name='search'),
     url(r'^thumb/(?P<id>\d+)/(?P<width>\d+).png$', 'frontend.views.image_on_demand', name="thumb"),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

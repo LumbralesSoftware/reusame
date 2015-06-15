@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from django.shortcuts import get_object_or_404
 from django.db.models import Avg
+from django.utils.translation import ugettext_lazy as _
 
-from services.models import Item, Category, Location, UserRatings
+from .models import Item, Category, Location, UserRatings
 from .utils import get_coords, get_address
 
 class CategoryField(serializers.RelatedField):
@@ -29,7 +30,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
 class ItemSerializer(serializers.ModelSerializer):
     location = LocationSerializer()
-    category = CategoryField(queryset=Category.objects.all())
+    category = CategoryField(queryset=Category.objects.all(), label=_("Category"))
     owner = serializers.ReadOnlyField(source='owner.username')
     created = serializers.DateTimeField(read_only=True)
     expires_on = serializers.DateTimeField() #format="%d %b %Y %H:%M:%S"
