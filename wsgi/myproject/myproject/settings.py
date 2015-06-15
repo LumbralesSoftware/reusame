@@ -45,7 +45,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    #'social.auth.middleware.SocialAuthExceptionMiddleware'
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -154,8 +154,6 @@ SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/accounts/profile/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
-LOGIN_ERROR_URL = '/'
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 #image on demand settings, writable path by webserver
 IMAGE_ON_DEMAND_URL = 'items/thumbs/'
