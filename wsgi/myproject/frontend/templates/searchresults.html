@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block main %}
 <div id="results">
-    <h2>Search results</h2>
+    <h2>{% trans "Search results" %}</h2>
     <ul class="media-list bs-example">
         {% for item in object_list %}
         <li class="media">
@@ -17,7 +18,7 @@
         </div>
         </li>
         {% empty %}
-        <li>No results.</li>
+        <li>{% trans "No results" %}.</li>
         {% endfor %}
     </ul>
 </div>

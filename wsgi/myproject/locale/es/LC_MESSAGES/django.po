@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-15 16:35+0100\n"
+"POT-Creation-Date: 2015-06-16 11:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,37 +26,39 @@ msgstr "Cerrar sesion"
 msgid "I want to give away something"
 msgstr "Quiero deshacerme de algo"
 
-#: frontend/templates/base.html:77
+#: frontend/templates/base.html:74
+msgid "Sign in with"
+msgstr "Iniciar sesion con"
+
+#: frontend/templates/base.html:80
 msgid "Search"
 msgstr "Buscar"
 
-#: frontend/templates/base.html:99
+#: frontend/templates/base.html:102
 msgid "Added on"
 msgstr "Anadido en"
 
-#: frontend/templates/base.html:100 services/models.py:28
+#: frontend/templates/base.html:103 services/models.py:28
 msgid "Owner"
 msgstr "Dueno"
 
-#: frontend/templates/base.html:102
-#, fuzzy
-#| msgid "Item Description"
-msgid "Description"
-msgstr "Descripcion"
+#: frontend/templates/base.html:105
+msgid "Details"
+msgstr "Detalles"
 
-#: frontend/templates/base.html:106
+#: frontend/templates/base.html:109
 msgid "Hurry up, this offer/item expires soon"
 msgstr "Date prisa! Esta oferta expira pronto"
 
-#: frontend/templates/base.html:108
+#: frontend/templates/base.html:111
 msgid "Expires in"
 msgstr "Caduca en"
 
-#: frontend/templates/base.html:111
+#: frontend/templates/base.html:114
 msgid "Add a comment if you want"
 msgstr "Anade un comentario si quieres"
 
-#: frontend/templates/base.html:112
+#: frontend/templates/base.html:115
 msgid ""
 "Hi, I saw your item and I'm very interested on it. When would be a good time "
 "to pick it up? Cheers"
@@ -64,29 +66,37 @@ msgstr ""
 "Hola, He visto tu producto y estoy muy interesado en el. Cuando seria un "
 "buen momento para irlo a buscar? Gracias"
 
-#: frontend/templates/base.html:130 frontend/templates/base.html.py:169
+#: frontend/templates/base.html:133 frontend/templates/base.html.py:172
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: frontend/templates/base.html:131
+#: frontend/templates/base.html:134
 msgid "I want this"
 msgstr "Lo quiero"
 
-#: frontend/templates/base.html:144
+#: frontend/templates/base.html:147
 msgid "Get rid of something"
 msgstr "Deshacte de algo"
 
-#: frontend/templates/base.html:150 services/models.py:27
+#: frontend/templates/base.html:153 services/models.py:27
 msgid "Location"
 msgstr "Ubicacion"
 
-#: frontend/templates/base.html:151
+#: frontend/templates/base.html:154
 msgid "Leave in blank to use current location"
 msgstr "Deja el campo en blanco para usar tu ubicacion actual"
 
-#: frontend/templates/base.html:170
+#: frontend/templates/base.html:173
 msgid "Give away!"
 msgstr "Publicar"
+
+#: frontend/templates/searchresults.html:5
+msgid "Search results"
+msgstr "Resultados de la busqueda"
+
+#: frontend/templates/searchresults.html:21
+msgid "No results"
+msgstr "No hay resultados"
 
 #: frontend/views.py:40 services/models.py:26 services/serializers.py:33
 msgid "Category"
@@ -96,11 +106,11 @@ msgstr "Categoria"
 msgid "Please, log in first and try again."
 msgstr "Por favor, inicia sesion primero, y vuelve a intentarlo."
 
-#: myproject/settings.py:128
+#: myproject/settings.py:129
 msgid "Spanish"
 msgstr "Espanol"
 
-#: myproject/settings.py:129
+#: myproject/settings.py:130
 msgid "English"
 msgstr "Ingles"
 
@@ -139,3 +149,8 @@ msgstr "Descripcion de la categoria"
 #: services/models.py:69
 msgid "Location/Address (Post Code/Street, City, Country)"
 msgstr "Localizacion/Direccion (Codigo postal/Calle, Ciudad, Pais)"
+
+#, fuzzy
+#~| msgid "Item Description"
+#~ msgid "Description"
+#~ msgstr "Descripcion"
