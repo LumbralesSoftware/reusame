@@ -53,7 +53,7 @@ html, body {
 }
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width : 600px) {
     .social-button, .sign-in, .lang-selector, .searchbar {
         display: none;
     }
@@ -62,6 +62,7 @@ html, body {
     }
     .mobile-social-icons form {
         height: 32px;
+        display: block;
     }
     .mobile-social-icons .search-button {
         display: inline;
