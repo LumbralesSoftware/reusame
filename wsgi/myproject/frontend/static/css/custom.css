@@ -61,8 +61,7 @@ html, body {
         display: block;
     }
     .mobile-social-icons form {
-        height: 32px;
-        display: block;
+        display: inline-block;
     }
     .mobile-social-icons .search-button {
         display: inline;
