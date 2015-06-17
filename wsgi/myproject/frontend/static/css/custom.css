@@ -15,6 +15,8 @@ html, body {
     height: 60px;
     padding-top: 10px;
     padding-bottom: 20px;
+    margin-bottom: 0px;
+    border-radius: 0px;
 }
 
 #header h1 {
@@ -25,7 +27,7 @@ html, body {
 }
 
 #map-canvas {
-    height: 90%;
+    height: inherit;
     margin: 10px;
     border-radius: 10px;
 }
@@ -44,4 +46,23 @@ html, body {
 }
 .sign-in {
     padding: 8px;
+    color: white;
+}
+.mobile-social-icons {
+    display:none;
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+    .social-button, .sign-in, .lang-selector, .searchbar {
+        display: none;
+    }
+    .mobile-social-icons {
+        display: block;
+    }
+    .mobile-social-icons .search-input {
+        width: auto;
+        display: inline;
+        margin-right: 10px;
+    }
 }

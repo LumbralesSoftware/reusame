@@ -236,6 +236,7 @@ $(document).ready(function() {
     $.ajaxSetup({
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
+    $('[data-toggle="popover"]').popover();
     if ($('#map-canvas').length == 1) {
         initialize();
     }
