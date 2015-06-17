@@ -60,9 +60,17 @@ html, body {
     .mobile-social-icons {
         display: block;
     }
+    .mobile-social-icons form {
+        height: 32px;
+    }
+    .mobile-social-icons .search-button {
+        display: inline;
+        float:left;
+    }
     .mobile-social-icons .search-input {
         width: auto;
         display: inline;
         margin-right: 5px;
+        float:left;
     }
 }
