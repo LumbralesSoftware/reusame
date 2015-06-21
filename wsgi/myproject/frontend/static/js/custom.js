@@ -79,15 +79,15 @@ function loadNearbyItems(position) {
            google.maps.event.addListener(marker, 'click', (function(marker, i) {
                return function() {
                    infowindow.setContent(
-                       '<h3>' + data[i].name + '</h3> \
+                       '<div class="info"><h3>' + data[i].name + '</h3> \
                        <a onclick="iWantThis(\'' + Base64.encode(JSON.stringify(data[i])) + '\')"> \
                        <div class="iWantThis"><button class=\"btn btn-primary\">' + gettext('I want this!') + '</button></div> \
                        </a>\
                        <div id="' + data[i].id + '" class="popupImage"> \
-                       <img src="' + data[i].image + '" alt="' + data[i].name + '" style="margin-top:5px" width="200" height="200" class="img-circle"/> \
+                       <img src="' + data[i].image + '" alt="' + data[i].name + '" class="img-item img-circle"/> \
                        <div> \
                        <h5>' + gettext('Description') + '</h5> \
-                       <p> ' + data[i].description + '</p>'
+                       <p> ' + data[i].description + '</p></div>'
                        );
                    infowindow.open(map, marker);
                    //api.getInfoPoint(points.stations[i].station_code, points.stations[i].lines);
@@ -116,6 +116,8 @@ function iWantThis(item) {
     console.log(item);
     var template = $.templates('#iWantThisTmpl');
     $('#iWantThisModal').html(template.render(item)).modal('show');
+    $('.img-container img').magnify();
+
     if (item.expires_on) {
         $('#iWantThisExpiresBlock').removeClass('hidden');
         $('#iWantThisExpiresOn')

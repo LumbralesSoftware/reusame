@@ -12,6 +12,7 @@
         <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
         <link href="{% static "css/bootstrap-theme.min.css" %}"  rel="stylesheet">
         <link href="{% static "css/bootstrap-social.min.css" %}" rel="stylesheet">
+        <link href="{% static "css/bootstrap-magnify.min.css" %}" rel="stylesheet">
         <link href="{% static "css/jquery.validation.css" %}" rel="stylesheet">
         <link href="{% static "css/jquery.datetimepicker.css" %}" rel="stylesheet">
         <link href="{% static "css/star-rating.min.css" %}" rel="stylesheet">
@@ -44,7 +45,11 @@
                                         <p>{% trans "Owner" %}: {% verbatim %}{{:owner}}{% endverbatim %} <input id="iWantThisRate" type="number" class="rating">
                                         </p>
                                         <p>{% trans "Details" %}: {% verbatim %}{{:description}}{% endverbatim %}</p>
-                                        <img src="{% verbatim %}{{:image}}{% endverbatim %}" height="200" width="200"/>
+                                        <div class="image-div">
+                                            <div class="img-container">
+                                                <img src="{% verbatim %}{{:image}}{% endverbatim %}" data-toggle="magnify" class="img-item img-circle"/>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="panel panel-default hidden" id="iWantThisExpiresBlock" title="{% trans "Hurry up, this offer/item expires soon" %}">
@@ -228,5 +233,6 @@
         <script src="{% static "js/jsrender.min.js" %}"></script>
         <script src="{% static "js/bootstrap.min.js" %}"></script>
         <script src="{% static "js/star-rating.min.js" %}"></script>
+        <script src="{% static "js/bootstrap-magnify.min.js" %}"></script>
     </body>
 </html>

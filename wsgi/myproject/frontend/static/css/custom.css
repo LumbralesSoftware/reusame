@@ -5,18 +5,36 @@ html, body {
 }
 #footer {
     background-color: #414141;
-    height: 60px;
-    margin-top: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    height: 40px;
+    padding-top: 10px;
+    bottom: 0; /* Sit it on the bottom */
+    right: 0;
+    left: 0;
+    position: absolute;
+    width: 100%; /* As wide as it's allowed */
+    text-align: center;
 }
 #header {
     background-color: #414141;
     height: 60px;
     padding-top: 10px;
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-    border-radius: 0px;
+}
+
+#wrapper {
+    left: 0px;
+    top: 56px;
+    bottom: 48px;
+    right: 0;
+    position: absolute;
+}
+
+#content {
+    top: 1px;
+    bottom: 0px;
+    overflow: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 #header h1 {
@@ -27,7 +45,7 @@ html, body {
 }
 
 #map-canvas {
-    height: inherit;
+    height: 100%;
     margin: 10px;
     border-radius: 10px;
 }
@@ -72,5 +90,23 @@ html, body {
         display: inline;
         margin-right: 5px;
         float:left;
+        max-width: 150px;
     }
+}
+
+.img-item {
+    margin-top: 5px;
+    width: 200px;
+    height: 200px;
+}
+
+.image-div {
+    margin-bottom: 20px;
+}
+
+.gm-style-iw {
+    text-align: center;
+}
+.img-container img {
+    max-width: 100%;
 }
