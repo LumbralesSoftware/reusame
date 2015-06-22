@@ -156,7 +156,12 @@ function iWantThis(item) {
     $('#iWantThisContact').click(function() {
         var id = $('#iWantThisId').val();
         console.log('clicked!', id);
-        console.log(JSON.stringify({"message": $('#iWantThisComment').val()}));
+
+        var message = $('#iWantThisComment').val();
+        if (!$('#iWantThisComment').val()) {
+            message = $('#iWantThisComment').attr('placeholder');
+        }
+        console.log(JSON.stringify({"message": message}));
         $.ajax({
             type: "POST",
             url: '/request/' + id + '/',

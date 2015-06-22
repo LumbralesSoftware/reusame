@@ -10,8 +10,12 @@ from django.utils.translation import ugettext_lazy as _
 
 import base64
 import json
+from PIL import Image
+
 
 from .utils import get_coords
+
+MAX_IMG_SIZE = 1024
 
 # Create your models here.
 class Item(models.Model):
@@ -43,6 +47,20 @@ class Item(models.Model):
         email.content_subtype = "html"
         email.send()
         return True
+
+    def save(self, *args, **kwargs):
+
+        super(Item, self).save(*args, **kwargs)
+
+        if not self.id and not self.image:
+            return
+
+        image = Image.open(self.image)
+        size = (MAX_IMG_SIZE, MAX_IMG_SIZE)
+        image.thumbnail(size, Image.ANTIALIAS)
+        image.save(self.image.path)
+
+
     def __str__(self):
         return unicode(self).encode('utf-8')
 
