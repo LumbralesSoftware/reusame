@@ -73,6 +73,7 @@ class ItemSerializer(serializers.ModelSerializer):
             image=validated_data['image'],
             category=validated_data['category'],
             location=location,
+            expires_on=validated_data['expires_on'],
             owner=user
         )
 
