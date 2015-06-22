@@ -125,7 +125,7 @@ function iWantThis(item) {
                     $.format.date(item.expires_on, 'yyyy/MM/dd HH:mm:ss'),
                     function(event) {
                         $(this).text(
-                            event.strftime('%D days %H:%M:%S')
+                            event.strftime('%D ' + gettext('days') + ' %H:%M:%S')
                         );
                     }
             );
