@@ -107,10 +107,23 @@ function showTooltip(element, msg)
     }, 1000);
 }
 
+function showAlert(element, type, heading, message)
+{
+    var template = '<div class="alert alert-{{:type}}" id="{{:type}}-alert"> \
+            <button type="button" class="close" data-dismiss="alert">x</button> \
+                <strong>{{:heading}}</strong> {{:message}} \
+        </div>';
+    var tmp = $.templates(template);
+    var html = tmp.render({"type": type, "message": message, "heading": heading});
+    console.log(html);
+    $(element).html(html);
+    $("#" + type + "-alert").alert();
+    $("#" + type + "-alert").fadeTo(2000, 500).slideUp(500, function() {
+        $("#" + type + "-alert").alert('close');
+    });
+}
+
 function iWantThis(item) {
-    $('#iWantThisSuccessMsg').hide();
-    $('#iWantThisErrorMsg').hide();
-    console.log('iwanthis clicked');
     var item = jQuery.parseJSON(Base64.decode(item));
     item.created = $.format.date(item.created, 'dd/MM/yyyy HH:mm:ss');
     console.log(item);
@@ -170,8 +183,8 @@ function iWantThis(item) {
             data: JSON.stringify({"message": $('#iWantThisComment').val()}),
             success: function (data) {
                 console.log(data);
-                $('#iWantThisSuccessMsg').show();
-                $('#iWantThisSuccessMsg .msg').html(gettext('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.'));
+                var msg = gettext('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.');
+                showAlert('#iWantThisMsg', 'success', 'Success!', msg);
             },
             error: function(data, errorMsg) {
                 var msg = data.responseText;
@@ -180,8 +193,7 @@ function iWantThis(item) {
                 if (data.status == 403) {
                     msg = gettext('Please, log in first and try again.');
                 }
-                $('#iWantThisErrorMsg').show();
-                $('#iWantThisErrorMsg .msg').html(msg);
+                showAlert('#iWantThisMsg', 'danger', 'Error!', msg);
             }
         })
     return true;
@@ -192,9 +204,6 @@ function createItem() {
 }
 
 var giveAwayItemSubmit = function (node) {
-    $('#giveAwayItemSuccessMsg').hide();
-    $('#giveAwayItemErrorMsg').hide();
-
     if (!$('#location').val()) {
         $('#lat_position').val(latLng.lat);
         $('#long_position').val(latLng.lng);
@@ -215,14 +224,12 @@ var giveAwayItemSubmit = function (node) {
         enctype: 'multipart/form-data',
         processData: false,
         success: function (response) {
-            $('#giveAwayItemSuccessMsg .msg').html(gettext('Thank you. Your item will be reviewed and pushed to live within the next 24 hours.'));
-            $('#giveAwayItemSuccessMsg').show();
+            var msg = gettext('Thank you. Your item will be reviewed and pushed to live within the next 24 hours.');
+            showAlert('#giveAwayItemMsg', 'success', 'Success!', msg);
             $(node)[0].reset();
         },
         error: function (response) {
-            console.log(response);
-            $('#giveAwayItemErrorMsg .msg').html(gettext('An error ocurred, please try again'));
-            $('#giveAwayItemErrorMsg').show();
+            showAlert('#giveAwayItemMsg', 'danger', 'Error!', gettext('An error ocurred, please try again'));
         }
     });
 }
