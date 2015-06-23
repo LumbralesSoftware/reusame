@@ -18,6 +18,7 @@ html, body {
     background-color: #414141;
     height: 56px;
     padding-top: 10px;
+    border-radius: 0px;
 }
 
 #wrapper {
@@ -49,9 +50,7 @@ html, body {
     margin: 10px;
     border-radius: 10px;
 }
-#createItem {
-    margin-left: 4px;
-}
+
 .create-item label {
     display: block;
 }
@@ -64,40 +63,15 @@ html, body {
 }
 .social-button {
     padding: 2px;
+    float:right;
 }
 .sign-in {
     padding: 8px;
     color: white;
+    white-space: nowrap;
 }
-.mobile-social-icons, .search {
+.mobile-only {
     display:none;
-}
-
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 640px) {
-    .social-button, .sign-in, .lang-selector, .searchbar {
-        display: none;
-    }
-    .mobile-social-icons, .search {
-        display: block;
-        float: right;
-    }
-    .mobile-social-icons form {
-        display: inline-block;
-    }
-    .search {
-        margin-right: 5px;
-    }
-    .search-button {
-        display: inline;
-    }
-    .search-input {
-        width: auto;
-        display: inline;
-        margin-right: 5px;
-        float:left;
-        max-width: 150px;
-    }
 }
 
 .img-item {
@@ -115,4 +89,28 @@ html, body {
 }
 .img-container img {
     max-width: 100%;
+}
+.btn-social-icon {
+    margin-left: 4px;
+    float: right;
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 640px) {
+    .mobile-only {
+        display:block;
+    }
+    .desktop-only, .sign-in, .searchbar {
+        display: none;
+    }
+    .search-button {
+        display: inline;
+    }
+    .search-input {
+        width: auto;
+        display: inline;
+        margin-right: 5px;
+        float:left;
+        max-width: 150px;
+    }
 }

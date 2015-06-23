@@ -255,7 +255,7 @@ $(document).ready(function() {
         initialize();
     }
     $('#giveAwayItemForm').validate(options);
-    $('#createItem').click(createItem);
+    $('.createItem').click(createItem);
     $('.datetimepicker').datetimepicker({format:'Y-m-d H:i'});
 
 });
