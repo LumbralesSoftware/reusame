@@ -10,9 +10,11 @@ html, body {
     bottom: 0; /* Sit it on the bottom */
     right: 0;
     left: 0;
-    position: absolute;
     width: 100%; /* As wide as it's allowed */
     text-align: center;
+}
+.index #footer {
+    position: absolute;
 }
 #header {
     background-color: #414141;
@@ -94,7 +96,12 @@ html, body {
     margin-left: 4px;
     float: right;
 }
-
+.results {
+    padding: 0px 20px 0px 20px;
+}
+.search-result {
+    cursor: pointer;
+}
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 640px) {
     .mobile-only {

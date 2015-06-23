@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block bodyclass %}search{% endblock %}
 {% block main %}
-<div id="results">
+<div class="results">
     <h2>{% trans "Search results" %}</h2>
-    <ul class="media-list bs-example">
+    <div class="list-group">
         {% for item in object_list %}
-        <li class="media">
-        <div class="media-left">
-            <a href="#">
+        <a class="list-group-item search-result" onclick="iWantThis('{{ item.to_json | safe }}')">
+            <div class="media-left">
                 <img class="media-object" src="{% url "thumb" item.id 25 %}" alt="{{ item.name }}">
-            </a>
-        </div>
-        <div class="media-body">
-            <h4 class="media-heading"><a onclick="iWantThis('{{ item.to_json | safe }}')">{{ item.name }}</a></h4>
-            {{ item.created|date }}
-            <p>{{ item.description }}</p>
-        </div>
-        </li>
+            </div>
+            <div class="media-body">
+                <h4 class="list-group-item-heading">{{ item.name }}</h4>
+                <span class="pull-right">{{ item.created|date }}</span>
+                <p class="list-group-item-text">{{ item.description }}</p>
+            </div>
+        </a>
         {% empty %}
-        <li>{% trans "No results" %}.</li>
+        <a>{% trans "No results" %}.</a>
         {% endfor %}
-    </ul>
+    </div>
 </div>
 {% endblock %}

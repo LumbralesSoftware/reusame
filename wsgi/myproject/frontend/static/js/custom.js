@@ -64,7 +64,7 @@ function loadNearbyItems(position) {
    $.getJSON("/api/items?lat=" + position.lat +  "&lon=" + position.lng, function(data) {
        for (var i in data) {
            var item = data[i];
-           console.log(item);
+           //console.log(item);
            var itemPos = new google.maps.LatLng(
                item.location.lat_position,
                item.location.long_position
@@ -115,7 +115,6 @@ function showAlert(element, type, heading, message)
         </div>';
     var tmp = $.templates(template);
     var html = tmp.render({"type": type, "message": message, "heading": heading});
-    console.log(html);
     $(element).html(html);
     $("#" + type + "-alert").alert();
     $("#" + type + "-alert").fadeTo(2000, 500).slideUp(500, function() {
@@ -180,15 +179,15 @@ function iWantThis(item) {
             url: '/request/' + id + '/',
             dataType: 'json',
             async: false,
-            data: JSON.stringify({"message": $('#iWantThisComment').val()}),
+            data: JSON.stringify({"message": message}),
             success: function (data) {
                 console.log(data);
                 var msg = gettext('We have contacted the owner of the item regarding your interest in this item. Hopefully, he will get back to you shortly.');
                 showAlert('#iWantThisMsg', 'success', 'Success!', msg);
+                $('#iWantThisContact').attr('disabled', true);
             },
             error: function(data, errorMsg) {
                 var msg = data.responseText;
-
                 // CSRF Verification fail, not logged in
                 if (data.status == 403) {
                     msg = gettext('Please, log in first and try again.');
@@ -225,11 +224,11 @@ var giveAwayItemSubmit = function (node) {
         processData: false,
         success: function (response) {
             var msg = gettext('Thank you. Your item will be reviewed and pushed to live within the next 24 hours.');
-            showAlert('#giveAwayItemMsg', 'success', 'Success!', msg);
+            showAlert('#giveAwayItemMsg', 'success', gettext('Success!'), msg);
             $(node)[0].reset();
         },
         error: function (response) {
-            showAlert('#giveAwayItemMsg', 'danger', 'Error!', gettext('An error ocurred, please try again'));
+            showAlert('#giveAwayItemMsg', 'danger', gettext('Error!'), gettext('An error ocurred, please try again'));
         }
     });
 }
