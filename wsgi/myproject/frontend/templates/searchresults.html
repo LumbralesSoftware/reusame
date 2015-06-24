@@ -7,12 +7,13 @@
     <div class="list-group">
         {% for item in object_list %}
         <a class="list-group-item search-result" onclick="iWantThis('{{ item.to_json | safe }}')">
-            <div class="media-left">
+            <div class="search-image">
                 <img class="media-object" src="{% url "thumb" item.id 25 %}" alt="{{ item.name }}">
             </div>
             <div class="media-body">
                 <h4 class="list-group-item-heading">{{ item.name }}</h4>
-                <span class="pull-right">{{ item.created|date }}</span>
+                <span class="pull-right truncate">{% trans "Located on" %} {{ item.location }}</span>
+                <span class="pull-right clear"> {% trans "Added on" %} {{ item.created|date }}</span>
                 <p class="list-group-item-text">{{ item.description }}</p>
             </div>
         </a>
