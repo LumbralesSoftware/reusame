@@ -99,7 +99,7 @@ html, body {
 }
 .results {
     padding: 0px 20px 0px 20px;
-    min-width: 460px;
+    min-width: 384px;
 }
 .search-result {
     cursor: pointer;
@@ -137,6 +137,12 @@ html, body {
         margin-right: 5px;
         float:left;
         max-width: 150px;
+    }
+    .search-location, .search-date {
+        float: none !important;
+        text-align: left;
+        font-style: italic;
+        font-size: 10px;
     }
 }
 
