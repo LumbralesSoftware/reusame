@@ -8,7 +8,7 @@
         {% for item in object_list %}
         <a class="list-group-item search-result" onclick="iWantThis('{{ item.to_json | safe }}')">
             <div class="search-image">
-                <img class="media-object" src="{% url "thumb" item.id 25 %}" alt="{{ item.name }}">
+                <img class="media-object" src="{% url "thumb" item.id 50 %}" alt="{{ item.name }}">
             </div>
             <div class="media-body">
                 <span class="pull-right truncate search-location">{% trans "Located in" %} {{ item.location }}</span>

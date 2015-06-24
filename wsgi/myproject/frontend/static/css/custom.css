@@ -107,7 +107,7 @@ html, body {
 .search-image {
     display: table-cell;
     vertical-align: middle;
-    padding: 0px 25px 0px 15px;
+    padding: 0px 15px 0px 0px;
 }
 .truncate {
     width: 250px;
@@ -143,6 +143,9 @@ html, body {
         text-align: left;
         font-style: italic;
         font-size: 10px;
+    }
+    .results {
+        padding: 0px 5px 0px 5px;
     }
 }
 
