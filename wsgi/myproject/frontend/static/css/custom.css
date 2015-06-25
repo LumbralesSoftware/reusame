@@ -4,6 +4,10 @@ html, body {
     padding: 0px;
     min-width: 384px;
 }
+#container {
+    min-height:100%;
+    position:relative;
+}
 #footer {
     background-color: #414141;
     height: 40px;
@@ -13,6 +17,7 @@ html, body {
     left: 0;
     width: 100%; /* As wide as it's allowed */
     text-align: center;
+    position: absolute;
 }
 .index #footer {
     position: absolute;
