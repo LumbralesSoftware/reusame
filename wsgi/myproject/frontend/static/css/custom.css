@@ -4,6 +4,24 @@ html, body {
     padding: 0px;
     /*min-width: 384px;*/
 }
+.title {
+    font-size: 24px;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-family: museo-slab, Georgia, "Times New Roman", Times, serif;
+}
+.slogan {
+    font-family: proxima-nova-sc-osf, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: italic;
+    text-transform: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin-bottom: 0;
+    margin-top: 0px;
+    color: white;
+}
 #container {
     min-height:100%;
     position:relative;
