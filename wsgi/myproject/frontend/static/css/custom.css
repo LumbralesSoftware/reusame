@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    min-width: 384px;
+    /*min-width: 384px;*/
 }
 #container {
     min-height:100%;
@@ -17,9 +17,6 @@ html, body {
     left: 0;
     width: 100%; /* As wide as it's allowed */
     text-align: center;
-    position: absolute;
-}
-.index #footer {
     position: absolute;
 }
 #header {
