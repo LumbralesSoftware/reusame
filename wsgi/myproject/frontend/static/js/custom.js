@@ -249,7 +249,7 @@ $(document).ready(function() {
     $.ajaxSetup({
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
-    $('[data-toggle="popover"]').popover();
+    $('[data-toggle="popover"]').popover().on('click', function() { $("#q").focus(); });
     if ($('#map-canvas').length == 1) {
         initialize();
     }
