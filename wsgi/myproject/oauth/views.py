@@ -6,6 +6,8 @@ from social.apps.django_app.utils import psa
 
 from .tools import get_access_token
 
+import json
+
 # When we send a third party access token to that view
 # as a GET request with access_token parameter,
 # python social auth communicate with
@@ -14,11 +16,12 @@ from .tools import get_access_token
 @psa('social:complete')
 @csrf_exempt
 def register_by_access_token(request, backend):
+        data = json.loads(request.body)
 
     #try:
-        token = request.POST.get('access_token')
+        token = data['access_token']
         if backend == 'twitter':
-            secret = request.POST.get('access_secret')
+            secret = data['access_secret']
             token = {
                'oauth_token': token,
                'oauth_token_secret': secret
