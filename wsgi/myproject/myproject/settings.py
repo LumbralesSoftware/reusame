@@ -32,8 +32,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'social.apps.django_app.default',
+    'oauth2_provider',
     'services',
     'frontend',
+    'oauth',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,6 +58,16 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
+OAUTH2_PROVIDER = {
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'}
+}
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
