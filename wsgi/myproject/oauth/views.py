@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.contrib.auth import login
+from django.views.decorators.csrf import csrf_exempt
 
 from social.apps.django_app.utils import psa
 
@@ -11,17 +12,17 @@ from .tools import get_access_token
 # the third party and request the user info to register or
 # sign in the user. Magic. Yeah.
 @psa('social:complete')
+@csrf_exempt
 def register_by_access_token(request, backend):
 
     #try:
-        token = request.GET.get('access_token')
+        token = request.POST.get('access_token')
         if backend == 'twitter':
-            secret = request.GET.get('access_secret')
+            secret = request.POST.get('access_secret')
             token = {
                'oauth_token': token,
                'oauth_token_secret': secret
             }
-        print token
         # here comes the magic
         user = request.backend.do_auth(token)
         if user:

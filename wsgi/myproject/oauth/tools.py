@@ -29,7 +29,6 @@ def get_access_token(user):
     """
 
     # our oauth2 app
-    print Application.objects.all()
     app = Application.objects.get(name=APP_NAME)
 
     # We delete the old access_token and refresh_token
