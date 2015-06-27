@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from oauth2_provider.models import AccessToken, Application, RefreshToken
 from django.utils.timezone import now, timedelta
 
+APP_NAME="reusame"
 
 def get_token_json(access_token):
     """
@@ -28,7 +29,8 @@ def get_access_token(user):
     """
 
     # our oauth2 app
-    app = Application.objects.get(name="myapp")
+    print Application.objects.all()
+    app = Application.objects.get(name=APP_NAME)
 
     # We delete the old access_token and refresh_token
     try:

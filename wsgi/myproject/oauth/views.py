@@ -13,8 +13,15 @@ from .tools import get_access_token
 @psa('social:complete')
 def register_by_access_token(request, backend):
 
-    try:
+    #try:
         token = request.GET.get('access_token')
+        if backend == 'twitter':
+            secret = request.GET.get('access_secret')
+            token = {
+               'oauth_token': token,
+               'oauth_token_secret': secret
+            }
+        print token
         # here comes the magic
         user = request.backend.do_auth(token)
         if user:
@@ -26,6 +33,6 @@ def register_by_access_token(request, backend):
             # If there was an error... you decide what you do here
             return HttpResponse("error")
 
-    except Exception as e:
-        return HttpResponse("Error: " + str(e))
+    #except Exception as e:
+        #return HttpResponse("Error: " + str(e))
 
