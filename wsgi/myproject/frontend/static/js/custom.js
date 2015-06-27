@@ -43,7 +43,11 @@ setTimeout(function () {
 
 function initialize() {
     var mapOptions = {
-        zoom: 12
+        zoom: 12,
+        styles:[{
+            featureType: "poi",
+            stylers: [{visibility: "off" }]
+        }]
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     window.navigator.geolocation.getCurrentPosition(userLocationFound, userLocationNotFound, geoOptions);
