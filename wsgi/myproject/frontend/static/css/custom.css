@@ -142,6 +142,14 @@ html, body {
 }
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 950px) {
+    .title {
+        font-size: 15px;
+    }
+    .slogan {
+        font-size: 8px;
+        max-width: 75px;
+        line-height: 12px;
+    }
     .mobile-only {
         display:block;
     }
