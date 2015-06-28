@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.db.models import Avg
 from django.utils.translation import ugettext as _
+from django.views.decorators.csrf import csrf_exempt
 
 from services.models import Item, Category, UserRatings
 from .search import *
@@ -93,6 +94,7 @@ def vote_user(request, id):
    rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
    return HttpResponse(json.dumps({"rating": rating['punctuation__avg']}), content_type="application/json")
 
+@csrf_exempt
 def request_item(request, id):
    if not request.user.is_authenticated():
        return HttpResponseForbidden(json.dumps({"success": False, "error":_('Please, log in first and try again.')}))
