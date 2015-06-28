@@ -76,7 +76,7 @@ def home(request):
 
 def vote_user(request, id):
    if not request.user.is_authenticated():
-      return HttpResponseForbidden(_('Please, log in first and try again.'))
+       return HttpResponseForbidden(json.dumps({"error":_('Please, log in first and try again.')}))
 
    item = get_object_or_404(Item, pk=id)
    vote, created = UserRatings.objects.get_or_create(

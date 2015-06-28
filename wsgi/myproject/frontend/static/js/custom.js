@@ -160,8 +160,9 @@ function iWantThis(item) {
                 showTooltip('.rating-container', gettext("Thanks for your vote!"));
             },
             error: function (e, msg) {
+                var errorMsg = $.parseJSON(e.responseText);
                 $('#iWantThisRate').rating('update', item.user_rating);
-                showTooltip('.rating-container', e.responseText);
+                showTooltip('.rating-container', errorMsg ? errorMsg['error'] : e.responseText);
             }
         });
     });
