@@ -95,7 +95,7 @@ def vote_user(request, id):
 
 def request_item(request, id):
    if not request.user.is_authenticated():
-      return HttpResponseForbidden(_('Please, log in first and try again.'))
+       return HttpResponseForbidden(json.dumps({"success": False, "error":_('Please, log in first and try again.')}))
    data = json.loads(request.body)
    item = get_object_or_404(Item, pk=id)
    item.requestedBy(request.user, data['message'])

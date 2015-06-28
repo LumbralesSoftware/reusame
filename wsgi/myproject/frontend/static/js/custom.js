@@ -196,6 +196,9 @@ function iWantThis(item) {
                 // CSRF Verification fail, not logged in
                 if (data.status == 403) {
                     msg = gettext('Please, log in first and try again.');
+                } else {
+                    var errorMsg = $.parseJSON(e.responseText);
+                    msg = errorMsg ? errorMsg['error'] : errorMsg;
                 }
                 showAlert('#iWantThisMsg', 'danger', 'Error!', msg);
             }
