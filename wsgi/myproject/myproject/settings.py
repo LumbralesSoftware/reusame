@@ -48,6 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -57,6 +58,7 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.twitter.TwitterOAuth',
     'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'oauth2_provider.backends.OAuth2Backend',
 )
 
 REST_FRAMEWORK = {
