@@ -8,6 +8,8 @@ from services.serializers import ItemSerializer
 import geopy
 from geopy.distance import vincenty as VincentyDistance
 
+from frontend.search import get_query
+
 SEARCH_RADIUS = 10 # in KMs
 COMPASS_BEARING = {
     'NORTH': 0,
@@ -89,4 +91,12 @@ class ItemViewSet(viewsets.ModelViewSet):
             # If not 1 fall back to all items
             if queryset.count() <= 1:
                  queryset = Item.objects.filter(active=True)
+        if ('q' in self.request.GET) and self.request.GET['q'].strip():
+            query_string = self.request.GET['q']
+            search_fields=('name','description',)
+            print query_string
+            entry_query = get_query(query_string, search_fields)
+            queryset = Item.objects.filter(entry_query).order_by('-id')
+            # Return a filtered queryset
+            queryset.filter(active=True)
         return queryset
