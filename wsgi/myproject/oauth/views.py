@@ -17,7 +17,7 @@ import json
 @csrf_exempt
 def register_by_access_token(request, backend):
         data = json.loads(request.body)
-
+        print data;
     #try:
         token = data['access_token']
         if backend == 'twitter':
@@ -28,6 +28,10 @@ def register_by_access_token(request, backend):
             }
         # here comes the magic
         user = request.backend.do_auth(token)
+
+        if 'email' in data and user.email is None:
+            user.email = data['email']
+            user.save()
         if user:
             login(request, user)
             # that function will return our own
