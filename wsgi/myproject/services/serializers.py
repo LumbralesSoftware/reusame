@@ -33,13 +33,16 @@ class ItemSerializer(serializers.ModelSerializer):
     category = CategoryField(queryset=Category.objects.all(), label=_("Category"))
     owner = serializers.ReadOnlyField(source='owner.username')
     created = serializers.DateTimeField(read_only=True)
-    expires_on = serializers.DateTimeField() #format="%d %b %Y %H:%M:%S"
+    expires_on = serializers.DateTimeField(required=False) #format="%d %b %Y %H:%M:%S"
     user_rating = serializers.SerializerMethodField('getRatings')
 
     class Meta:
         model = Item
         fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created', 'expires_on', 'user_rating')
 
+    def get_validation_exclusions(self):
+        exclusions = super(ItemSerializer, self).get_validation_exclusions()
+        return exclusions + ['expires_on']
     def getRatings(self, item):
         rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
         return rating['punctuation__avg']
