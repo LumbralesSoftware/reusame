@@ -69,6 +69,9 @@ class ItemSerializer(serializers.ModelSerializer):
             )
         location.save()
 
+        if not 'expires_on' in validated_data:
+            validated_data['expires_on'] = None
+
         # Create the item instance
         item = Item.objects.create(
             name=validated_data['name'],
