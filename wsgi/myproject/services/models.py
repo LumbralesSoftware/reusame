@@ -7,6 +7,8 @@ from django.core.mail import EmailMessage
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core import serializers
 from django.utils.translation import ugettext_lazy as _
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 import base64
 import json
@@ -46,6 +48,16 @@ class Item(models.Model):
         )
         email.content_subtype = "html"
         email.send()
+        #msg_plain = render_to_string('templates/email.txt', {'some_params': some_params})
+        #msg_html = render_to_string('templates/email.html', {'some_params': some_params})
+        #
+        #send_mail(
+        #    'email title',
+        #    msg_plain,
+        #    'no-reply@example.com',
+        #    [some@reciver.com, ],
+        #    html_message=msg_html,
+        #)
         return True
 
     def save(self, *args, **kwargs):
