@@ -24,11 +24,11 @@ msgstr "Lo quiero!"
 
 #: frontend/static/js/custom.js:89 static/js/custom.js:89
 msgid "Description"
-msgstr "Descripcion"
+msgstr "Descripción"
 
 #: frontend/static/js/custom.js:128
 msgid "days"
-msgstr "dias"
+msgstr "días"
 
 #: frontend/static/js/custom.js:144 static/js/custom.js:142
 msgid "Thanks for your vote!"
@@ -39,20 +39,19 @@ msgid ""
 "We have contacted the owner of the item regarding your interest in this "
 "item. Hopefully, he will get back to you shortly."
 msgstr ""
-"Hemos contactado al dueno informandole de tu interes en este producto. Con "
+"Hemos contactado al dueno informandole de tu interés en este producto. Con "
 "suerte se pondra en contacto contigo pronto."
 
 #: frontend/static/js/custom.js:176 static/js/custom.js:174
 msgid "Please, log in first and try again."
-msgstr "Por favor, inicia sesion primero y vuelve a intentarlo."
+msgstr "Por favor, inicia sesión primero y vuelve a intentarlo."
 
 #: frontend/static/js/custom.js:213 static/js/custom.js:211
 msgid ""
 "Thank you. Your item will be reviewed and pushed to live within the next 24 "
 "hours."
 msgstr ""
-"Gracias. Revisaremos tu producto en las proximas 24 horas y lo subiremos a "
-"live."
+"Gracias. Revisaremos tu producto en las proximas 24 horas y lo publicaremos en la web."
 
 #: frontend/static/js/custom.js:219 static/js/custom.js:217
 msgid "An error ocurred, please try again"

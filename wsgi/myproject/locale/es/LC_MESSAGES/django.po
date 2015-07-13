@@ -20,7 +20,7 @@ msgstr ""
 
 #: frontend/templates/base.html:41
 msgid "Log out"
-msgstr "Cerrar sesion"
+msgstr "Cerrar sesión"
 
 #: frontend/templates/base.html:46
 msgid "I want to give away something"
@@ -28,7 +28,7 @@ msgstr "Quiero deshacerme de algo"
 
 #: frontend/templates/base.html:74
 msgid "Sign in with"
-msgstr "Iniciar sesion con"
+msgstr "Iniciar sesión con"
 
 #: frontend/templates/base.html:80
 msgid "Search"
@@ -36,11 +36,11 @@ msgstr "Buscar"
 
 #: frontend/templates/base.html:102
 msgid "Added on"
-msgstr "Anadido en"
+msgstr "Añadido en"
 
 #: frontend/templates/base.html:103 services/models.py:28
 msgid "Owner"
-msgstr "Dueno"
+msgstr "Dueño"
 
 #: frontend/templates/base.html:105
 msgid "Details"
@@ -56,14 +56,14 @@ msgstr "Caduca en"
 
 #: frontend/templates/base.html:114
 msgid "Add a comment if you want"
-msgstr "Anade un comentario si quieres"
+msgstr "Añade un comentario (opcionalmente)"
 
 #: frontend/templates/base.html:115
 msgid ""
 "Hi, I saw your item and I'm very interested on it. When would be a good time "
 "to pick it up? Cheers"
 msgstr ""
-"Hola, He visto tu producto y estoy muy interesado en el. Cuando seria un "
+"Hola, He visto tu producto y estoy muy interesado en el. Cuando sería un "
 "buen momento para irlo a buscar? Gracias"
 
 #: frontend/templates/base.html:133 frontend/templates/base.html.py:172
@@ -80,11 +80,11 @@ msgstr "Deshacte de algo"
 
 #: frontend/templates/base.html:153 services/models.py:27
 msgid "Location"
-msgstr "Ubicacion"
+msgstr "Ubicación"
 
 #: frontend/templates/base.html:154
 msgid "Leave in blank to use current location"
-msgstr "Deja el campo en blanco para usar tu ubicacion actual"
+msgstr "Usar ubicación actual"
 
 #: frontend/templates/base.html:173
 msgid "Give away!"
@@ -100,19 +100,19 @@ msgstr "No hay resultados"
 
 #: frontend/views.py:40 services/models.py:26 services/serializers.py:33
 msgid "Category"
-msgstr "Categoria"
+msgstr "Categoría"
 
 #: frontend/views.py:79 frontend/views.py:98
 msgid "Please, log in first and try again."
-msgstr "Por favor, inicia sesion primero, y vuelve a intentarlo."
+msgstr "Por favor, inicia sesión, y vuelve a intentarlo."
 
 #: myproject/settings.py:129
 msgid "Spanish"
-msgstr "Espanol"
+msgstr "Español"
 
 #: myproject/settings.py:130
 msgid "English"
-msgstr "Ingles"
+msgstr "Inglés"
 
 #: services/models.py:19
 msgid "Item name"
@@ -120,35 +120,35 @@ msgstr "Nombre"
 
 #: services/models.py:20
 msgid "Item Description"
-msgstr "Descripcion"
+msgstr "Descripción"
 
 #: services/models.py:22
 msgid "Created date"
-msgstr "Fecha de creacion"
+msgstr "Fecha de creación"
 
 #: services/models.py:23
 msgid "Last Updated Date"
-msgstr "Actualizado por ultima vez"
+msgstr "Actualizado por última vez"
 
 #: services/models.py:24
 msgid "When does the item expires?"
-msgstr "Cuando expira esta oferta?"
+msgstr "Cuándo expira esta oferta?"
 
 #: services/models.py:25
 msgid "Is this item available/active?"
-msgstr "Esta activa esta oferta?"
+msgstr "Está activa esta oferta?"
 
 #: services/models.py:58
 msgid "Category name"
-msgstr "Nombre de la categoria"
+msgstr "Nombre de la categoría"
 
 #: services/models.py:59
 msgid "Category description"
-msgstr "Descripcion de la categoria"
+msgstr "Descripción de la categía"
 
 #: services/models.py:69
 msgid "Location/Address (Post Code/Street, City, Country)"
-msgstr "Localizacion/Direccion (Codigo postal/Calle, Ciudad, Pais)"
+msgstr "Localización/Dirección (Codigo postal/Calle, Ciudad, País)"
 
 #, fuzzy
 #~| msgid "Item Description"
