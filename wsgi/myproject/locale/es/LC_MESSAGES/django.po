@@ -68,7 +68,7 @@ msgstr ""
 
 #: frontend/templates/base.html:89
 msgid "The World's Best Free Bargains"
-msgstr "El mejor mercado tratos gratis"
+msgstr "El mercado de tratos sin dinero"
 
 #: frontend/templates/base.html:98
 msgid "Log out"
