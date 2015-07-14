@@ -31,11 +31,6 @@ msgid "Details"
 msgstr "Detalles"
 
 #: frontend/templates/base.html:55
-#, fuzzy
-
-msgid "Item Description"
-msgstr "Descripción"
-
 msgid "Deal conditions"
 msgstr "Condiciones del trato"
 

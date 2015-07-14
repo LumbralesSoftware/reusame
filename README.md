@@ -15,4 +15,4 @@ Javascript translations:
 
 Compile:
 
-    django-admin ango-admin compilemessages
+    django-admin.py compilemessages
