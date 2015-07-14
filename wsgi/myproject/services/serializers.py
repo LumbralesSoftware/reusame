@@ -38,7 +38,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ('id', 'name', 'description', 'image', 'category', 'location', 'owner', 'created', 'expires_on', 'user_rating')
+        fields = ('id', 'name', 'description', 'deal', 'image', 'category', 'location', 'owner', 'created', 'expires_on', 'user_rating')
 
     def get_validation_exclusions(self):
         exclusions = super(ItemSerializer, self).get_validation_exclusions()
@@ -76,6 +76,7 @@ class ItemSerializer(serializers.ModelSerializer):
         item = Item.objects.create(
             name=validated_data['name'],
             description=validated_data['description'],
+            deal=validated_data['deal'],
             image=validated_data['image'],
             category=validated_data['category'],
             location=location,

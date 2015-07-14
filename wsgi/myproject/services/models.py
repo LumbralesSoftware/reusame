@@ -24,6 +24,7 @@ class Item(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, verbose_name=_("Item name"))
     description = models.TextField(max_length=1000, verbose_name=_("Item Description"))
+    deal = models.TextField(max_length=1000, verbose_name=_("Deal Conditions"), blank=True, null=True)
     image = models.ImageField(upload_to='items/%Y/%m/%d')
     created = models.DateTimeField(verbose_name=_("Created date"), null=True, blank=True, auto_now_add=True)
     last_updated = models.DateTimeField(editable=False, verbose_name=_("Last Updated Date"), null=True, blank=True)

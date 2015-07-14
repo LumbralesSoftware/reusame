@@ -46,7 +46,8 @@ class ItemForm(forms.ModelForm):
         exclude=('created', 'owner', 'active', 'location')
         widgets = {
                 'name': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
-                'description': forms.Textarea(attrs={'data-validation':'[NOTEMPTY]'}),
+                'description': forms.Textarea(attrs={'rows': 3, 'data-validation':'[NOTEMPTY]', 'placeholder': _('For example: I am giving away this bike because I am not using it. It is in good working condition but might be a bit rusty.')}),
+                'deal': forms.Textarea(attrs={'rows': 3, 'placeholder': _('I only ask you to give something away in this website and the item is yours.')}),
                 'category': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'image': forms.FileInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'expires_on': forms.TextInput(attrs={'class':'datetimepicker', "placeholder": "yyyy-mm-dd --:--"}),
@@ -97,7 +98,7 @@ def vote_user(request, id):
 @csrf_exempt
 def request_item(request, id):
    if not request.user.is_authenticated():
-       return HttpResponseForbidden(json.dumps({"success": False, "error":_('Please, log in first and try again.')}))
+       return HttpResponseForbidden(json.dumps({"success": False, "error": _('Please, log in first and try again.')}))
    data = json.loads(request.body)
    item = get_object_or_404(Item, pk=id)
    item.requestedBy(request.user, data['message'])

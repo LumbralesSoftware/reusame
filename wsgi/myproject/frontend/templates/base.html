@@ -52,6 +52,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
+                                        <label for="comment">{% trans "Deal conditions" %}:</label>
+                                        <p>{% verbatim %}{{:deal}}{% endverbatim %}</p>
                                         <div class="panel panel-default hidden" id="iWantThisExpiresBlock" title="{% trans "Hurry up, this offer/item expires soon" %}">
                                             <div class="panel-body">
                                                 {% trans "Expires in" %} <div class="lead" id="iWantThisExpiresOn"></div>
