@@ -39,25 +39,28 @@ class Item(models.Model):
         return base64.urlsafe_b64encode(json.dumps(item.data))
 
     def requestedBy(self, user, body):
+        msg_html = render_to_string(
+                'email/request.html',
+                {
+                    'item': self.name,
+                    'name': user.first_name,
+                    'image': self.image.url,
+                    'message': body,
+                    'email': user.email,
+                    'owner': self.owner.first_name
+                }
+        )
+
         headers = {'Reply-To': user.email}
         email = EmailMessage(
             user.first_name + ' wants ' + self.name,
-            'User ' + user.first_name + ' is interested in your item ' + self.name + '. His message: ' + body,
-            to=['javilumbrales@gmail.com'],
+            msg_html,
+            to=[self.owner.email],
             headers=headers
         )
         email.content_subtype = "html"
         email.send()
-        #msg_plain = render_to_string('templates/email.txt', {'some_params': some_params})
-        #msg_html = render_to_string('templates/email.html', {'some_params': some_params})
-        #
-        #send_mail(
-        #    'email title',
-        #    msg_plain,
-        #    'no-reply@example.com',
-        #    [some@reciver.com, ],
-        #    html_message=msg_html,
-        #)
+
         return True
 
     def save(self, *args, **kwargs):
