@@ -29,10 +29,13 @@ def register_by_access_token(request, backend):
         # here comes the magic
         user = request.backend.do_auth(token)
 
-        if 'email' in data and user.email is None:
-            user.email = data['email']
-            user.save()
         if user:
+            if 'email' in data and user.email is None:
+                user.email = data['email']
+                print user.email
+                user.save()
+                print 'saved!'
+
             login(request, user)
             # that function will return our own
             # OAuth2 token as JSON

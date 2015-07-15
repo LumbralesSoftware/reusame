@@ -42,6 +42,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
     def get_validation_exclusions(self):
         exclusions = super(ItemSerializer, self).get_validation_exclusions()
+
         return exclusions + ['expires_on']
     def getRatings(self, item):
         rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
@@ -71,6 +72,9 @@ class ItemSerializer(serializers.ModelSerializer):
 
         if not 'expires_on' in validated_data:
             validated_data['expires_on'] = None
+
+        if not 'deal' in validated_data or not validated_data['deal']:
+            validated_data['deal'] = _('I only ask you to give something away in this website and the item is yours.')
 
         # Create the item instance
         item = Item.objects.create(
