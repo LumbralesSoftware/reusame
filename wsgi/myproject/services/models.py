@@ -57,6 +57,7 @@ class Item(models.Model):
         email = EmailMessage(
             user.first_name + ' wants ' + self.name,
             msg_html,
+            from_email='REUSAME ' + '<' + user.email + '>',
             to=[self.owner.email],
             headers=headers
         )
