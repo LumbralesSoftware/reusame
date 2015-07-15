@@ -44,6 +44,7 @@ class Item(models.Model):
                 'email/request.html',
                 {
                     'item': self.name,
+                    'location': self.location.location,
                     'name': user.first_name,
                     'image': self.image.url,
                     'message': body,
