@@ -29,15 +29,11 @@ def register_by_access_token(request, backend):
         # here comes the magic
         user = request.backend.do_auth(token)
 
-        print 'auth'
-        print user
         if user:
-            if 'email' in data and user.email is None:
+            # Save user's email if provided and not already set
+            if 'email' in data and not user.email:
                 user.email = data['email']
-                print user.email
-                print user.email
                 user.save()
-                print 'saved!'
 
             login(request, user)
             # that function will return our own
