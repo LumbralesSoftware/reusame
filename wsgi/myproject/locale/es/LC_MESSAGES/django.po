@@ -75,8 +75,6 @@ msgid "Log out"
 msgstr "Cerrar sesión"
 
 #: frontend/templates/base.html:101
-#, fuzzy
-#| msgid "Give away!"
 msgid "Give Away"
 msgstr "Publicar"
 
@@ -109,11 +107,11 @@ msgstr "Publicar"
 
 #: frontend/templates/base.html:203 frontend/templates/base.html.py:212
 msgid "What is REUSAME?"
-msgstr "Qué es REUSAME?"
+msgstr "¿Qué es REUSAME?"
 
 #: frontend/templates/base.html:204 frontend/templates/base.html.py:241
 msgid "How does REUSAME work?"
-msgstr "Cómo funciona REUSAME?"
+msgstr "¿Cómo funciona REUSAME?"
 
 #: frontend/templates/base.html:217
 #, python-format
@@ -238,7 +236,7 @@ msgid "Location"
 msgstr "Ubicación"
 
 msgid "Located in"
-msgstr "Ubicación"
+msgstr "En"
 
 #: frontend/templates/searchresults.html:21
 msgid "No results"
@@ -249,17 +247,12 @@ msgid "Category"
 msgstr "Categoría"
 
 #: frontend/views.py:49
-msgid ""
-"For example: I am giving away this bike because I am not using it. It is in "
-"good working condition but might be a bit rusty."
-msgstr ""
-"Por ejemplo: Regalo esta bici porque ya no la uso. Esta en buenas "
-"condiciones, pero un poco oxidada."
+msgid "For example: I am giving away this bike because I am not using it. It is in good working condition but might be a bit rusty."
+msgstr "Por ejemplo: Regalo esta bici porque ya no la uso. Esta en buenas condiciones, pero un poco oxidada."
 
 #: frontend/views.py:50 services/serializers.py:77
-msgid ""
-"I only ask you to give something away in this website and the item is yours."
-msgstr "No quiero nada, solo pido que des algo a cambio en esta web."
+msgid "I only ask you to give something away in this website and the item is yours."
+msgstr "No quiero nada, solo me gustaría que des algo a cambio en esta web."
 
 #: frontend/views.py:81 frontend/views.py:101
 msgid "Please, log in first and try again."
