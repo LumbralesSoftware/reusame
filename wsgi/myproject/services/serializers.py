@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Avg
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Item, Category, Location, UserRatings
+from .models import Item, Category, Location, UserRating
 from .utils import get_coords, get_address
 
 class CategoryField(serializers.RelatedField):
@@ -45,7 +45,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
         return exclusions + ['expires_on']
     def getRatings(self, item):
-        rating = UserRatings.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
+        rating = UserRating.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
         return rating['punctuation__avg']
 
     def create(self, validated_data):

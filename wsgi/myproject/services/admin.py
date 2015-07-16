@@ -1,5 +1,5 @@
 from django.contrib import admin
-from services.models import Item, Category, Location, UserRatings, UserRequest
+from services.models import Item, Category, Location, UserRating, UserRequest
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -20,5 +20,5 @@ class UserRequestsAdmin(admin.ModelAdmin):
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Location, LocationAdmin)
-admin.site.register(UserRatings, UserRatingsAdmin)
+admin.site.register(UserRating, UserRatingsAdmin)
 admin.site.register(UserRequest, UserRequestsAdmin)

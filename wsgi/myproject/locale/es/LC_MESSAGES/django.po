@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-14 10:58+0100\n"
+"POT-Creation-Date: 2015-07-16 12:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,8 +98,6 @@ msgid "Get rid of something"
 msgstr "Deshacte de algo"
 
 #: frontend/templates/base.html:182 services/models.py:34
-msgid "Location"
-msgstr "Ubicación"
 
 #: frontend/templates/base.html:183
 msgid "Leave in blank to use current location"
@@ -109,13 +107,136 @@ msgstr "Usar ubicación actual"
 msgid "Give away!"
 msgstr "Publicar"
 
+#: frontend/templates/base.html:203 frontend/templates/base.html.py:212
+msgid "What is REUSAME?"
+msgstr "Qué es REUSAME?"
+
+#: frontend/templates/base.html:204 frontend/templates/base.html.py:241
+msgid "How does REUSAME work?"
+msgstr "Cómo funciona REUSAME?"
+
+#: frontend/templates/base.html:217
+#, python-format
+msgid ""
+"Reusame is a worldwide market of products/stuff where everything is 100%% "
+"free!"
+msgstr ""
+
+#: frontend/templates/base.html:218
+#, python-format
+msgid ""
+"This is a worldwide free market of stuff, there are plenty of items, growing "
+"every day, and <strong>there is only one rule</strong>, you can offer pretty "
+"much all kinds of stuff, and optionally ask for something in return, which "
+"can be another item, some manpower help, or whatever, but you cannot ask for "
+"money, directly or indirectly. This means we will NOT allow deals such as: "
+"buy X and get Y for free. However, we would allow things like: I have a farm "
+"and need help to harvest olives. Help me and I'll give you 50%% of what you "
+"collect!"
+msgstr ""
+
+#: frontend/templates/base.html:219
+msgid ""
+"Do you need something but ain't no money? Have a look at the catalog and see "
+"if you can find what you need nearby!"
+msgstr ""
+
+#: frontend/templates/base.html:220
+msgid ""
+"Are you moving to a new flat and need some help? If you are going to get rid "
+"of furniture or stuff that you won't need in the new flat, maybe you can "
+"make a deal with someone and you'll all be happy!"
+msgstr ""
+
+#: frontend/templates/base.html:221
+msgid ""
+"Do you want to get rid of those books that you read a few yeas ago and are "
+"gathering dust on the shelf? Give them away or exchange them by others that "
+"you haven't read yet!"
+msgstr ""
+
+#: frontend/templates/base.html:222
+msgid "Do you have stuff at home that never use and want to get rid of it?"
+msgstr ""
+
+#: frontend/templates/base.html:223
+msgid "You might not need it anymore, but can it be useful for someone else?"
+msgstr ""
+
+#: frontend/templates/base.html:224
+msgid ""
+"Take a picture and upload it here and you might make someone else's day!"
+msgstr ""
+
+#: frontend/templates/base.html:225
+msgid ""
+"All the items listed are manually reviewed and we have plenty of stuff, all "
+"over the world, growing very quickly. Hurry up, many deals are time limited!"
+msgstr ""
+
+#: frontend/templates/base.html:226 frontend/templates/base.html.py:251
+msgid "Enjoy using REUSAME and stop throwing away stuff!"
+msgstr ""
+
+#: frontend/templates/base.html:231 frontend/templates/base.html.py:256
+msgid "Got It"
+msgstr "Entendido"
+
+#: frontend/templates/base.html:246
+msgid ""
+"REUSAME is the place where you can get in touch with dealers and get items "
+"for free!"
+msgstr ""
+
+#: frontend/templates/base.html:247
+msgid ""
+"If you come looking for something specific, just try to find it in the map "
+"or with the search, login and request the item."
+msgstr ""
+
+#: frontend/templates/base.html:247
+msgid ""
+"Then, we will contact the owner of the item and pass him your details so "
+"that you can arrange a meeting and so on."
+msgstr ""
+
+#: frontend/templates/base.html:248
+msgid ""
+"If you have some stuff at home that you want to get rid of, consider posting "
+"it here and hopefully you can get something in return and make someone else "
+"happy at the same time. Login, click in Give Away and fill in the form "
+"within seconds! All the submissions will be manually reviewed by us within "
+"24 hours, in order to ensure that they follow the rules of the market."
+msgstr ""
+
+#: frontend/templates/base.html:249
+#, python-format
+msgid ""
+"<strong>All the deals are 100%% free</strong>, so you don't need to enter "
+"your credit card details nor anything similar, however, it's possible that "
+"the owner of the item wants something in return. That should be clearly "
+"specified in the item description, and can be anything <strong>except money</"
+"strong>."
+msgstr ""
+
+#: frontend/templates/base.html:250
+msgid ""
+"REUSAME is not responsible for the items posted by the user within the "
+"platform. We make our best manually reviewing all the items added, but we "
+"cannot warrant that all the items/deals advertised are not fraudulent. If "
+"stumble upon across one of this unlikely cases, please get in touch asap and "
+"we will remove the item/deal from the listing."
+msgstr ""
+
 #: frontend/templates/searchresults.html:6
 msgid "Search results"
 msgstr "Resultados de la busqueda"
 
 #: frontend/templates/searchresults.html:14
 #, fuzzy
-#| msgid "Location"
+msgid "Location"
+msgstr "Ubicación"
+
 msgid "Located in"
 msgstr "Ubicación"
 
@@ -131,9 +252,11 @@ msgstr "Categoría"
 msgid ""
 "For example: I am giving away this bike because I am not using it. It is in "
 "good working condition but might be a bit rusty."
-msgstr "Por ejemplo: Regalo esta bici porque ya no la uso. Esta en buenas condiciones, pero un poco oxidada."
+msgstr ""
+"Por ejemplo: Regalo esta bici porque ya no la uso. Esta en buenas "
+"condiciones, pero un poco oxidada."
 
-#: frontend/views.py:50
+#: frontend/views.py:50 services/serializers.py:77
 msgid ""
 "I only ask you to give something away in this website and the item is yours."
 msgstr "No quiero nada, solo pido que des algo a cambio en esta web."
@@ -162,7 +285,7 @@ msgstr "Descripción"
 msgid "Deal Conditions"
 msgstr "Condiciones del trato"
 
-#: services/models.py:29
+#: services/models.py:29 services/models.py:104
 msgid "Created date"
 msgstr "Fecha de creación"
 
@@ -178,17 +301,21 @@ msgstr "Cuándo expira esta oferta?"
 msgid "Is this item available/active?"
 msgstr "Está activa esta oferta?"
 
-#: services/models.py:92
+#: services/models.py:67
 msgid "Category name"
 msgstr "Nombre de la categoría"
 
-#: services/models.py:93
+#: services/models.py:68
 msgid "Category description"
 msgstr "Descripción de la categoría"
 
-#: services/models.py:103
+#: services/models.py:78
 msgid "Location/Address (Post Code/Street, City, Country)"
 msgstr "Localización/Dirección (Codigo postal/Calle, Ciudad, País)"
+
+#: services/models.py:105
+msgid "message"
+msgstr ""
 
 #~ msgid "I want to give away something"
 #~ msgstr "Quiero deshacerme de algo"

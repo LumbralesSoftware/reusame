@@ -91,7 +91,7 @@ class Location(models.Model):
     def __unicode__(self):
         return self.location
 
-class UserRatings(models.Model):
+class UserRating(models.Model):
     id = models.AutoField(primary_key=True)
     voted_user = models.ForeignKey(User, verbose_name='User voted', related_name="voted_user")
     voting_user = models.ForeignKey(User, verbose_name='User voting', related_name="voting_user")

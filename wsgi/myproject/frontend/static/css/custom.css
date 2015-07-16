@@ -90,9 +90,11 @@ html, body {
     float:right;
 }
 .sign-in {
-    padding: 8px;
     color: white;
     white-space: nowrap;
+    line-height: 36px;
+    margin: 0px 10px 0px 10px;
+    float: left;
 }
 .mobile-only {
     display:none;
