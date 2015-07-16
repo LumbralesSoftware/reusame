@@ -1,21 +1,21 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 16:48+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2015-07-16 17:44+0100\n"
+"PO-Revision-Date: Thu Jul 16 2015 16:53:36 GMT+0100 (BST)\n"
 "Last-Translator: Javier Carrascal<EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Loco-Target-Locale: es_ES\n"
+"X-Generator: Loco - https://localise.biz/\n"
 
 #: frontend/templates/base.html:44 frontend/templates/searchresults.html:16
 msgid "Added on"
@@ -117,10 +117,11 @@ msgstr "¿Cómo funciona REUSAME?"
 #: frontend/templates/base.html:217
 #, python-format
 msgid ""
-"Reusame is a worldwide market of products/stuff where everything is 100%% "
+"Reusame is a worldwide market of products/stuff where everything is 100% "
 "free!"
 msgstr ""
-"Reusame es una app de intercambio de objetos/productos donde todo es gratis!"
+"Reusame es una app de intercambio de objetos/productos donde todo es 100% "
+"gratis!"
 
 #: frontend/templates/base.html:218
 #, python-format
@@ -131,16 +132,17 @@ msgid ""
 "can be another item, some manpower help, or whatever, but you cannot ask for "
 "money, directly or indirectly. This means we will NOT allow deals such as: "
 "buy X and get Y for free. However, we would allow things like: I have a farm "
-"and need help to harvest olives. Help me and I'll give you 50%% of what you "
+"and need help to harvest olives. Help me and I'll give you 50% of what you "
 "collect!"
 msgstr ""
 "REUSAME es un mercado libre mundial de todo tipo de cosas, hay un montón de "
-"artículos, crece día a día, y <strong>hay una sola regla</strong>, las "
-"ofertas deben ser 100%% gratis! Sin embargo, puedes pedir ayuda / algo a "
-"cambio, y puede ser cualquier cosa, excepto dinero, ya sea directa o "
+"artículos, crece día a día, y <strong>hay una sola regla</strong>, puedes "
+"ofrecer casi cualquier cosa, y opcionalmente pedir algo a cambio, lo cual "
+"puede ser otra cosa, algo de ayuda o mano de obra, o lo que sea, siempre "
+"y cuando no requirea dinero, ya sea directa o "
 "indirectamente. Esto quiere decir que no se aceptaran tratos como:compra X y "
 "te regalo Y. Sin embargo, si se permiten cosas como: Tengo un olivar, "
-"ayudame a recoger las aceitunas y tedaré el 50%% de la recogida."
+"ayudame a recoger las aceitunas y tedaré el 50% de la recogida."
 
 #: frontend/templates/base.html:219
 msgid ""
@@ -215,12 +217,16 @@ msgid ""
 "If you come looking for something specific, just try to find it in the map "
 "or with the search, login and request the item."
 msgstr ""
+"Si estas buscando algo especifico, busca lo mas cercano en el mapa, o "
+"utiliza el buscador, inicia sesión y haz click en \"Lo quiero\"."
 
 #: frontend/templates/base.html:247
 msgid ""
 "Then, we will contact the owner of the item and pass him your details so "
 "that you can arrange a meeting and so on."
 msgstr ""
+"Entonces, nosotros contactaremos con el dueño y le daremos tus datos de "
+"contacto, para que podais quedar para encontraros, etcétera."
 
 #: frontend/templates/base.html:248
 msgid ""
@@ -230,25 +236,39 @@ msgid ""
 "within seconds! All the submissions will be manually reviewed by us within "
 "24 hours, in order to ensure that they follow the rules of the market."
 msgstr ""
+"Si tienes cosas en casa de las que quieres deshacerte, considera publicarlas "
+"aquí, y con suerte obtendras algo a cambio y a la vez harás feliz a otra persona."
+"Inicia sesión, pincha en Publicar y rellena el formulario en cuestion de segundos!"
+"Todas las publicaciones son manualmente revisadas por nosotros en menos de 24 horas,"
+"para asegurar que cumplen con las normas del portal."
 
 #: frontend/templates/base.html:249
 #, python-format
 msgid ""
 "<strong>All the deals are 100%% free</strong>, so you don't need to enter "
-"your credit card details nor anything similar, however, it's possible that "
+"your credit card details nor anything similar. However, it's possible that "
 "the owner of the item wants something in return. That should be clearly "
 "specified in the item description, and can be anything <strong>except money</"
 "strong>."
 msgstr ""
-
+"<strong>Todos los tratos son 100%% gratis</strong>, asi que no tienes que darnos "
+"tu tarjeta de credito ni nada similar. Sin embargo, es posible que el dueño de lo "
+"que te interesa quiera algo a cambio. En ese caso estara claramente especificado "
+"en la descripción de la oferta, y puede ser cualquier cosa, <strong>excepto dinero</"
+"strong>."
 #: frontend/templates/base.html:250
 msgid ""
-"REUSAME is not responsible for the items posted by the user within the "
+"REUSAME is not responsible for the content/items posted by the users within the "
 "platform. We make our best manually reviewing all the items added, but we "
-"cannot warrant that all the items/deals advertised are not fraudulent. If "
+"cannot warrant that all the items/deals advertised are trustworthy. If "
 "stumble upon across one of this unlikely cases, please get in touch asap and "
 "we will remove the item/deal from the listing."
 msgstr ""
+"REUSAME no se hace responsable del contenido/objetos publicados por los usuarios en "
+"esta plataforma. Hacemos todo lo posible revisando manualmente todo antes de publicarlo, "
+"pero no podemos garantizar que todos los tratos/objetos anunciados sean fidedignos. Si "
+"te topas con uno de estos improbables casos, por favor, notifiícanoslo cuanto antes y "
+"tomaremos medidas eliminándolo de la web."
 
 #: frontend/templates/searchresults.html:6
 msgid "Search results"
@@ -262,17 +282,19 @@ msgstr "En"
 msgid "No results"
 msgstr "No hay resultados"
 
-#: frontend/views.py:41 services/models.py:67
+#: frontend/views.py:42 services/models.py:67
 msgid "Category name"
 msgstr "Nombre de la categoría"
 
-#: frontend/views.py:49
+#: frontend/views.py:50
 msgid ""
 "For example: I am giving away this bike because I am not using it. It is in "
 "good working condition but might be a bit rusty."
-msgstr "Por ejemplo: Regalo esta bicicleta porque ya no la uso. Esta en buenas condiciones, pero un poco oxidada."
+msgstr ""
+"Por ejemplo: Regalo esta bicicleta porque ya no la uso. Esta en buenas "
+"condiciones, pero un poco oxidada."
 
-#: frontend/views.py:50 services/serializers.py:77
+#: frontend/views.py:51 services/serializers.py:77
 msgid ""
 "I only ask you to give something away in this website and the item is yours."
 msgstr "No quiero nada, solo me gustaría que des algo a cambio en esta web."
@@ -332,6 +354,3 @@ msgstr "Localización/Dirección (Codigo postal/Calle, Ciudad, País)"
 #: services/models.py:105
 msgid "message"
 msgstr ""
-
-#~ msgid "I want to give away something"
-#~ msgstr "Quiero deshacerme de algo"

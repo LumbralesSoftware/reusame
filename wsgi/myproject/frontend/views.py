@@ -9,7 +9,8 @@ from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirec
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.db.models import Avg
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
 from services.models import Item, Category, UserRating, UserRequest
@@ -52,7 +53,6 @@ class ItemForm(forms.ModelForm):
                 'image': forms.FileInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'expires_on': forms.TextInput(attrs={'class':'datetimepicker', "placeholder": "yyyy-mm-dd --:--"}),
         }
-
 class SearchItemsListView(ListView):
     model = Item
     template_name = "searchresults.html"
@@ -78,7 +78,7 @@ def home(request):
 
 def vote_user(request, id):
    if not request.user.is_authenticated():
-       return HttpResponseForbidden(json.dumps({"error":_('Please, log in first and try again.')}))
+       return HttpResponseForbidden(json.dumps({"error": ugettext('Please, log in first and try again.')}))
 
    item = get_object_or_404(Item, pk=id)
    vote, created = UserRating.objects.get_or_create(
@@ -98,7 +98,7 @@ def vote_user(request, id):
 @csrf_exempt
 def request_item(request, id):
    if not request.user.is_authenticated():
-       return HttpResponseForbidden(json.dumps({"success": False, "error": _('Please, log in first and try again.')}))
+       return HttpResponseForbidden(json.dumps({"success": False, "error": ugettext('Please, log in first and try again.')}))
    data = json.loads(request.body)
    item = get_object_or_404(Item, pk=id)
    #item.requestedBy(request.user, data['message'])
