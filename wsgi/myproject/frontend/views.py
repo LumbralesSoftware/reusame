@@ -12,7 +12,7 @@ from django.db.models import Avg
 from django.utils.translation import ugettext as _
 from django.views.decorators.csrf import csrf_exempt
 
-from services.models import Item, Category, UserRatings
+from services.models import Item, Category, UserRatings, UserRequest
 from .search import *
 from .images import *
 
@@ -101,7 +101,19 @@ def request_item(request, id):
        return HttpResponseForbidden(json.dumps({"success": False, "error": _('Please, log in first and try again.')}))
    data = json.loads(request.body)
    item = get_object_or_404(Item, pk=id)
-   item.requestedBy(request.user, data['message'])
+   #item.requestedBy(request.user, data['message'])
+
+   itemRequest, created = UserRequest.objects.get_or_create(
+           requester=request.user,
+           item=item,
+           defaults={'message': data['message']}
+   )
+
+   # if already requested, do nothing
+   if created:
+       itemRequest.request()
+       itemRequest.save()
+
    return HttpResponse(json.dumps({"success": True}), content_type="application/json")
 
 def search(request):

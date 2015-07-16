@@ -39,33 +39,6 @@ class Item(models.Model):
         item = ItemSerializer(self)
         return base64.urlsafe_b64encode(json.dumps(item.data))
 
-    def requestedBy(self, user, body):
-        msg_html = render_to_string(
-                'email/request.html',
-                {
-                    'item': self.name,
-                    'location': self.location.location,
-                    'name': user.first_name,
-                    'image': self.image.url,
-                    'message': body,
-                    'email': user.email,
-                    'owner': self.owner.first_name
-                }
-        )
-
-        headers = {'Reply-To': user.email}
-        email = EmailMessage(
-            user.first_name + ' wants ' + self.name,
-            msg_html,
-            from_email='REUSAME ' + '<' + user.email + '>',
-            to=[self.owner.email],
-            headers=headers
-        )
-        email.content_subtype = "html"
-        email.send()
-
-        return True
-
     def save(self, *args, **kwargs):
 
         super(Item, self).save(*args, **kwargs)
@@ -124,4 +97,37 @@ class UserRatings(models.Model):
     voting_user = models.ForeignKey(User, verbose_name='User voting', related_name="voting_user")
     punctuation = models.DecimalField(max_digits=4, decimal_places=1, validators = [MinValueValidator(0.0), MaxValueValidator(5.0)])
 
+class UserRequest(models.Model):
+    id = models.AutoField(primary_key=True)
+    requester = models.ForeignKey(User, verbose_name='User requesting')
+    item = models.ForeignKey(Item, verbose_name='Item requested')
+    created = models.DateTimeField(verbose_name=_("Created date"), null=True, blank=True, auto_now_add=True)
+    message = models.TextField(max_length=1000, verbose_name=_("message"), blank=True, null=True)
+
+    def request(self):
+        msg_html = render_to_string(
+                'email/request.html',
+                {
+                    'item': self.item.name,
+                    'location': self.item.location.location,
+                    'name': self.requester.first_name,
+                    'image': self.item.image.url,
+                    'message': self.message,
+                    'email': self.requester.email,
+                    'owner': self.item.owner.first_name
+                }
+        )
+
+        headers = {'Reply-To': self.requester.email}
+        email = EmailMessage(
+            self.requester.first_name + ' wants ' + self.item.name,
+            msg_html,
+            from_email='REUSAME ' + '<' + self.requester.email + '>',
+            to=[self.item.owner.email],
+            headers=headers
+        )
+        email.content_subtype = "html"
+        email.send()
+
+        return True
 
