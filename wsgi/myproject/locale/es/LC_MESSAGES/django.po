@@ -3,16 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-16 12:03+0100\n"
+"POT-Creation-Date: 2015-07-16 16:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Javier Carrascal<EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,9 +95,11 @@ msgid "Get rid of something"
 msgstr "Deshacte de algo"
 
 #: frontend/templates/base.html:182 services/models.py:34
+msgid "Location"
+msgstr "Ubicación"
 
 #: frontend/templates/base.html:183
-msgid "Leave in blank to use current location"
+msgid "Use current location"
 msgstr "Usar ubicación actual"
 
 #: frontend/templates/base.html:193
@@ -119,6 +120,7 @@ msgid ""
 "Reusame is a worldwide market of products/stuff where everything is 100%% "
 "free!"
 msgstr ""
+"Reusame es una app de intercambio de objetos/productos donde todo es gratis!"
 
 #: frontend/templates/base.html:218
 #, python-format
@@ -132,12 +134,21 @@ msgid ""
 "and need help to harvest olives. Help me and I'll give you 50%% of what you "
 "collect!"
 msgstr ""
+"REUSAME es un mercado libre mundial de todo tipo de cosas, hay un montón de "
+"artículos, crece día a día, y <strong>hay una sola regla</strong>, las "
+"ofertas deben ser 100%% gratis! Sin embargo, puedes pedir ayuda / algo a "
+"cambio, y puede ser cualquier cosa, excepto dinero, ya sea directa o "
+"indirectamente. Esto quiere decir que no se aceptaran tratos como:compra X y "
+"te regalo Y. Sin embargo, si se permiten cosas como: Tengo un olivar, "
+"ayudame a recoger las aceitunas y tedaré el 50%% de la recogida."
 
 #: frontend/templates/base.html:219
 msgid ""
 "Do you need something but ain't no money? Have a look at the catalog and see "
 "if you can find what you need nearby!"
 msgstr ""
+"¿Necesitas alguna cosa, pero no tienes dinero? Echa un vistazo a el catálogo "
+"y ver si puedes encontrar lo que necesitas cerca de casa!"
 
 #: frontend/templates/base.html:220
 msgid ""
@@ -145,6 +156,10 @@ msgid ""
 "of furniture or stuff that you won't need in the new flat, maybe you can "
 "make a deal with someone and you'll all be happy!"
 msgstr ""
+"¿Te mudas a un nuevo piso y necesitas un poco de ayuda para la mudanza? Si "
+"vas a deshacerte de los muebles o algunas cosas que no vas a necesitar en el "
+"piso nuevo, tal vez puedas hacer un trato con alguien para que te ayude y "
+"todos tan contentos!"
 
 #: frontend/templates/base.html:221
 msgid ""
@@ -152,29 +167,36 @@ msgid ""
 "gathering dust on the shelf? Give them away or exchange them by others that "
 "you haven't read yet!"
 msgstr ""
+"¿Quieres deshacerte de esos libros que leíste hace unos meses y están "
+"acumulando polvo en la estantería? Regálaselos a alguien que los necesite o "
+"intercámbialos por otros libros que no hayas leído todavía!"
 
 #: frontend/templates/base.html:222
 msgid "Do you have stuff at home that never use and want to get rid of it?"
-msgstr ""
+msgstr "¿Tienes cosas en casa que nunca usas y quieres deshacerte de ellas?"
 
 #: frontend/templates/base.html:223
 msgid "You might not need it anymore, but can it be useful for someone else?"
-msgstr ""
+msgstr "Es posible que tu no lo uses, pero ¿puede ser útil para otra persona?"
 
 #: frontend/templates/base.html:224
 msgid ""
 "Take a picture and upload it here and you might make someone else's day!"
 msgstr ""
+"Hazle una foto y anúncialo en el mercado, y puede que hagas feliz a alguien!"
 
 #: frontend/templates/base.html:225
 msgid ""
 "All the items listed are manually reviewed and we have plenty of stuff, all "
 "over the world, growing very quickly. Hurry up, many deals are time limited!"
 msgstr ""
+"Todas lo que hay ha sido revisado y tenemos un montón de cosas, de todo el "
+"mundo y creciendo muy rápidamente. Date prisa, muchas ofertas expiran pronto!"
 
 #: frontend/templates/base.html:226 frontend/templates/base.html.py:251
 msgid "Enjoy using REUSAME and stop throwing away stuff!"
 msgstr ""
+"Disfruta utilizando REUSAME y en vez de tirar cosas a la basura, regálalas!"
 
 #: frontend/templates/base.html:231 frontend/templates/base.html.py:256
 msgid "Got It"
@@ -185,6 +207,8 @@ msgid ""
 "REUSAME is the place where you can get in touch with dealers and get items "
 "for free!"
 msgstr ""
+"REUSAME es el lugar donde encontrar gente para conseguir tratos y cosas "
+"gratis!"
 
 #: frontend/templates/base.html:247
 msgid ""
@@ -231,10 +255,6 @@ msgid "Search results"
 msgstr "Resultados de la busqueda"
 
 #: frontend/templates/searchresults.html:14
-#, fuzzy
-msgid "Location"
-msgstr "Ubicación"
-
 msgid "Located in"
 msgstr "En"
 
@@ -242,16 +262,19 @@ msgstr "En"
 msgid "No results"
 msgstr "No hay resultados"
 
-#: frontend/views.py:41 services/models.py:33 services/serializers.py:33
-msgid "Category"
-msgstr "Categoría"
+#: frontend/views.py:41 services/models.py:67
+msgid "Category name"
+msgstr "Nombre de la categoría"
 
 #: frontend/views.py:49
-msgid "For example: I am giving away this bike because I am not using it. It is in good working condition but might be a bit rusty."
-msgstr "Por ejemplo: Regalo esta bici porque ya no la uso. Esta en buenas condiciones, pero un poco oxidada."
+msgid ""
+"For example: I am giving away this bike because I am not using it. It is in "
+"good working condition but might be a bit rusty."
+msgstr "Por ejemplo: Regalo esta bicicleta porque ya no la uso. Esta en buenas condiciones, pero un poco oxidada."
 
 #: frontend/views.py:50 services/serializers.py:77
-msgid "I only ask you to give something away in this website and the item is yours."
+msgid ""
+"I only ask you to give something away in this website and the item is yours."
 msgstr "No quiero nada, solo me gustaría que des algo a cambio en esta web."
 
 #: frontend/views.py:81 frontend/views.py:101
@@ -294,9 +317,9 @@ msgstr "Cuándo expira esta oferta?"
 msgid "Is this item available/active?"
 msgstr "Está activa esta oferta?"
 
-#: services/models.py:67
-msgid "Category name"
-msgstr "Nombre de la categoría"
+#: services/models.py:33 services/serializers.py:33
+msgid "Category"
+msgstr "Categoría"
 
 #: services/models.py:68
 msgid "Category description"

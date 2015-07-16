@@ -38,7 +38,7 @@ class ItemForm(forms.ModelForm):
             queryset=Category.objects.all(),
             to_field_name="name",
             widget=forms.Select(attrs={'data-validation':'[NOTEMPTY]'}),
-            label=_("Category")
+            label=_('Category name')
     )
 
     class Meta:
