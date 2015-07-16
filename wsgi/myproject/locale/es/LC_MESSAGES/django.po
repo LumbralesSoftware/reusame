@@ -267,7 +267,7 @@ msgstr ""
 "REUSAME no se hace responsable del contenido/objetos publicados por los usuarios en "
 "esta plataforma. Hacemos todo lo posible revisando manualmente todo antes de publicarlo, "
 "pero no podemos garantizar que todos los tratos/objetos anunciados sean fidedignos. Si "
-"te topas con uno de estos improbables casos, por favor, notifiícanoslo cuanto antes y "
+"te topas con uno de estos improbables casos, por favor, notifícanoslo cuanto antes y "
 "tomaremos medidas eliminándolo de la web."
 
 #: frontend/templates/searchresults.html:6
