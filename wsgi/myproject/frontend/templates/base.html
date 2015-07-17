@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,6 +30,9 @@
         <![endif]-->
         <script src="//maps.googleapis.com/maps/api/js?v=3.exp&language=en&key=AIzaSyAh0VYoKKJHFniGOpNjQZpKuc9i9D5Kdtk"></script>
         <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
+        <script type="text/javascript">
+            var lang = '{{ LANGUAGE_CODE }}';
+        </script>
         <script id="iWantThisTmpl" type="text/x-jsrender">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -242,6 +242,12 @@ var giveAwayItemSubmit = function (node) {
 }
 
 var options = {
+    labels: {
+        'name': gettext('Name'),
+        'description': gettext('Description'),
+        'image': gettext('Image'),
+        'category': gettext('Category')
+    },
     submit: {
         settings: {
             allErrors: true,
@@ -261,6 +267,10 @@ $(document).ready(function() {
     if ($('#map-canvas').length == 1) {
         initialize();
     }
+    $.alterValidationRules({
+            rule: 'NOTEMPTY',
+            message: gettext('$ must not be empty')
+    });
     $('#giveAwayItemForm').validate(options);
     $('.createItem').click(createItem);
     $('.datetimepicker').datetimepicker({format:'Y-m-d H:i'});

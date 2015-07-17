@@ -343,6 +343,9 @@ msgstr "Está activa esta oferta?"
 msgid "Category"
 msgstr "Categoría"
 
+msgid "Image"
+msgstr "Imagen"
+
 #: services/models.py:68
 msgid "Category description"
 msgstr "Descripción de la categoría"

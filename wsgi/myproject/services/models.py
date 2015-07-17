@@ -25,7 +25,7 @@ class Item(models.Model):
     name = models.CharField(max_length=200, verbose_name=_("Item name"))
     description = models.TextField(max_length=1000, verbose_name=_("Item Description"))
     deal = models.TextField(max_length=1000, verbose_name=_("Deal Conditions"), blank=True, null=True)
-    image = models.ImageField(upload_to='items/%Y/%m/%d')
+    image = models.ImageField(upload_to='items/%Y/%m/%d', verbose_name=_("Image"))
     created = models.DateTimeField(verbose_name=_("Created date"), null=True, blank=True, auto_now_add=True)
     last_updated = models.DateTimeField(editable=False, verbose_name=_("Last Updated Date"), null=True, blank=True)
     expires_on = models.DateTimeField(verbose_name=_("When does the item expires?"), null=True, blank=True)
@@ -95,7 +95,7 @@ class UserRating(models.Model):
     id = models.AutoField(primary_key=True)
     voted_user = models.ForeignKey(User, verbose_name='User voted', related_name="voted_user")
     voting_user = models.ForeignKey(User, verbose_name='User voting', related_name="voting_user")
-    punctuation = models.DecimalField(max_digits=4, decimal_places=1, validators = [MinValueValidator(0.0), MaxValueValidator(5.0)])
+    punctuation = models.DecimalField(max_digits=4, decimal_places=1, validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
 
 class UserRequest(models.Model):
     id = models.AutoField(primary_key=True)
