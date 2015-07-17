@@ -40,20 +40,20 @@ html, body {
 }
 #header {
     background-color: #414141;
-    height: 56px;
+    height: 96px;
     padding-top: 10px;
     border-radius: 0px;
 }
 
-#wrapper {
+#map {
     left: 0px;
-    top: 56px;
-    bottom: 48px;
+    top: 100px;
+    bottom: 40px;
     right: 0;
     position: absolute;
 }
-
-#content {
+/*
+#map {
     top: 1px;
     bottom: 0px;
     overflow: auto;
@@ -61,18 +61,24 @@ html, body {
     left: 0;
     right: 0;
 }
-
+*/
 #header h1 {
     margin-top: 0px;
 }
 #header .navbar-form {
-    margin-top: 4px;
+    margin-top: 0px;
 }
 
 #map-canvas {
     height: 100%;
+}
+
+.nav-tabs {
+    margin-left: 20px;
+}
+
+#list-content {
     margin: 10px;
-    border-radius: 10px;
 }
 
 .create-item label {

@@ -33,6 +33,19 @@
         <script type="text/javascript">
             var lang = '{{ LANGUAGE_CODE }}';
         </script>
+        <script id="itemsListTmpl" type="text/x-jsrender">
+            <a class="list-group-item search-result" onclick="iWantThis('{% verbatim %}{{:data}}{% endverbatim %}')">
+                <div class="search-image">
+                    <img class="media-object" src="/thumb/{% verbatim %}{{:id}}{% endverbatim %}/50.png" alt="">
+                </div>
+                <div class="media-body">
+                    <span class="pull-right truncate search-location">{% trans "Located in" %} {% verbatim %}{{:location}}{% endverbatim %} </span>
+                    <h4 class="list-group-item-heading">{% verbatim %}{{:name}}{% endverbatim %}</h4>
+                    <span class="pull-right clear search-date">{% trans "Added on" %} {% verbatim %}{{:created}}{% endverbatim %}</span>
+                    <p class="list-group-item-text">{% verbatim %}{{:description}}{% endverbatim %}</p>
+                </div>
+            </a>
+        </script>
         <script id="iWantThisTmpl" type="text/x-jsrender">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -169,6 +182,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a class="" href="#map" data-toggle="tab">MAP</a></li>
+                        <li><a class="" href="#list" data-toggle="tab">LIST</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="modal fade" id="iWantThisModal"></div><!-- /.modal -->

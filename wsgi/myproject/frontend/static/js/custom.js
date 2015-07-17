@@ -97,6 +97,17 @@ function loadNearbyItems(position) {
                    //api.getInfoPoint(points.stations[i].station_code, points.stations[i].lines);
                }
            })(marker, i));
+
+           var tmp = $.templates('#itemsListTmpl');
+           var html = tmp.render({
+                "id": data[i].id,
+                "name": data[i].name,
+                "description": data[i].description,
+                "location": data[i].location.location,
+                "created": $.format.date(data[i].created, 'dd/MM/yyyy HH:mm:ss'),
+                "data": Base64.encode(JSON.stringify(data[i])),
+           });
+           $('#itemsGrid').append(html);
        }
    });
 }
