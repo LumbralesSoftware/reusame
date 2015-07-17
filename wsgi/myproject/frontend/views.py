@@ -12,6 +12,8 @@ from django.db.models import Avg
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
+from datetime import timedelta
 
 from services.models import Item, Category, UserRating, UserRequest
 from .search import *
@@ -51,7 +53,7 @@ class ItemForm(forms.ModelForm):
                 'deal': forms.Textarea(attrs={'rows': 3, 'placeholder': _('I only ask you to give something away in this website and the item is yours.')}),
                 'category': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'image': forms.FileInput(attrs={'data-validation':'[NOTEMPTY]'}),
-                'expires_on': forms.TextInput(attrs={'class':'datetimepicker', "placeholder": "yyyy-mm-dd --:--"}),
+                'expires_on': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]', 'class':'datetimepicker', "placeholder": "yyyy-mm-dd --:--"}),
         }
 class SearchItemsListView(ListView):
     model = Item
@@ -70,9 +72,10 @@ class SearchItemsListView(ListView):
         return queryset.filter(active=True)
 
 def home(request):
+   defaultExpiry= timezone.now() + timedelta(days=30)
    context = RequestContext(
         request,
-        {'item': ItemForm(), 'user': request.user}
+        {'item': ItemForm(initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}), 'user': request.user}
    )
    return render_to_response('index.html', context_instance=context)
 

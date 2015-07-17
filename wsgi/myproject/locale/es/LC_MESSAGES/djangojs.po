@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-17 10:41+0100\n"
+"POT-Creation-Date: 2015-07-17 11:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,10 +76,14 @@ msgid "Image"
 msgstr "Imagen"
 
 #: frontend/static/js/custom.js:249
+msgid "Expires On"
+msgstr "Fecha de expiración"
+
+#: frontend/static/js/custom.js:250
 msgid "Category"
 msgstr "Categoría"
 
-#: frontend/static/js/custom.js:272
+#: frontend/static/js/custom.js:273
 msgid "$ must not be empty"
 msgstr "El campo $ es obligatorio"
 

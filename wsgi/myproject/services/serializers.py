@@ -2,6 +2,10 @@ from rest_framework import serializers
 from django.shortcuts import get_object_or_404
 from django.db.models import Avg
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from django.core.mail import EmailMessage
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .models import Item, Category, Location, UserRating
 from .utils import get_coords, get_address
@@ -48,6 +52,26 @@ class ItemSerializer(serializers.ModelSerializer):
         rating = UserRating.objects.filter(voted_user=item.owner).aggregate(Avg('punctuation'))
         return rating['punctuation__avg']
 
+    def notify(self, item):
+        msg_html = render_to_string(
+                'email/newitem.html',
+                {
+                    'item': item.name,
+                    'id': item.id,
+                    'location': item.location.location,
+                    'name': item.owner.first_name,
+                    'image': item.image.url
+                }
+        )
+
+        email = EmailMessage(
+            item.owner.first_name + ' wants to publish ' + item.name,
+            msg_html,
+            to=[settings.EMAIL_HOST_USER]
+        )
+        email.content_subtype = "html"
+        email.send()
+
     def create(self, validated_data):
         request = self.context.get('request', None)
         if request is not None:
@@ -87,5 +111,7 @@ class ItemSerializer(serializers.ModelSerializer):
             expires_on=validated_data['expires_on'],
             owner=user
         )
+
+        self.notify(item)
 
         return item

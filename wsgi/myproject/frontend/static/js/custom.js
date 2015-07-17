@@ -246,6 +246,7 @@ var options = {
         'name': gettext('Name'),
         'description': gettext('Description'),
         'image': gettext('Image'),
+        'expires_on': gettext('Expires On'),
         'category': gettext('Category')
     },
     submit: {
