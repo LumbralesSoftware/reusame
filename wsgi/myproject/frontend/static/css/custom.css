@@ -69,6 +69,10 @@ html, body {
     margin-top: 0px;
 }
 
+.search .nav-tabs {
+    display: none;
+}
+
 #map-canvas {
     height: 100%;
 }
