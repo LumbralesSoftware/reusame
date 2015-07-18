@@ -35,7 +35,7 @@ msgstr "Condiciones del trato"
 
 #: frontend/templates/base.html:57
 msgid "Hurry up, this offer/item expires soon"
-msgstr "Date prisa! Esta oferta expira pronto"
+msgstr "Rápido! Esta oferta caduca pronto"
 
 #: frontend/templates/base.html:59
 msgid "Expires in"
@@ -43,15 +43,15 @@ msgstr "Caduca en"
 
 #: frontend/templates/base.html:62
 msgid "Add a comment if you want"
-msgstr "Añade un comentario (opcionalmente)"
+msgstr "Añadir un comentario (opcionalmente)"
 
 #: frontend/templates/base.html:63
 msgid ""
 "Hi, I saw your item and I'm very interested on it. When would be a good time "
 "to pick it up? Cheers"
 msgstr ""
-"Hola, He visto tu producto y estoy muy interesado en el. Cuando sería un "
-"buen momento para irlo a buscar? Gracias"
+"Hola, He visto tu anuncio y estoy muy interesado. Cuando sería un "
+"buen momento para quedar? Gracias"
 
 #: frontend/templates/base.html:72 frontend/templates/base.html.py:192
 msgid "Cancel"
@@ -217,16 +217,16 @@ msgid ""
 "If you come looking for something specific, just try to find it in the map "
 "or with the search, login and request the item."
 msgstr ""
-"Si estas buscando algo especifico, busca lo mas cercano en el mapa, o "
-"utiliza el buscador, inicia sesión y haz click en \"Lo quiero\"."
+"Si esta buscando algo especifico, búsquelo en el mapa, o "
+"utilice el buscador, inicie sesión y haga click en \"Lo quiero\"."
 
 #: frontend/templates/base.html:247
 msgid ""
 "Then, we will contact the owner of the item and pass him your details so "
 "that you can arrange a meeting and so on."
 msgstr ""
-"Entonces, nosotros contactaremos con el dueño y le daremos tus datos de "
-"contacto, para que podais quedar para encontraros, etcétera."
+"Entonces, nosotros contactaremos con el dueño y le daremos sus datos de "
+"contacto, para que puedan ultimar los detalles, etcétera."
 
 #: frontend/templates/base.html:248
 msgid ""
@@ -357,3 +357,15 @@ msgstr "Localización/Dirección (Codigo postal/Calle, Ciudad, País)"
 #: services/models.py:105
 msgid "message"
 msgstr ""
+
+msgid "GOOD BYE MONEY"
+msgstr "ADIOS AL DINERO"
+
+msgid "Find free stuff and make free deals with other people."
+msgstr "El lugar donde encontrar cosas gratis y hacer tratos con otra gente."
+
+msgid "How It Works"
+msgstr "¿Cómo funciona?"
+
+msgid "Check out the latest free deals"
+msgstr "Últimos tratos"
