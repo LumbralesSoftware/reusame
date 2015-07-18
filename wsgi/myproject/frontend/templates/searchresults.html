@@ -3,23 +3,34 @@
 {% block bodyclass %}search{% endblock %}
 {% block main %}
 <div class="results">
-    <h2>{% trans "Search results" %}</h2>
-    <div class="list-group">
-        {% for item in object_list %}
-        <a class="list-group-item search-result" onclick="iWantThis('{{ item.to_json | safe }}')">
-            <div class="search-image">
-                <img class="media-object" src="{% url "thumb" item.id 50 %}" alt="{{ item.name }}">
-            </div>
-            <div class="media-body">
-                <span class="pull-right truncate search-location">{% trans "Located in" %} {{ item.location }}</span>
-                <h4 class="list-group-item-heading">{{ item.name }}</h4>
-                <span class="pull-right clear search-date"> {% trans "Added on" %} {{ item.created|date }}</span>
-                <p class="list-group-item-text">{{ item.description }}</p>
-            </div>
-        </a>
-        {% empty %}
-        <a>{% trans "No results" %}.</a>
-        {% endfor %}
+    <div class="col-xs-6 list-container">
+        <div class="list-group">
+            {% for item in object_list %}
+            <a class="list-group-item search-result" onclick="iWantThis('{{ item.to_json | safe }}')">
+                <div class="search-image">
+                    <img class="media-object" src="{% url "thumb" "circle" item.id 50 %}" alt="{{ item.name }}">
+                </div>
+                <div class="media-body">
+                    <span class="pull-right truncate search-location">{% trans "Located in" %} {{ item.location }}</span>
+                    <h4 class="list-group-item-heading">{{ item.name }}</h4>
+                    <span class="pull-right clear search-date"> {% trans "Added on" %} {{ item.created|date }}</span>
+                    <p class="list-group-item-text">{{ item.description }}</p>
+                </div>
+            </a>
+            {% empty %}
+            <a>{% trans "No results" %}.</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-xs-6 map-container">
+        <div id="map-canvas"></div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+    {% for item in object_list %}
+        drawMarker(jQuery.parseJSON(Base64.decode('{{ item.to_json | safe }}')));
+    {% endfor %}
+    });
+</script>
 {% endblock %}

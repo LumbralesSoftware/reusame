@@ -171,11 +171,11 @@ SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 
 #image on demand settings, writable path by webserver
-IMAGE_ON_DEMAND_URL = 'items/thumbs/'
+IMAGE_ON_DEMAND_URL = 'thumbs/'
 IMAGE_ON_DEMAND_DIR = os.path.join(MEDIA_ROOT, IMAGE_ON_DEMAND_URL)
 
 #image widths allowed
-ALLOWED_WIDTHS=('25', '50')
+ALLOWED_WIDTHS=('25', '50', '100')
 
 #usm settings for thumbnails, optional if you use my unsharp mask snippet
 RADIUS=1

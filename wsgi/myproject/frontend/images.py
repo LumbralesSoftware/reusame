@@ -3,21 +3,21 @@ from PIL import Image, ImageOps, ImageDraw
 
 from django.conf import settings
 
-def create_thumb(item, width):
+def create_thumb(image, shape, width):
     #path to original image and file split
-    original_file = os.path.join(settings.MEDIA_ROOT, item.image.name)
+    original_file = os.path.join(settings.MEDIA_ROOT, image.name)
     filehead, filetail = os.path.split(original_file)
 
     #check if image path exists otherwise create it
-    image_path = os.path.join(settings.IMAGE_ON_DEMAND_DIR, width)
+    image_path = os.path.join(settings.IMAGE_ON_DEMAND_DIR, shape, width)
     if not os.path.exists(image_path):
         os.mkdir(image_path)
 
     #create image path. note, width SHOULD be a string otherwise os.path.join fails
-    image_file = os.path.join(settings.IMAGE_ON_DEMAND_DIR, width, filetail)
+    image_file = os.path.join(settings.IMAGE_ON_DEMAND_DIR, shape, width, filetail)
 
     # we need te calculate the new height based on the ratio of the original image, create integers
-    ratio = float(float(item.image.width) / float(item.image.height))
+    ratio = float(float(image.width) / float(image.height))
     height = int(float(width) / ratio)
     iwidth = int(width)
 
@@ -35,12 +35,13 @@ def create_thumb(item, width):
         image.thumbnail([iwidth, height], Image.ANTIALIAS)
         format = 'png' # conver to PNG to be able to set the transparent mask
 
-        bigsize = (image.size[0] * 3, image.size[1] * 3)
-        mask = Image.new('L', bigsize, 0)
-        draw = ImageDraw.Draw(mask)
-        draw.ellipse((0, 0) + bigsize, fill=255)
-        mask = mask.resize(image.size, Image.ANTIALIAS)
-        image.putalpha(mask)
+        if shape == 'circle':
+            bigsize = (image.size[0] * 3, image.size[1] * 3)
+            mask = Image.new('L', bigsize, 0)
+            draw = ImageDraw.Draw(mask)
+            draw.ellipse((0, 0) + bigsize, fill=255)
+            mask = mask.resize(image.size, Image.ANTIALIAS)
+            image.putalpha(mask)
 
         #optional unsharp mask using snippet http://www.djangosnippets.org/snippets/1267/
         #image = usm(image,settings.RADIUS,settings.SIGMA,settings.AMOUNT,settings.THRESHOLD)

@@ -29,7 +29,7 @@ var centerMap = function(location) {
     if (map) {
         var position = new google.maps.LatLng(location.lat, location.lng);
         map.setCenter(position);
-        loadNearbyItems(location);
+        //loadNearbyItems(location);
     }
 }
 
@@ -43,7 +43,7 @@ setTimeout(function () {
 
 function initialize() {
     var mapOptions = {
-        zoom: 12,
+        zoom: 11,
         styles:[{
             featureType: "poi",
             stylers: [{visibility: "off" }]
@@ -62,52 +62,56 @@ function handleNoGeolocation() {
     var infowindow = new google.maps.InfoWindow('Unable to detect your location');
     map.setCenter(options.position);
 }
+function drawMarker(item)
+{
+    var infowindow = new google.maps.InfoWindow();
+    var itemPos = new google.maps.LatLng(
+            item.location.lat_position,
+            item.location.long_position
+            );
+    var marker = new google.maps.Marker({
+        position: itemPos,
+        map: map,
+        title: item.name,
+        icon: '/thumb/circle/' + item.id + '/25.png'
+    });
+    google.maps.event.addListener(marker, 'click', (function(marker, item) {
+        return function() {
+            infowindow.setContent(
+                '<div class="info"><h3>' + item.name + '</h3> \
+                <a onclick="iWantThis(\'' + Base64.encode(JSON.stringify(item)) + '\')"> \
+                <div class="iWantThis"><button class=\"btn btn-primary\">' + gettext('I want this!') + '</button></div> \
+                </a>\
+                <div id="' + item.id + '" class="popupImage"> \
+                <img src="' + item.image + '" alt="' + item.name + '" class="img-item img-circle"/> \
+                <div> \
+                <h5>' + gettext('Description') + '</h5> \
+                <p> ' + item.description + '</p></div>'
+                );
+            infowindow.open(map, marker);
+        }
+    })(marker, item));
+}
 
+function addToGrid(item) {
+    var tmp = $.templates('#itemsListTmpl');
+    var html = tmp.render({
+        "id": item.id,
+        "name": item.name,
+        "description": item.description,
+        "location": item.location.location,
+        "created": $.format.date(item.created, 'dd/MM/yyyy HH:mm:ss'),
+        "data": Base64.encode(JSON.stringify(item)),
+    });
+    $('#itemsGrid').append(html);
+}
 function loadNearbyItems(position) {
-   var infowindow = new google.maps.InfoWindow();
    $.getJSON("/api/items?lat=" + position.lat +  "&lon=" + position.lng, function(data) {
        for (var i in data) {
            var item = data[i];
            //console.log(item);
-           var itemPos = new google.maps.LatLng(
-               item.location.lat_position,
-               item.location.long_position
-               );
-
-           var marker = new google.maps.Marker({
-                  position: itemPos,
-                  map: map,
-                  title: item.name,
-                  icon: '/thumb/' + item.id + '/25.png'
-           });
-           google.maps.event.addListener(marker, 'click', (function(marker, i) {
-               return function() {
-                   infowindow.setContent(
-                       '<div class="info"><h3>' + data[i].name + '</h3> \
-                       <a onclick="iWantThis(\'' + Base64.encode(JSON.stringify(data[i])) + '\')"> \
-                       <div class="iWantThis"><button class=\"btn btn-primary\">' + gettext('I want this!') + '</button></div> \
-                       </a>\
-                       <div id="' + data[i].id + '" class="popupImage"> \
-                       <img src="' + data[i].image + '" alt="' + data[i].name + '" class="img-item img-circle"/> \
-                       <div> \
-                       <h5>' + gettext('Description') + '</h5> \
-                       <p> ' + data[i].description + '</p></div>'
-                       );
-                   infowindow.open(map, marker);
-                   //api.getInfoPoint(points.stations[i].station_code, points.stations[i].lines);
-               }
-           })(marker, i));
-
-           var tmp = $.templates('#itemsListTmpl');
-           var html = tmp.render({
-                "id": data[i].id,
-                "name": data[i].name,
-                "description": data[i].description,
-                "location": data[i].location.location,
-                "created": $.format.date(data[i].created, 'dd/MM/yyyy HH:mm:ss'),
-                "data": Base64.encode(JSON.stringify(data[i])),
-           });
-           $('#itemsGrid').append(html);
+           drawMarker(item);
+           addToGrid(item);
        }
    });
 }
@@ -276,9 +280,6 @@ $(document).ready(function() {
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
     $('[data-toggle="popover"]').popover().on('click', function() { $("#q").focus(); });
-    if ($('#map-canvas').length == 1) {
-        initialize();
-    }
     $.alterValidationRules({
             rule: 'NOTEMPTY',
             message: gettext('$ must not be empty')
@@ -289,3 +290,6 @@ $(document).ready(function() {
 
 });
 
+if ($('#map-canvas').length == 1) {
+    initialize();
+}

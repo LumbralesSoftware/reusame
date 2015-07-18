@@ -71,11 +71,23 @@ class SearchItemsListView(ListView):
         # Return a filtered queryset
         return queryset.filter(active=True)
 
+    def get_context_data(self, **kwargs):
+        context = super(SearchItemsListView, self).get_context_data(**kwargs)
+        if 'q' in self.request.GET:
+            context['q'] = self.request.GET['q']
+        return context
+
 def home(request):
    defaultExpiry= timezone.now() + timedelta(days=30)
    context = RequestContext(
         request,
-        {'item': ItemForm(initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}), 'user': request.user}
+        {
+            'item': ItemForm(initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}),
+            'user': request.user,
+            #'last_items': Item.objects.filter(active=True).order_by('-id')[:6][::-1]
+            'last_items': Item.objects.filter(active=True).order_by('-category')[:6][::-1]
+
+        }
    )
    return render_to_response('index.html', context_instance=context)
 
@@ -122,11 +134,11 @@ def request_item(request, id):
 def search(request):
    return HttpResponse(json.dumps({"success": True}), content_type="application/json")
 
-def image_on_demand(request, id, width):
+def image_on_demand(request, shape, id, width):
     if width in settings.ALLOWED_WIDTHS:
         #get item photo
         item = get_object_or_404(Item, pk=id)
-        filetail = create_thumb(item, width)
+        filetail = create_thumb(item.image, shape, width)
 
         #image_data = Image.open(image_file)
         #response = HttpResponse(content_type="image/%s" % image_data.format) # create the proper HttpResponse object
@@ -135,7 +147,7 @@ def image_on_demand(request, id, width):
         #except:
                 #image_data.save(response, image_data.format, quality=90)
 
-        url = settings.MEDIA_URL + settings.IMAGE_ON_DEMAND_URL + width + '/' +  filetail
+        url = settings.MEDIA_URL + settings.IMAGE_ON_DEMAND_URL + shape + '/' + width + '/' +  filetail
         #return response
         return HttpResponseRedirect('//' + request.get_host() + url)
 

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block bodyclass %}map{% endblock %}
+{% block main %}
+<div class="tab-content">
+    <div id="map" class="tab-pane active">
+        <div id="map-canvas"></div>
+    </div>
+    <div class="tab-pane" id="list">
+        <div id="list-content">
+            <div class="list-group" id="itemsGrid">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
