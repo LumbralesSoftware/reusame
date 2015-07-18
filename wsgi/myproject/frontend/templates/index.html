@@ -3,7 +3,7 @@
 {% block bodyclass %}home{% endblock %}
 {% block main %}
 <div class="home-container">
-    <h2>GOOD BYE MONEY</h2>
+    <h2>{% trans "GOOD BYE MONEY" %}</h2>
     <p>{% trans "Find free stuff and make free deals with other people." %}</p>
     <a data-toggle="modal" data-target=".how-does-it-work" class="btn hide-sm btn-contrast btn-large btn-semi-transparent js-show-how-it-works"> {% trans "How It Works" %}
     </a>
@@ -28,8 +28,8 @@
                     <div class="thumbnail">
                         <div class="item-home-grid" style="background-image:url('{% url "thumb" 'rectangle' item.id 100 %}')">
                             <div class="caption">
-                                <h3>{{ item.name }}</h3>
-                                <p>{{ item.description }}</p>
+                                <h3>{{ item.name|truncatechars:42 }}</h3>
+                                <p>{{ item.description|truncatechars:120 }}</p>
                             </div>
                         </div>
                     </div>

@@ -74,6 +74,13 @@ html, body {
     background-position: left;
     height: 150px;
 }
+.thumbnail .caption {
+    margin-left: 100px;
+    text-align: left;
+}
+.thumbnail .caption h3 {
+    margin-top: 0;
+}
 /*
  * Search results
  */
