@@ -113,6 +113,9 @@ html, body {
 .list-group {
     margin-bottom: 40px;
 }
+.list-group-item-heading {
+    min-height: 40px;
+}
 #header h1 {
     margin-top: 0px;
 }
