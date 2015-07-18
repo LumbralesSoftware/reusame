@@ -4,6 +4,8 @@ from PIL import Image, ImageOps, ImageDraw
 from django.conf import settings
 
 def create_thumb(image, shape, width):
+    if shape != 'circle' and shape != 'rectangle':
+        return False
     #path to original image and file split
     original_file = os.path.join(settings.MEDIA_ROOT, image.name)
     filehead, filetail = os.path.split(original_file)

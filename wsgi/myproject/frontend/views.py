@@ -38,7 +38,7 @@ class UserUpdate(UpdateView):
 
 class ItemForm(forms.ModelForm):
     category = forms.ModelChoiceField(
-            queryset=Category.objects.all(),
+            queryset=Category.objects.all().order_by('name'),
             to_field_name="name",
             widget=forms.Select(attrs={'data-validation':'[NOTEMPTY]'}),
             label=_('Category name')

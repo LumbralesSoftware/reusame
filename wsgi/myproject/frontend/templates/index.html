@@ -4,9 +4,8 @@
 {% block main %}
 <div class="home-container">
     <h2>GOOD BYE MONEY</h2>
-    <p>Find free stuff and make free deals with other people.</p>
-    <a data-toggle="modal" data-target=".how-does-it-work" class="btn hide-sm btn-contrast btn-large btn-semi-transparent js-show-how-it-works">
-        How It Works
+    <p>{% trans "Find free stuff and make free deals with other people." %}</p>
+    <a data-toggle="modal" data-target=".how-does-it-work" class="btn hide-sm btn-contrast btn-large btn-semi-transparent js-show-how-it-works"> {% trans "How It Works" %}
     </a>
     <br/>
     <br/>
@@ -21,7 +20,7 @@
         </form>
     </div>
     <div class="featured">
-        <h5> Check out the lastest free deals </h5>
+        <h5> {% trans "Check out the lastest free deals" %} </h5>
         <div class="row">
             {% for item in last_items %}
             <div class="col-sm-6 col-md-4">
