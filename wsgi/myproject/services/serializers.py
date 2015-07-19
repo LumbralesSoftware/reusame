@@ -31,6 +31,16 @@ class LocationSerializer(serializers.ModelSerializer):
     def validate(self, location):
         if not 'location' in location or (not location['location'] and not location['long_position'] and not location['lat_position']):
             raise serializers.ValidationError('You must provide either location address or lat/long coordinates.')
+
+        try:
+            if not location['location']:
+                location['location'] = get_address(location['lat_position'], location['long_position'])
+            elif not location['lat_position'] or not location['long_position']:
+                location['lat_position'], location['long_position'] = get_coords(location['location'])
+        except Exception as e:
+            print location
+            print e
+            raise serializers.ValidationError('Unable to get a valid location.')
         return super(LocationSerializer, self).validate(location)
 
 class ItemSerializer(serializers.ModelSerializer):
@@ -83,10 +93,6 @@ class ItemSerializer(serializers.ModelSerializer):
         address = validated_data['location']['location']
         lat = validated_data['location']['lat_position']
         lon = validated_data['location']['long_position']
-        if not address:
-            address = get_address(lat, lon)
-        elif not lat or not lon:
-            lat, lon = get_coords(address)
 
         location = Location.objects.create(
             lat_position=lat,
