@@ -396,5 +396,11 @@ msgstr "Puede respoder directamente a este email para contactar con"
 msgid "Alternatively, you can email him to"
 msgstr "Tambien puede enviale un email a"
 
+msgid "This email was intended for"
+msgstr "Este email va dirigido a"
+
+msgid "The World's Best Free Bargains Market"
+msgstr "El mercado de tratos sin dinero"
+
 msgid "is interested in"
 msgstr "está interesado en"

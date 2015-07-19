@@ -123,7 +123,7 @@ class UserRequest(models.Model):
 
         headers = {'Reply-To': self.requester.email}
         email = EmailMessage(
-            self.requester.first_name + ' ' + _('is interested in') + ' ' + self.item.name,
+            self.requester.first_name + ' ' + unicode(_('is interested in')) + ' ' + self.item.name,
             msg_html,
             from_email='REUSAME ' + '<' + self.requester.email + '>',
             to=[self.item.owner.email],
