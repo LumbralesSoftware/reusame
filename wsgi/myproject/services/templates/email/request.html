@@ -1,3 +1,4 @@
+{% load i18n %}
 <table border="0" cellspacing="0" cellpadding="0" width="100%" height="" bgcolor="#DFDFDF" style="font-family:Helvetica,Arial,sans-serif;font-family:Helvetica,Arial,sans-serif;text-align:center">
     <tbody>
         </tbody><tbody>
@@ -36,7 +37,7 @@
                                     <tbody>
                                         <tr>
                                             <td width="20" bgcolor="#333333"></td>
-                                            <td bgcolor="#333333" style="font-weight:normal;color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:18px;line-height:18px" align="left"><span style="color:#ffffff">{{name}} is interested in your item.</span></td>
+                                            <td bgcolor="#333333" style="font-weight:normal;color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:18px;line-height:18px" align="left"><span style="color:#ffffff">{{name}} {% trans "is interested in your item." %}</span></td>
                                             <td bgcolor="#333333" align="right">
                                                 <table border="0" cellpadding="0" cellspacing="0" align="right">
                                                     <tbody>
@@ -124,7 +125,7 @@
                                                             <span style="display:block;font-family:Helvetica,Arial,sans-serif;font-size:13px;font-weight:normal;line-height:23px;border-bottom:1px solid #eeeeee"></span>
                                                             <p></p>
                                                             <a href="#" style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:17px;text-decoration:none;display:inline-block" target="_blank">
-                                                                <span style="color:#030303"><b>{{name}}</b> said:</span>
+                                                                <span style="color:#030303"><b>{{name}}</b> {% trans "said:" %}</span>
                                                             </a>
                                                             <br/>
                                                                                 <span style="color:#8b8b8b;font-size:13px">
@@ -162,11 +163,11 @@
                                         </tr>
                                         <tr>
                                             <td align="left" valign="top" style="font-size:11px;font-family:Helvetica,Arial,sans-serif;color:#999999">
-                                                You can directly reply to this message to get in touch with <b>{{name}}</b>. Alternatively, you can email him to {{email}}.
+                                                {% trans "You can directly reply to this message to get in touch with" %} <b>{{name}}</b>. {%trans "Alternatively, you can email him to" %} {{email}}.
                                                 <br>
                                                 <br>
-                                                This email was intended for {{owner}}.
-                                                <p>REUSAME 2015 - The World's Best Free Bargains Market</p>
+                                                {% "This email was intended for" %} {{owner}}.
+                                                <p>REUSAME 2015 - {% trans "The World's Best Free Bargains Market" %}</p>
                                             </td>
                                         </tr>
                                         <tr>
