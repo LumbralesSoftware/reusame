@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.conf import settings
 
 import base64
 import json
@@ -66,6 +67,7 @@ class Category(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200, verbose_name=_("Category name"), unique=True)
     description = models.TextField(max_length=300, verbose_name=_("Category description"))
+    language = models.CharField(max_length=7, choices=settings.LANGUAGES, default="en")
 
     def __str__(self):
         return unicode(self).encode('utf-8')
