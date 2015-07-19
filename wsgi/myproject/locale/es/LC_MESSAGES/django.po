@@ -378,3 +378,23 @@ msgstr "Instalar"
 
 msgid "Download for free!"
 msgstr "Descargar gratis!"
+
+
+#: services/templates/email/request.html:40
+msgid "is interested in your item."
+msgstr "está interesado en el trato."
+
+#: services/templates/email/request.html:128
+msgid "said:"
+msgstr "escribió:"
+
+#: services/templates/email/request.html:166
+msgid "You can directly reply to this message to get in touch with"
+msgstr "Puede respoder directamente a este email para contactar con"
+
+#: services/templates/email/request.html:166
+msgid "Alternatively, you can email him to"
+msgstr "Tambien puede enviale un email a"
+
+msgid "is interested in"
+msgstr "está interesado en"
