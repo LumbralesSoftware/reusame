@@ -369,3 +369,12 @@ msgstr "¿Cómo funciona?"
 
 msgid "Check out the latest free deals"
 msgstr "Últimos tratos"
+
+msgid "REUSAME for Android"
+msgstr "REUSAME para Android"
+
+msgid "Install"
+msgstr "Instalar"
+
+msgid "Download for free!"
+msgstr "Descargar gratis!"

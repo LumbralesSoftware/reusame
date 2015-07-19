@@ -24,7 +24,7 @@ html, body {
     color: white;
 }
 .smart-banner {
-    display: none;
+    display: none !important;
 }
 .home-container {
     padding: 20px;
@@ -252,7 +252,7 @@ html, body {
         display: none;
     }
     .smart-banner {
-        display: block;
+        display: block !important;
         position: fixed;
         top: 0;
         left: 0;
