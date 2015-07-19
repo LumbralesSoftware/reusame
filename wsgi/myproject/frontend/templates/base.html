@@ -97,6 +97,26 @@
         </script>
     </head>
     <body class="{% block bodyclass %}{% endblock %}">
+        <div class="smart-banner android navbar-collapse collapse in">
+            <a href="#" class="icon icon-remove icon-size-1 pull-left banner-close" data-toggle="collapse" data-target=".smart-banner">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.phonegap.findthetube" class="pull-left app-icon install-link action-link">
+            </a>
+            <div class="banner-content">
+                <div class="banner-title space-top-sm-1 space-top-md-3">
+                    <strong class="icon-dark-gray android-item">
+                        {% trans "REUSAME for Android" %}
+                    </strong> <br/>
+                    <small class="android-item">{% trans "Download for free!" %}</small>
+                </div>
+                <div class="banner-buttons text-right space-top-sm-2 space-top-md-4">
+                    <a class="link-reset btn btn-primary banner-button install-link action-link" href="https://play.google.com/store/apps/details?id=com.phonegap.findthetube" >
+                        Install
+                    </a>
+
+                </div>
+            </div>
+        </div>
         <div id="container">
             <div id="header" class="navbar">
                 <div class="navbar-inner">

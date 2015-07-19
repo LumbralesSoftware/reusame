@@ -23,6 +23,9 @@ html, body {
     margin-top: 0px;
     color: white;
 }
+.smart-banner {
+    display: none;
+}
 .home-container {
     padding: 20px;
     text-align: center;
@@ -220,7 +223,7 @@ html, body {
     .mobile-only {
         display:block;
     }
-    .desktop-only, .sign-in, .searchbar {
+    .desktop-only, .sign-in, #header .searchbar {
         display: none;
     }
     .search-button {
@@ -241,6 +244,51 @@ html, body {
     }
     .results {
         padding: 0px 5px 0px 5px;
+    }
+    .list-container {
+        width: 100%;
+    }
+    .map-container {
+        display: none;
+    }
+    .smart-banner {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        height: 73px;
+        background: #fff;
+        border-bottom: 1px solid #dce0e0;
+        z-index: 1999;
+    }
+    .smart-banner .banner-close {
+        padding: 25px 10px;
+    }
+    .smart-banner .banner-content {
+        padding-right: 6.25px;
+        float: right;
+    }
+    .smart-banner.android .banner-content .banner-title {
+        float: left;
+        margin-top: 20px;
+        margin-right: 12px;
+    }
+    .smart-banner.android .banner-content .banner-buttons {
+        float: left;
+        margin-top: 21px;
+        margin-right: 10px;
+    }
+    .icon-remove:before {
+        content: "X";
+    }
+    .app-icon {
+        margin-top: 5px;
+        background: url(/static/img/favicon.ico) 0 0 no-repeat;
+        background-size: 63px 63px;
+        width: 63px;
+        height: 63px;
     }
 }
 
