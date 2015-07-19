@@ -79,6 +79,8 @@ class SearchItemsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(SearchItemsListView, self).get_context_data(**kwargs)
+        defaultExpiry= timezone.now() + timedelta(days=30)
+        context['item'] = ItemForm(request=self.request, initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")})
         if 'q' in self.request.GET:
             context['q'] = self.request.GET['q']
         return context

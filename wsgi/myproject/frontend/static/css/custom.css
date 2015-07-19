@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: #414141;
+    background-color: #006600;
     /*min-width: 384px;*/
 }
 .title {
@@ -63,7 +63,7 @@ html, body {
     position: absolute;
 }
 #header {
-    background-color: #414141;
+    background-color: #006600;
     height: 76px;
     padding-top: 10px;
     border-radius: 0px;
