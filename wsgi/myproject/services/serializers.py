@@ -2,6 +2,7 @@ from rest_framework import serializers
 from django.shortcuts import get_object_or_404
 from django.db.models import Avg
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import get_language
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
@@ -109,7 +110,8 @@ class ItemSerializer(serializers.ModelSerializer):
             category=validated_data['category'],
             location=location,
             expires_on=validated_data['expires_on'],
-            owner=user
+            owner=user,
+            language=get_language()
         )
 
         self.notify(item)

@@ -6,7 +6,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "owner", "active", "created", "last_updated", "location")
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "name")
+    list_display = ("id", "name", "language")
 
 class LocationAdmin(admin.ModelAdmin):
     list_display = ("id", "location")

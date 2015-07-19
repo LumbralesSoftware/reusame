@@ -34,6 +34,7 @@ class Item(models.Model):
     category = models.ForeignKey('Category', verbose_name=_("Category"))
     location = models.ForeignKey('Location', verbose_name=_("Location"))
     owner = models.ForeignKey(User, verbose_name=_('Owner'))
+    language = models.CharField(max_length=7, choices=settings.LANGUAGES, default="en")
 
     def to_json(self):
         from .serializers import ItemSerializer

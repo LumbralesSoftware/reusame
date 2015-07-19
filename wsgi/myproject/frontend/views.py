@@ -9,6 +9,7 @@ from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirec
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.db.models import Avg
+from django.utils.translation import get_language
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
@@ -37,16 +38,21 @@ class UserUpdate(UpdateView):
         return self.request.user
 
 class ItemForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request")
+        super(ItemForm, self).__init__(*args, **kwargs)
+        self.fields["category"].queryset = Category.objects.filter(language=get_language()).order_by('name')
+
     category = forms.ModelChoiceField(
-            queryset=Category.objects.all().order_by('name'),
-            to_field_name="name",
-            widget=forms.Select(attrs={'data-validation':'[NOTEMPTY]'}),
-            label=_('Category name')
+        queryset=None,
+        to_field_name="name",
+        widget=forms.Select(attrs={'data-validation':'[NOTEMPTY]'}),
+        label=_('Category name')
     )
 
     class Meta:
         model = Item
-        exclude=('created', 'owner', 'active', 'location')
+        exclude=('created', 'owner', 'active', 'location', 'language')
         widgets = {
                 'name': forms.TextInput(attrs={'data-validation':'[NOTEMPTY]'}),
                 'description': forms.Textarea(attrs={'rows': 3, 'data-validation':'[NOTEMPTY]', 'placeholder': _('For example: I am giving away this bike because I am not using it. It is in good working condition but might be a bit rusty.')}),
@@ -82,7 +88,7 @@ def home(request):
    context = RequestContext(
         request,
         {
-            'item': ItemForm(initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}),
+            'item': ItemForm(request=request, initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}),
             'user': request.user,
             #'last_items': Item.objects.filter(active=True).order_by('-id')[:6][::-1]
             'last_items': Item.objects.filter(active=True).order_by('-category')[:6][::-1]
