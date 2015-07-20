@@ -50,7 +50,7 @@ msgid ""
 "Hi, I saw your item and I'm very interested on it. When would be a good time "
 "to pick it up? Cheers"
 msgstr ""
-"Hola, He visto tu anuncio y estoy muy interesado. Cuando sería un "
+"Hola, He visto su anuncio y estoy muy interesado. Cuando sería un "
 "buen momento para quedar? Gracias"
 
 #: frontend/templates/base.html:72 frontend/templates/base.html.py:192
@@ -179,26 +179,26 @@ msgstr "¿Tienes cosas en casa que nunca usas y quieres deshacerte de ellas?"
 
 #: frontend/templates/base.html:223
 msgid "You might not need it anymore, but can it be useful for someone else?"
-msgstr "Es posible que tu no lo uses, pero ¿puede ser útil para otra persona?"
+msgstr "Es posible que no lo necesite/use, pero ¿puede ser útil para otra persona?"
 
 #: frontend/templates/base.html:224
 msgid ""
 "Take a picture and upload it here and you might make someone else's day!"
 msgstr ""
-"Hazle una foto y anúncialo en el mercado, y puede que hagas feliz a alguien!"
+"Haga una foto y anúncielo en el mercado, seguro que puede hacer un buen trato!"
 
 #: frontend/templates/base.html:225
 msgid ""
 "All the items listed are manually reviewed and we have plenty of stuff, all "
 "over the world, growing very quickly. Hurry up, many deals are time limited!"
 msgstr ""
-"Todas lo que hay ha sido revisado y tenemos un montón de cosas, de todo el "
-"mundo y creciendo muy rápidamente. Date prisa, muchas ofertas expiran pronto!"
+"Todas lo que hay ha sido revisado, disponemos un montón de cosas, de todo el "
+"mundo y el mercado está creciendo muy rápidamente. Dese prisa, muchas ofertas expiran pronto!"
 
 #: frontend/templates/base.html:226 frontend/templates/base.html.py:251
 msgid "Enjoy using REUSAME and stop throwing away stuff!"
 msgstr ""
-"Disfruta utilizando REUSAME y en vez de tirar cosas a la basura, regálalas!"
+"Disfrute utilizando REUSAME y en vez de tirar cosas a la basura, aprovechelas!"
 
 #: frontend/templates/base.html:231 frontend/templates/base.html.py:256
 msgid "Got It"
@@ -236,9 +236,9 @@ msgid ""
 "within seconds! All the submissions will be manually reviewed by us within "
 "24 hours, in order to ensure that they follow the rules of the market."
 msgstr ""
-"Si tienes cosas en casa de las que quieres deshacerte, considera publicarlas "
-"aquí, y con suerte obtendras algo a cambio y a la vez harás feliz a otra persona."
-"Inicia sesión, pincha en Publicar y rellena el formulario en cuestion de segundos!"
+"Si tiene cosas en casa que no necesita y que no vale la pena vender, considere ofertarlas "
+"aquí, y con suerte podra obtener algo a cambio y así todos se beneficiarán."
+"Tan solo hay que iniciar sesión, pinchar en Publicar y rellenar el formulario en cuestion de segundos!"
 "Todas las publicaciones son manualmente revisadas por nosotros en menos de 24 horas,"
 "para asegurar que cumplen con las normas del portal."
 
@@ -251,8 +251,8 @@ msgid ""
 "specified in the item description, and can be anything <strong>except money</"
 "strong>."
 msgstr ""
-"<strong>Todos los tratos son 100% gratis</strong>, asi que no tienes que darnos "
-"tu tarjeta de credito ni nada similar. Sin embargo, es posible que el dueño de lo "
+"<strong>Todos los tratos son 100% gratuitos</strong>, por lo tanto no es necesario "
+"tarjeta de credito, paypal ni nada similar. Sin embargo, es posible que el dueño de lo "
 "que te interesa quiera algo a cambio. En ese caso estara claramente especificado "
 "en la descripción de la oferta, y puede ser cualquier cosa, <strong>excepto dinero</"
 "strong>."
