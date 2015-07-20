@@ -92,9 +92,7 @@ def home(request):
         {
             'item': ItemForm(request=request, initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}),
             'user': request.user,
-            #'last_items': Item.objects.filter(active=True).order_by('-id')[:6][::-1]
-            'last_items': Item.objects.filter(active=True).order_by('-category')[:6][::-1]
-
+            'last_items': Item.objects.filter(active=True).order_by('-id')[:6][::-1]
         }
    )
    return render_to_response('index.html', context_instance=context)

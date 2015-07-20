@@ -87,10 +87,10 @@ class ItemViewSet(viewsets.ModelViewSet):
                 {"latitude": lat, "longitude": lon},
                 SEARCH_RADIUS
             )
-            print queryset.count()
-            # If not 1 fall back to all items
-            if queryset.count() <= 1:
-                 queryset = Item.objects.filter(active=True)
+            #print queryset.count()
+            # If not 10 fall back to all items
+            if queryset.count() <= 10:
+                 queryset = Item.objects.filter(active=True).order_by('-id')[:6][::-1]
         if ('q' in self.request.GET) and self.request.GET['q'].strip():
             query_string = self.request.GET['q']
             search_fields=('name','description',)
