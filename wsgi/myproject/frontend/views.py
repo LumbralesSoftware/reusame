@@ -35,11 +35,18 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email')
 
 class UserUpdate(UpdateView):
+    template_name = 'updatedetails.html'
     model = User
     form_class = UserForm
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super(UserUpdate, self).get_context_data(**kwargs)
+        defaultExpiry= timezone.now() + timedelta(days=30)
+        context['item'] = ItemForm(request=self.request, initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")})
+        return context
 
 class ItemForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

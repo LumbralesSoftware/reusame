@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block bodyclass %}home{% endblock %}
+{% block main %}
+<div class="update-user">
+    <div>
+        <div class="modal-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-info center-block">{% trans "Save" %}</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
