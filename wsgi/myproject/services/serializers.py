@@ -78,7 +78,7 @@ class ItemSerializer(serializers.ModelSerializer):
         email = EmailMessage(
             item.owner.first_name + ' wants to publish ' + item.name,
             msg_html,
-            to=[settings.EMAIL_HOST_USER]
+            to=settings.NOTIFY_EMAILS
         )
         email.content_subtype = "html"
         email.send()
