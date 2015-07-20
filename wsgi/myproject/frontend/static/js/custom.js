@@ -280,13 +280,33 @@ $(document).ready(function() {
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
     $('[data-toggle="popover"]').popover().on('click', function() { $("#q").focus(); });
+    $('.datetimepicker').datetimepicker({format:'Y-m-d H:i'});
+
+    // Locale for validation messages
     $.alterValidationRules({
             rule: 'NOTEMPTY',
             message: gettext('$ must not be empty')
     });
     $('#giveAwayItemForm').validate(options);
+
+    // New item form submission
     $('.createItem').click(createItem);
-    $('.datetimepicker').datetimepicker({format:'Y-m-d H:i'});
+    // Contact Us form
+    $("#contactUsForm").submit(function( event ) {
+        event.preventDefault();
+        $.ajax({
+            url: '/contact-us/',
+            type: 'POST',
+            data: $($(this)[0]).serialize(),
+            success: function (response) {
+                showAlert('#contactUsMsg', 'success', gettext('Success!'), gettext('Message successfully sent'));
+                $($(this)[0]).reset();
+            },
+            error: function (response) {
+                showAlert('#contactUsMsg', 'danger', gettext('Error!'), gettext('An error ocurred, please try again'));
+            }
+        });
+    });
 
 });
 

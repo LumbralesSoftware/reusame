@@ -14,6 +14,10 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
+from django.core.mail import EmailMessage
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+
 from datetime import timedelta
 
 from services.models import Item, Category, UserRating, UserRequest
@@ -157,3 +161,25 @@ def image_on_demand(request, shape, id, width):
         #return response
         return HttpResponseRedirect('//' + request.get_host() + url)
 
+def contact_us(request):
+   if 'InputName' in request.POST and 'InputEmail' in request.POST and 'InputMessage' in request.POST:
+        headers = {'Reply-To': request.POST['InputEmail']}
+        msg_html = render_to_string(
+                'email/contactus.html',
+                {
+                    'name': request.POST['InputName'],
+                    'email': request.POST['InputEmail'],
+                    'message': request.POST['InputMessage']
+                }
+        )
+
+        email = EmailMessage(
+            "Contact Us - Form Request",
+            msg_html,
+            to=settings.NOTIFY_EMAILS,
+            headers=headers
+        )
+        email.content_subtype = "html"
+        email.send()
+
+   return HttpResponse(json.dumps({"success": True}), content_type="application/json")

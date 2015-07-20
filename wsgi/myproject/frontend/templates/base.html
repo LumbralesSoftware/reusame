@@ -240,12 +240,55 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-            {% block main %}{% endblock %}
+            <div class="modal fade contact-us">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{% trans "Contact Us" %}</h4>
+                        </div>
+                        <form id="contactUsForm" role="form" action="" method="post" >
+                            <div class="modal-body">
+                                <div class="contact-form-content">
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="InputName">{% trans "Your Name" %}</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="InputName" id="InputName" placeholder="{% trans "Enter Name" %}" required>
+                                                <span class="input-group-addon required">*</span></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputEmail">{% trans "Your Email" %}</label>
+                                            <div class="input-group">
+                                                <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="{% trans "Enter Email" %}" required  >
+                                                <span class="input-group-addon required">*</span></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputMessage">{% trans "Message" %}</label>
+                                            <div class="input-group"
+                                                >
+                                                <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                                                <span class="input-group-addon required">*</span></div>
+                                        </div>
+                                    </div>
+                                    <div id="contactUsMsg">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-info center-block">{% trans "Send" %}</button>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% block main %}{% endblock %}
             <div id="footer">
                 <div class="container">
                     <p class="text-muted">
                         <a data-toggle="modal" data-target=".what-is-reusame">{% trans "What is REUSAME?" %}</a>
                         <a data-toggle="modal" data-target=".how-does-it-work">{% trans "How does REUSAME work?" %}</a>
+                        <a data-toggle="modal" data-target=".contact-us">{% trans "Contact Us" %}</a>
                 </div>
             </div>
             <div class="modal fade what-is-reusame" tabindex="-1" role="dialog">
@@ -272,7 +315,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default center-block" data-dismiss="modal">{% trans "Got It" %}</button>
+                            <button type="button" class="btn btn-info center-block" data-dismiss="modal">{% trans "Got It" %}</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -291,13 +334,13 @@
                                     <p>{% trans "If you come looking for something specific, just try to find it in the map or with the search, login and request the item." %} <br/> {% trans "Then, we will contact the owner of the item and pass him your details so that you can arrange a meeting and so on." %}</p>
                                     <p>{% trans "If you have some stuff at home that you want to get rid of, consider posting it here and hopefully you can get something in return and make someone else happy at the same time. Login, click in Give Away and fill in the form within seconds! All the submissions will be manually reviewed by us within 24 hours, in order to ensure that they follow the rules of the market." %}</p>
                                     <p>{% trans "<strong>All the deals are 100% free</strong>, so you don't need to enter your credit card details nor anything similar. However, it's possible that the owner of the item wants something in return. That should be clearly specified in the item description, and can be anything <strong>except money</strong>." %}</p>
-                                    <p>{% trans "REUSAME is not responsible for the content/items posted by the users within the platform. We make our best manually reviewing all the items added, but we cannot warrant that all the items/deals advertised are trustworthy. If stumble upon across one of this unlikely cases, please get in touch asap and we will remove the item/deal from the listing." %}</p>
+                                    <p>{% trans "REUSAME is not responsible for the content/items posted by the users within the platform. We make our best manually reviewing all the items added, but we cannot warrant that all the items/deals advertised are trustworthy. If stumble upon across one of this unlikely cases, please get in touch asap and we will remove the item/deal from the listing." %} <a data-dismiss="modal" data-toggle="modal" data-target=".contact-us">{% trans "Contact Us" %}</a></p>
                                     <p>{% trans "Enjoy using REUSAME and stop throwing away stuff!" %}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default center-block" data-dismiss="modal">{% trans "Got It" %}</button>
+                            <button type="button" class="btn btn-info center-block" data-dismiss="modal">{% trans "Got It" %}</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

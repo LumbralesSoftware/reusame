@@ -404,3 +404,26 @@ msgstr "El mercado de tratos sin dinero"
 
 msgid "is interested in"
 msgstr "está interesado en"
+
+msgid "Contact Us"
+msgstr "Contactar"
+
+msgid "Your Name"
+msgstr "Nombre"
+
+msgid "Enter Name"
+msgstr "Introduzca su nombre"
+
+
+msgid "Your Email"
+msgstr "Email"
+
+msgid "Enter Email"
+msgstr "Introduzca su email"
+
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Send"
+msgstr "Enviar"

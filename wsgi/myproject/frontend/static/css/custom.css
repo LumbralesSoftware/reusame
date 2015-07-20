@@ -84,6 +84,9 @@ html, body {
 .thumbnail .caption h3 {
     margin-top: 0;
 }
+.contact-form-content .required {
+    font-weight: bold;
+}
 /*
  * Search results
  */
