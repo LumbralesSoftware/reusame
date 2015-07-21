@@ -7,6 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Reusame is a worldwide market of products/stuff where everything is 100% free! Say good bye to the money, you don't need it!">
         <title>{% block title %}REUSAME - The World's Best Free Bargains{% endblock %}</title>
 
         <!-- Bootstrap -->
@@ -37,7 +38,7 @@
         <script id="itemsListTmpl" type="text/x-jsrender">
             <a class="list-group-item search-result" onclick="iWantThis('{% verbatim %}{{:data}}{% endverbatim %}')">
                 <div class="search-image">
-                    <img class="media-object" src="/thumb/{% verbatim %}{{:id}}{% endverbatim %}/50.png" alt="">
+                    <img class="media-object" src="/thumb/{% verbatim %}{{:id}}{% endverbatim %}/50.png" alt="{% verbatim %}{{:name}}{% endverbatim %}">
                 </div>
                 <div class="media-body">
                     <span class="pull-right truncate search-location">{% trans "Located in" %} {% verbatim %}{{:location}}{% endverbatim %} </span>
@@ -65,7 +66,7 @@
                                         <p>{% trans "Details" %}: {% verbatim %}{{:description}}{% endverbatim %}</p>
                                         <div class="image-div">
                                             <div class="img-container">
-                                                <img src="{% verbatim %}{{:image}}{% endverbatim %}" data-toggle="magnify" class="img-item img-circle"/>
+                                                <img src="{% verbatim %}{{:image}}{% endverbatim %}" alt="{% verbatim %}{{:name}}{% endverbatim %}" data-toggle="magnify" class="img-item img-circle"/>
                                             </div>
                                         </div>
                                     </div>
