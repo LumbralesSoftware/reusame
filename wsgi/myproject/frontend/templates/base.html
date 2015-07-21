@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Reusame is a worldwide market of products/stuff where everything is 100% free! Say good bye to the money, you don't need it!">
-        <title>{% block title %}REUSAME - The World's Best Free Bargains{% endblock %}</title>
+        <title>{% block title %}REUSAME - {% trans "The World's Best Free Bargains" %}{% endblock %}</title>
 
         <!-- Bootstrap -->
         <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
@@ -284,6 +284,18 @@
             </div>
         </div>
         {% block main %}{% endblock %}
+            <div class="share-buttons">
+                <!-- ADDTHIS BUTTON BEGIN -->
+                <script type="text/javascript">
+                    var addthis_config = {
+                        pubid: "ra-55ae2c3565f8b17b"
+                    }
+                </script>
+                <a href="http://www.addthis.com/bookmark.php?v=250" class="addthis_button"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" border="0" alt="Share"></a>
+
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js" tabindex="1000"></script>
+                <!-- ADDTHIS BUTTON END -->
+            </div>
             <div id="footer">
                 <div class="container">
                     <p class="text-muted">

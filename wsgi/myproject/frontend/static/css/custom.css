@@ -51,6 +51,11 @@ html, body {
     position:relative;
     padding-bottom: 40px;
 }
+.share-buttons {
+    padding: 9px;
+    text-align:center;
+}
+
 #footer {
     background-color: #414141;
     min-height: 40px;
