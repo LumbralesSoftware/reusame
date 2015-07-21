@@ -330,5 +330,8 @@ html, body {
         width: 63px;
         height: 63px;
     }
+    .share-buttons {
+        float: none;
+    }
 }
 
