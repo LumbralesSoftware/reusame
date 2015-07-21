@@ -284,24 +284,25 @@
             </div>
         </div>
         {% block main %}{% endblock %}
-            <div class="share-buttons">
-                <!-- ADDTHIS BUTTON BEGIN -->
-                <script type="text/javascript">
-                    var addthis_config = {
-                        pubid: "ra-55ae2c3565f8b17b"
-                    }
-                </script>
-                <a href="http://www.addthis.com/bookmark.php?v=250" class="addthis_button"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" border="0" alt="Share"></a>
-
-                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js" tabindex="1000"></script>
-                <!-- ADDTHIS BUTTON END -->
-            </div>
             <div id="footer">
                 <div class="container">
+                        <div class="share-buttons">
+                            <!-- ADDTHIS BUTTON BEGIN -->
+                            <script type="text/javascript">
+                                var addthis_config = {
+                                    pubid: "ra-55ae2c3565f8b17b"
+                                }
+                            </script>
+                            <a href="http://www.addthis.com/bookmark.php?v=250" class="addthis_button"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" border="0" alt="Share"></a>
+
+                            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js" tabindex="1000"></script>
+                            <!-- ADDTHIS BUTTON END -->
+                        </div>
                     <p class="text-muted">
                         <a data-toggle="modal" data-target=".what-is-reusame">{% trans "What is REUSAME?" %}</a>
                         <a data-toggle="modal" data-target=".how-does-it-work">{% trans "How does REUSAME work?" %}</a>
                         <a data-toggle="modal" data-target=".contact-us">{% trans "Contact Us" %}</a>
+                    </p>
                 </div>
             </div>
             <div class="modal fade what-is-reusame" tabindex="-1" role="dialog">
