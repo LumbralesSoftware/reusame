@@ -26,14 +26,14 @@ js_info_dict = {
 
 urlpatterns = patterns('',
     url(r'^api/',include(router.urls)),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'^oauth/', include('oauth.urls')),
     )
 urlpatterns += i18n_patterns('',
     url(r'^$', 'frontend.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api-auth/',include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    url(r'^oauth/', include('oauth.urls')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^accounts/profile/', UserUpdate.as_view(success_url="/"), name='profile'),
