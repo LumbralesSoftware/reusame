@@ -325,7 +325,7 @@ html, body {
     }
     .app-icon {
         margin-top: 5px;
-        background: url(/static/img/favicon.ico) 0 0 no-repeat;
+        background: url(/static/img/favicon-96x96.png) 0 0 no-repeat;
         background-size: 63px 63px;
         width: 63px;
         height: 63px;
