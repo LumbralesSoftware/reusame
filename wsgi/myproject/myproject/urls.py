@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.views.i18n import javascript_catalog
+from django.conf.urls.i18n import i18n_patterns
+
 
 
 from rest_framework import routers
@@ -23,11 +25,12 @@ js_info_dict = {
 }
 
 urlpatterns = patterns('',
-    # Examples:
+    url(r'^api/',include(router.urls)),
+    )
+urlpatterns += i18n_patterns('',
     url(r'^$', 'frontend.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/',include(router.urls)),
     url(r'^api-auth/',include('rest_framework.urls', namespace='rest_framework')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^oauth/', include('oauth.urls')),
