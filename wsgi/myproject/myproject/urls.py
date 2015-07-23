@@ -26,7 +26,7 @@ js_info_dict = {
 
 urlpatterns = patterns('',
     url(r'^api/',include(router.urls)),
-    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    #url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^oauth/', include('oauth.urls')),
     url(r'^vote/(?P<id>[\d+]{1,40})/$', 'frontend.views.vote_user', name='vote_user'),
     url(r'^request/(?P<id>[\d+]{1,40})/$', 'frontend.views.request_item', name='request_item'),
