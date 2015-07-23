@@ -96,6 +96,6 @@ class ItemViewSet(viewsets.ModelViewSet):
             search_fields=('name','description',)
             print query_string
             entry_query = get_query(query_string, search_fields)
-            queryset = Item.objects.filter(entry_query).order_by('-id')
             # Return a filtered queryset
-        return queryset.filter(active=True)
+            queryset = Item.objects.filter(active=True).filter(entry_query).order_by('-id')
+        return queryset
