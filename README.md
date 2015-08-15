@@ -1,6 +1,10 @@
-Project
+REUSAME
 ===================
-Django app in openshift
+Reusame is a worldwide market of products/stuff where everything is 100% free! Say good bye to the money, you don't need it!
+
+Project
+--------------------
+REUSAME is a Django app running in openshift.
 
 Translations
 --------------------
@@ -16,3 +20,8 @@ Javascript translations:
 Compile:
 
     django-admin.py compilemessages
+
+
+About:
+--------------------
+More information in www.reusame.com
