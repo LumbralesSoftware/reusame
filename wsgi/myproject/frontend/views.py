@@ -82,7 +82,7 @@ class SearchItemsListView(ListView):
         if ('q' in self.request.GET) and self.request.GET['q'].strip():
             query_string = self.request.GET['q']
             search_fields=('name','description',)
-            print query_string
+            print query_string.encode('utf-8')
             entry_query = get_query(query_string, search_fields)
             queryset = Item.objects.filter(entry_query).order_by('-id')
         # Return a filtered queryset
