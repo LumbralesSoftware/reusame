@@ -94,7 +94,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         if ('q' in self.request.GET) and self.request.GET['q'].strip():
             query_string = self.request.GET['q']
             search_fields=('name','description',)
-            print query_string
+            #print query_string
             entry_query = get_query(query_string, search_fields)
             # Return a filtered queryset
             queryset = Item.objects.filter(active=True).filter(entry_query).order_by('-id')

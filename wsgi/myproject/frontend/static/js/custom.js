@@ -1,6 +1,6 @@
 var map;
 
-var latLng, geoOptions = {
+var latLng, geoIpData, geoOptions = {
     enableHighAccuracy: false,
     timeout: 5000, // Wait 5 seconds
     maximumAge: 300000 //  Valid for 5 minutes
@@ -17,12 +17,27 @@ var userLocationFound = function(position){
 
 // Fallback to London, UK
 var userLocationNotFound = function(){
-    latLng = {
-        lat: 51.500152, // fallback lat
-        lng: -0.126236  // fallback lng
-    };
+
+    if (geoIpData) {
+        latLng = {
+            lat: geoIpData.lat, // fallback lat
+            lng: geoIpData.lon  // fallback lng
+        }
+        $('#location').val(geoIpData.city + ", " + geoIpData.country);
+    } else {
+        latLng = {
+            lat: 51.500152, // fallback lat
+            lng: -0.126236  // fallback lng
+        };
+    }
     centerMap(latLng);
-    window.console.log("Fallback set: ", latLng);
+    window.console.log("Fallback set: ", latLng, geoIpData);
+}
+
+var geoIp = function(){
+    $.getJSON("http://ip-api.com/json/?callback=?", function(data) {
+        geoIpData = data;
+    });
 }
 
 var centerMap = function(location) {
@@ -276,6 +291,7 @@ var options = {
 };
 
 $(document).ready(function() {
+    geoIp();
     $.ajaxSetup({
         headers: { "X-CSRFToken": $.cookie("csrftoken") }
     });
