@@ -370,6 +370,9 @@ msgstr "¿Cómo funciona?"
 msgid "Check out the latest free deals"
 msgstr "Últimos tratos"
 
+msgid "Search by category"
+msgstr "Categorías"
+
 msgid "REUSAME for Android"
 msgstr "REUSAME para Android"
 
