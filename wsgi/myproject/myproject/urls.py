@@ -41,6 +41,7 @@ urlpatterns += i18n_patterns('',
     url('', include('django.contrib.auth.urls', namespace='auth')),
     url(r'^accounts/profile/', UserUpdate.as_view(success_url="/"), name='profile'),
     url(r'^search/$', SearchItemsListView.as_view(), name='search'),
+    url(r'^cat/(?P<id>[\d+]{1,40})/(?P<category>[-\w]+)$', SearchItemsListView.as_view(), name='category'),
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^jsi18n/$', javascript_catalog, js_info_dict),
 )

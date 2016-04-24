@@ -82,9 +82,12 @@ class SearchItemsListView(ListView):
         if ('q' in self.request.GET) and self.request.GET['q'].strip():
             query_string = self.request.GET['q']
             search_fields=('name','description',)
-            print query_string.encode('utf-8')
+            #print query_string.encode('utf-8')
             entry_query = get_query(query_string, search_fields)
             queryset = Item.objects.filter(entry_query).order_by('-id')
+        if 'id' in self.kwargs:
+            queryset = Item.objects.filter(category=self.kwargs['id']).order_by('-id')
+
         # Return a filtered queryset
         return queryset.filter(active=True)
 
@@ -103,7 +106,8 @@ def home(request):
         {
             'item': ItemForm(request=request, initial={'expires_on': defaultExpiry.strftime("%Y-%m-%d 00:00")}),
             'user': request.user,
-            'last_items': Item.objects.filter(active=True).order_by('-id')[:6][::-1]
+            'last_items': Item.objects.filter(active=True).order_by('-id')[:6][::-1],
+            'categories': Category.objects.filter(language=get_language()).order_by('name')
         }
    )
    return render_to_response('index.html', context_instance=context)

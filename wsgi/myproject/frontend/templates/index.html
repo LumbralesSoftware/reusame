@@ -24,6 +24,18 @@
         </div>
     </div>
     <div class="featured">
+        <h5> {% trans "Search by category" %} </h5>
+        <div class="row">
+            {% for cat in categories %}
+            <div class="col-sm-6 col-md-4">
+                <a href="{% url 'category' cat.id cat.name|slugify %}" title="{{ cat.description }}">
+                    {{ cat.name }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="featured">
         <h5> {% trans "Check out the latest free deals" %} </h5>
         <div class="row">
             {% for item in last_items %}
