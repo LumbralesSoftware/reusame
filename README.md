@@ -24,4 +24,4 @@ Compile:
 
 About:
 --------------------
-More information in www.reusame.com
+More information in www.reusame.com and www.lumbrales-software.com
